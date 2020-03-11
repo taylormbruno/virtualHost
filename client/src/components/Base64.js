@@ -7,7 +7,6 @@ class Base64 extends Component {
         style: {
             overflowWrap: "break-word"
         }
-
     }
 
     handleBaseChange =  async () => {
