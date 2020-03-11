@@ -1,6 +1,7 @@
-import React, { Link } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Base from "./components/Base64";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Base />
     </div>
   );
 }
