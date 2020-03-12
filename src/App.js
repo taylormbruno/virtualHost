@@ -1,8 +1,10 @@
-import React, { Link } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Base from "./components/Base64";
 
 function App() {
+  console.log(process.env.API_KEY);
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +21,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Base />
     </div>
   );
 }
