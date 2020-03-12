@@ -4,6 +4,7 @@ import './App.css';
 import Base from "./components/Base64";
 
 function App() {
+  console.log(process.env.API_KEY);
   return (
     <div className="App">
       <header className="App-header">
