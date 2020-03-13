@@ -3,14 +3,24 @@ import './App.css';
 import Navbar from "./components/Navbar/index.js"
 import Login from "./components/Login/index.js"
 import Body from "./components/Body/index.js"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Body />
-      <Login />
+          <Router>
+      <div>
+        <Navbar />
+        <Body />
+        <Switch>
+          <Route exact path={["/", "/login"]}>
+            <Login />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
     </div>
+
   );
 }
 
