@@ -14,7 +14,7 @@ export default class MenuExampleStackable extends Component {
 
     return (
       <Menu stackable>
-        <Menu.Item>
+        <Menu.Item id="top">
           <img alt="Virtual Host Icon" src={Logo} />
         </Menu.Item>
 
@@ -22,8 +22,8 @@ export default class MenuExampleStackable extends Component {
           name='about'
           active={activeItem === 'about'}
           onClick={this.handleItemClick}
-        >
-          About Virtual Host
+        ><a href="#about">
+          About Virtual Host</a>
         </Menu.Item>
 
         <Menu.Item
