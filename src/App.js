@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from "./components/Navbar/index.js"
 import Login from "./components/Login/index.js"
 import Body from "./components/Body/index.js"
+import Signup from "./components/Signup/index.js"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         <Switch>
           <Route exact path={["/", "/login"]}>
             <Login />
+          </Route>
+          <Route exact path={["/signup"]}>
+            <Signup />
           </Route>
         </Switch>
       </div>

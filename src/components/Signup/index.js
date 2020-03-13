@@ -1,14 +1,14 @@
 import React from 'react'
-import { Button, Form, Grid, Image, Segment } from 'semantic-ui-react'
-import Logo from "./logo.png"
+import { Button, Form, Image, Grid, Segment } from 'semantic-ui-react'
+import Logo from "./signup.png"
 import "./style.css"
 
-const LoginForm = () => (
+const SignupForm = () => (
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column id="container">
       <Form size='large'>
         <Segment stacked>
-          <Image id="logo" src={Logo} />
+        <Image id="logo" src={Logo} />
           <div id="formContainer">
           <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address'/>
           <Form.Input
@@ -18,15 +18,15 @@ const LoginForm = () => (
             placeholder='Password'
             type='password'
           />
+          <Form.Input fluid icon='mail outline' iconPosition='left' placeholder='Email Adress'/>
+          <Form.Input fluid icon='male' iconPosition='left' placeholder='First Name'/>
+          <Form.Input fluid icon='male' iconPosition='left' placeholder='Last Name'/>
           <Button fluid size='large' id="login">
-            Login
+            Join the Community
           </Button>
           </div>
         </Segment>
       </Form>
-      <Button id="createAct">
-            Create Account
-        </Button>
         <Button id="guest">
             Continue As Guest
         </Button>
@@ -34,4 +34,4 @@ const LoginForm = () => (
   </Grid>
 )
 
-export default LoginForm
+export default SignupForm
