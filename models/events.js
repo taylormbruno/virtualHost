@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// date and time format to save 
+// new Date("2018/05/08 04:30:00")
+
 const eventSchema = new Schema({
     event_name: { type: String, required: true },
     image: { type: String, required: true },
