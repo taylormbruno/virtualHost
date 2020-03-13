@@ -1,27 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Base from "./components/Base64";
+import Navbar from "./components/Navbar/index.js"
+import Login from "./components/Login/index.js"
+import Body from "./components/Body/index.js"
 
 function App() {
-  console.log(process.env.API_KEY);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Base />
+      <Navbar />
+      <Body />
+      <Login />
     </div>
   );
 }

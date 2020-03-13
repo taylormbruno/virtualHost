@@ -1,0 +1,46 @@
+#login {
+    background-color: #8b9fa3;
+    color: white;
+}
+
+#createAct {
+    background-color: #8b9fa3;
+    color: white;
+    width: 30%;
+    margin: 2%   
+}
+
+#createAct:hover {
+    background-color: #abc5cb;
+}
+
+#guest {
+    background-color: #8b9fa3;
+    color: white;
+    width: 30%;  
+    margin: 2%    
+}
+
+#guest:hover {
+    background-color: #abc5cb;
+}
+
+#login:hover {
+    background-color:#abc5cb;
+    color: white;
+}
+
+#logo {
+    margin-left: 30%;
+    width: 40%;
+}
+
+#formContainer {
+    width: 80%;
+    margin-left: 10%;
+    padding: 2% 0;
+}
+
+#container {
+    width: 70%;
+}
