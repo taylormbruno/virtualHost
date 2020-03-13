@@ -5,7 +5,7 @@ import "./style.css"
 import { StyledButton } from "./styledComponents.js"
 
 const LoginForm = () => (
-  <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+  <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' id="outerContainer">
     <Grid.Column id="container">
       <Form size='large'>
         <Segment stacked>
