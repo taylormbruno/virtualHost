@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button, Form, Grid, Image, Segment } from 'semantic-ui-react'
+import { Form, Grid, Image, Segment } from 'semantic-ui-react'
 import Logo from "./logo.png"
 import "./style.css"
+import { StyledButton } from "./styledComponents.js"
 
 const LoginForm = () => (
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -18,18 +19,18 @@ const LoginForm = () => (
             placeholder='Password'
             type='password'
           />
-          <Button fluid size='large' id="login">
+          <StyledButton fluid size='large' id="login">
             Login
-          </Button>
+          </StyledButton>
           </div>
         </Segment>
       </Form>
-      <Button id="createAct">
+      <StyledButton className="shortBtn">
             Create Account
-        </Button>
-        <Button id="guest">
+        </StyledButton>
+        <StyledButton className="shortBtn">
             Continue As Guest
-        </Button>
+        </StyledButton>
     </Grid.Column>
   </Grid>
 )
