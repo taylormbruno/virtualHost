@@ -1,9 +1,8 @@
 import React from 'react'
 // import { Form, Grid, Image, Segment } from 'semantic-ui-react'
 import { Segment, Button } from 'semantic-ui-react'
-// import Logo from "./logo.png"
 import "./style.css"
-// import { StyledButton } from "./styledComponents.js"
+
 
 const About = () => (
 <Segment id="about">
