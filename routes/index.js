@@ -1,9 +1,15 @@
 const path = require("path");
 const router = require("express").Router();
-const apiRoutes = require("./api");
+//  CODE BELOW DISABLED WHILE TESTING ROUTES
+// const apiRoutes = require("./api");
+const userController = require("../controllers/userController");
 
 // API Routes
-router.use("/api", apiRoutes);
+// router.use("/api", apiRoutes); // original use based off prev acitivites
+
+// code attempt to call the route directly #1 did not work
+router.use('/api/user/signup')
+  .post(userController.create);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
