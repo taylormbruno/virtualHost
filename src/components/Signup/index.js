@@ -15,8 +15,9 @@ function SignupForm()  {
 
   // still needs completed. errors 404.
   const handleFormSubmit = (event) => {
+    console.log(formObject); // fires
     event.preventDefault();
-    API.signupUser({})
+    API.signupUser(formObject)
     .then(() => setFormObject({}))
     .catch(err => console.log(err));
   };
