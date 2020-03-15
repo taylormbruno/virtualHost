@@ -4,6 +4,7 @@ import './style.css'
 import { StyledButton } from '../Event/styledComponenets'
 import JoinUs from './joinUs.jpeg'
 import FindEvent from './findEvent.jpg'
+// eslint-disable-next-line
 import ResponsiveMixed from './ResponsiveMixed'
 
 

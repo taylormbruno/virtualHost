@@ -8,12 +8,13 @@ import API from '../../utils/API'
 function SignupForm()  {
   const [formObject, setFormObject] = useState();
 
-  handleInputChange = (event) => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value});
   };
 
-  handleFormSubmit = (event) => {
+  // still needs completed. errors 404.
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     API.signupUser({})
     .then(() => setFormObject({}))
@@ -33,7 +34,7 @@ function SignupForm()  {
                 iconPosition='left' 
                 placeholder='Username'
                 name='username'
-                onChange={this.handleInputChange}  
+                onChange={handleInputChange}  
               />
               <Form.Input
                 fluid
@@ -42,30 +43,30 @@ function SignupForm()  {
                 placeholder='Password'
                 type='password'
                 name='password'
-                onChange={this.handleInputChange}
+                onChange={handleInputChange}
               />
               <Form.Input 
                 fluid icon='mail outline' 
                 iconPosition='left' 
                 placeholder='Email Address'
                 name='email'
-                onChange={this.handleInputChange}
+                onChange={handleInputChange}
               />
               <Form.Input 
                 fluid icon='male'
                 iconPosition='left' 
                 placeholder='First Name'
                 name="firstname"
-                onChange={this.handleInputChange}
+                onChange={handleInputChange}
               />
                 <Form.Input 
                 fluid icon='male' 
                 iconPosition='left' 
                 placeholder='Last Name'
                 name="lastname"
-                onChange={this.handleInputChange}
+                onChange={handleInputChange}
                 />
-                <StyledButton fluid size='large' onClick={this.handleFormSubmit}>
+                <StyledButton fluid size='large' onClick={handleFormSubmit}>
                   Join the Community
                 </StyledButton>
               </div>
