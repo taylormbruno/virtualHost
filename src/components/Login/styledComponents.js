@@ -10,7 +10,7 @@ export const StyledButton = styled(Button)`
     &&&.shortBtn {
         width: 30%;
         margin: 2%;  
-        margin-top: 30px;
+        margin-bottom: 20px;        
     }   
     &&&:hover {
         background: #abc5cb;
