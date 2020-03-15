@@ -13,8 +13,9 @@ export default class MenuExampleStackable extends Component {
     const { activeItem } = this.state
 
     return (
+      <div id="navbar">
       <Menu stackable>
-        <Menu.Item id="top">
+        <Menu.Item href="/" id="top">
           <img alt="Virtual Host Icon" src={Logo} />
         </Menu.Item>
 
@@ -22,7 +23,7 @@ export default class MenuExampleStackable extends Component {
           name='about'
           active={activeItem === 'about'}
           onClick={this.handleItemClick}
-        ><a href="#about">
+        ><a href="/#about">
           About Virtual Host</a>
         </Menu.Item>
 
@@ -53,6 +54,7 @@ export default class MenuExampleStackable extends Component {
           Register As Vendor
         </Menu.Item> */}
       </Menu>
+      </div>
     )
   }
 }
