@@ -25,7 +25,7 @@ const LoginForm = () => (
           </div>
         </Segment>
       </Form>
-      <StyledButton className="shortBtn">
+      <StyledButton className="shortBtn" href="/signup">
             Create Account
         </StyledButton>
         <StyledButton className="shortBtn">
