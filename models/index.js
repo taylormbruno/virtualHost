@@ -1,5 +1,3 @@
-module.exports = {
-  Events: require("./events"),
-  Vendors: require("./vendors"),
-  Users: require("./users")
-};
+export const Event = require("./events");
+export const Vendor = require("./vendors");
+export const User = require("./users");
