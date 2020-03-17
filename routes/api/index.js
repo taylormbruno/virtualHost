@@ -2,10 +2,10 @@ const router = require("express").Router();
 const beaconRoutes = require("./beacons");
 const userRoutes = require("./users");
 
-// Beacon routes
-router.use("/beacon/", beaconRoutes);
+// matches /api/beacons/
+router.use("/beacons", beaconRoutes);
 
-// User Routes
-router.use("/user/", userRoutes);
+// matches /api/users/
+router.use("/users", userRoutes);
 
 module.exports = router;

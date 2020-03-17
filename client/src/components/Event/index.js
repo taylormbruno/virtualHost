@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Grid, Image } from 'semantic-ui-react'
 import './style.css'
-import { StyledButton } from '../Event/styledComponenets'
+import { StyledButton } from './styledComponenets'
 import JoinUs from './joinUs.jpeg'
 import FindEvent from './findEvent.jpg'
 // eslint-disable-next-line

@@ -1,3 +1,6 @@
-export const Event = require("./events");
-export const Vendor = require("./vendors");
-export const User = require("./users");
+
+module.exports = {
+    Event: require("./events"),
+    Vendor: require("./vendors"),
+    User: require("./users")
+}
