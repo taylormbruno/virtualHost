@@ -1,29 +1,23 @@
 import React from 'react'
 // import { Form, Grid, Image, Segment } from 'semantic-ui-react'
-import { Segment, Button } from 'semantic-ui-react'
+import { Segment, Image, Header } from 'semantic-ui-react'
 import "./style.css"
-
+import Iphone from "./iphone.jpg"
+import { StyledButton } from "./styledComponents.js"
+import AdminCards from "./AdminCards/index.js"
 
 const About = () => (
 <Segment id="about">
-    <p>Nulla ipsum consectetur ipsum adipisicing exercitation amet id. Pariatur ex ex veniam pariatur eiusmod Lorem. Adipisicing incididunt dolor nostrud laborum eu fugiat. Tempor in sit tempor mollit id. Voluptate voluptate exercitation consectetur ex.
+    <Image src={Iphone}></Image>
+    <br/>
+    <p>"The Virtual Host is an app where events turn into educated experiences.  Imagine attending an event that is set up expo style. This is where you can go from booth to booth or vendor to vendor but it’s crowded and you can’t get close enough to see what a vendor is offering. Simply sign into your Virtual Host app and it will send a notification with a link to that specific vendor’s information.  Want to know what they offer? It’s there.  Want to know who the presenters are?  It’s there.  Need their contact info or want to save their link as a favorite or make notes about it so that you can come back to it at another time. You can. And most important of them all, “Where’s the bathroom?”  We can show you that, too!""
     </p>
 
-    <p>Dolore tempor consectetur nostrud dolore occaecat do voluptate fugiat occaecat tempor ex excepteur deserunt. Est exercitation labore aliquip dolor reprehenderit consequat ipsum esse laborum. Sunt aliquip culpa ea eu ad nulla duis eu culpa Lorem. Ad in anim cillum labore excepteur amet. Adipisicing dolor sunt eiusmod consectetur consequat ad exercitation duis aute irure qui. Aliquip consectetur enim proident laborum id labore eu sint minim ex consectetur ad exercitation ex. Lorem magna occaecat deserunt id.</p>
+    <Header as='h1' id="teamHeader">MEET THE TEAM</Header>
 
-    <p>Dolore tempor consectetur nostrud dolore occaecat do voluptate fugiat occaecat tempor ex excepteur deserunt. Est exercitation labore aliquip dolor reprehenderit consequat ipsum esse laborum. Sunt aliquip culpa ea eu ad nulla duis eu culpa Lorem. Ad in anim cillum labore excepteur amet. Adipisicing dolor sunt eiusmod consectetur consequat ad exercitation duis aute irure qui. Aliquip consectetur enim proident laborum id labore eu sint minim ex consectetur ad exercitation ex. Lorem magna occaecat deserunt id.</p>
+    <AdminCards />
 
-    <p>Dolore tempor consectetur nostrud dolore occaecat do voluptate fugiat occaecat tempor ex excepteur deserunt. Est exercitation labore aliquip dolor reprehenderit consequat ipsum esse laborum. Sunt aliquip culpa ea eu ad nulla duis eu culpa Lorem. Ad in anim cillum labore excepteur amet. Adipisicing dolor sunt eiusmod consectetur consequat ad exercitation duis aute irure qui. Aliquip consectetur enim proident laborum id labore eu sint minim ex consectetur ad exercitation ex. Lorem magna occaecat deserunt id.</p>
-
-    <p>Dolore tempor consectetur nostrud dolore occaecat do voluptate fugiat occaecat tempor ex excepteur deserunt. Est exercitation labore aliquip dolor reprehenderit consequat ipsum esse laborum. Sunt aliquip culpa ea eu ad nulla duis eu culpa Lorem. Ad in anim cillum labore excepteur amet. Adipisicing dolor sunt eiusmod consectetur consequat ad exercitation duis aute irure qui. Aliquip consectetur enim proident laborum id labore eu sint minim ex consectetur ad exercitation ex. Lorem magna occaecat deserunt id.</p>
-
-    <p>Dolore tempor consectetur nostrud dolore occaecat do voluptate fugiat occaecat tempor ex excepteur deserunt. Est exercitation labore aliquip dolor reprehenderit consequat ipsum esse laborum. Sunt aliquip culpa ea eu ad nulla duis eu culpa Lorem. Ad in anim cillum labore excepteur amet. Adipisicing dolor sunt eiusmod consectetur consequat ad exercitation duis aute irure qui. Aliquip consectetur enim proident laborum id labore eu sint minim ex consectetur ad exercitation ex. Lorem magna occaecat deserunt id.</p>
-
-    <p>Dolore tempor consectetur nostrud dolore occaecat do voluptate fugiat occaecat tempor ex excepteur deserunt. Est exercitation labore aliquip dolor reprehenderit consequat ipsum esse laborum. Sunt aliquip culpa ea eu ad nulla duis eu culpa Lorem. Ad in anim cillum labore excepteur amet. Adipisicing dolor sunt eiusmod consectetur consequat ad exercitation duis aute irure qui. Aliquip consectetur enim proident laborum id labore eu sint minim ex consectetur ad exercitation ex. Lorem magna occaecat deserunt id.</p>
-
-    <p>Dolore tempor consectetur nostrud dolore occaecat do voluptate fugiat occaecat tempor ex excepteur deserunt. Est exercitation labore aliquip dolor reprehenderit consequat ipsum esse laborum. Sunt aliquip culpa ea eu ad nulla duis eu culpa Lorem. Ad in anim cillum labore excepteur amet. Adipisicing dolor sunt eiusmod consectetur consequat ad exercitation duis aute irure qui. Aliquip consectetur enim proident laborum id labore eu sint minim ex consectetur ad exercitation ex. Lorem magna occaecat deserunt id.</p>
-
-    <Button><a href="#top">Return To Top</a></Button>
+    <a href="#top"><StyledButton>Return To Top</StyledButton></a>
 </Segment>
 )
 

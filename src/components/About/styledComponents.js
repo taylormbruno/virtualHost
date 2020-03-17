@@ -7,12 +7,7 @@ export const StyledButton = styled(Button)`
         background-color: #8b9fa3;
         color: white;
         font-family: 'Source Sans Pro', sans-serif;
-    }
-    &&&.shortBtn {
-        width: 30%;
-        margin: 2%;  
-        margin-bottom: 20px;        
-    }   
+    }  
     &&&:hover {
         background: #abc5cb;
     }

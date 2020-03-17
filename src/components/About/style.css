@@ -1,5 +1,19 @@
 #about {
-    width: 80%;
+    width: 70%;
     margin: auto;
     margin-bottom: 7%;
+}
+
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+#teamHeader {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1em;
+    padding: 40px;
+    font-size: 30px;
 }
