@@ -6,7 +6,7 @@ import Body from "./components/Body/index.js"
 import Signup from "./components/Signup/index.js"
 import Arrow from "./components/Arrow/index.js"
 import About from "./components/About/index.js"
-import Event from "./components/Event/index"
+import Event from "./components/ScrapPage/index"
 import Copyright from "./components/Copyright/index.js"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
