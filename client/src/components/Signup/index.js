@@ -57,14 +57,14 @@ function SignupForm()  {
                 fluid icon='male'
                 iconPosition='left' 
                 placeholder='First Name'
-                name="firstname"
+                name="first_name"
                 onChange={handleInputChange}
               />
                 <Form.Input 
                 fluid icon='male' 
                 iconPosition='left' 
                 placeholder='Last Name'
-                name="lastname"
+                name="last_name"
                 onChange={handleInputChange}
                 />
                 <StyledButton fluid size='large' onClick={handleFormSubmit}>
