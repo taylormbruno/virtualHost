@@ -35,15 +35,15 @@ module.exports = {
       });
   },
   create: function(req, res) {
-    console.log("creating new user", req); // does not fire
-    // UNCOMMENT CODE BELOW TO ADD TO DB. DISABLED WHILE TESTING ROUTES
-    // db.User
-    //   .create(req.body)
-    //   .then(dbModel => {
-    //     console.log(dbModel);
-    //     res.redirect('/login');
-    //   })
-    //   .catch(err => res.status(422).json(err));
+    console.log("----creating new user; FINAL CONSOLE----\n", req.body); // fires on postman to local host 3000
+    // receiving error 422 UNPROCESSABLE ENTITY
+    db.User
+      .create(req.body)
+      .then(dbModel => {
+        console.log(dbModel);
+        res.redirect('/login');
+      })
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.User
