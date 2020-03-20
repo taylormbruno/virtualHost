@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
-import Jodie from "./jodie.jpg"
+import Jodi from "./jodi.jpg"
 import Taylor from "./taylor.jpg"
 import Kacie from "./kacie.jpg"
 import { StyledButton, StyledImg, StyledIcon, Div } from "./styledComponents.js"
@@ -13,14 +13,14 @@ const CardExampleGroups = () => (
   <Card.Group centered id="cardGroup">
     <Card>
       <Card.Content>
-        <Card.Header>Jodie Rhoades</Card.Header>
+        <Card.Header>Jodi Rhoades</Card.Header>
         <Card.Meta>Full Stack Developer</Card.Meta>
         <StyledImg
           size='small'
-          src={Jodie}
+          src={Jodi}
         />
         <Card.Description>
-          Used <strong>innovation and research skills</strong> to create project idea, configure beacons, learn new technologies, and much more.
+          Applied <strong>innovation and research skills</strong> to create a unique project idea, assisted with the user interface and hardware technology.
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
