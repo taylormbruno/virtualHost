@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-import db from ('../../models');
+import db from '../../models';
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
