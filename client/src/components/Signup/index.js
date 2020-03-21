@@ -4,23 +4,39 @@ import Logo from "./signup.png";
 import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
-// import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import validateForm from './validate';
 
 function SignupForm()  {
   const [formObject, setFormObject] = useState();
-
+  
   const handleInputChange = (event) => {
+    // username
+    if (event.target.name === "username") {
+      event.target.value = event.target.value.toLowerCase();
+    }
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value});
   };
 
-  let loggedIn = false;
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("---HANDLE FORM---\n", formObject); // fires
-    let newUser = await API.signupUser(formObject);
-    console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`)
+    const isValid = validateForm(formObject);
+    if (isValid === true) {
+      console.log("---HANDLE FORM---\n", formObject); // fires
+      const newObj = {
+        username: formObject.username,
+        first_name: formObject.first_name,
+        last_name: formObject.last_name,
+        password: formObject.pass1,
+        email: formObject.email
+      }
+      let newUser = await API.signupUser(newObj);
+      console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`)
+    }
+    else {
+      // alertUser;
+    }
+    
     // pseudocode
     // global state = (create object with necessary user data)
   };
@@ -44,7 +60,7 @@ function SignupForm()  {
               <Form.Input 
                 fluid icon='user' 
                 iconPosition='left' 
-                placeholder='Username'
+                placeholder='Username (Required)'
                 name='username'
                 onChange={handleInputChange}  
               />
@@ -52,29 +68,38 @@ function SignupForm()  {
                 fluid
                 icon='lock'
                 iconPosition='left'
-                placeholder='Password'
+                placeholder='Password (Required)'
                 type='password'
-                name='password'
+                name='pass1'
+                onChange={handleInputChange}
+              />
+              <Form.Input
+                fluid
+                icon='lock'
+                iconPosition='left'
+                placeholder='Password (Required)'
+                type='password'
+                name='pass2'
                 onChange={handleInputChange}
               />
               <Form.Input 
                 fluid icon='mail outline' 
                 iconPosition='left' 
-                placeholder='Email Address'
+                placeholder='Email Address (Required)'
                 name='email'
                 onChange={handleInputChange}
               />
               <Form.Input 
                 fluid icon='male'
                 iconPosition='left' 
-                placeholder='First Name'
+                placeholder='First Name (Required)'
                 name="first_name"
                 onChange={handleInputChange}
               />
                 <Form.Input 
                 fluid icon='male' 
                 iconPosition='left' 
-                placeholder='Last Name'
+                placeholder='Last Name (Required)'
                 name="last_name"
                 onChange={handleInputChange}
                 />
