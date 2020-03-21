@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { Form, Image, Grid, Segment } from 'semantic-ui-react'
-import Logo from "./signup.png"
-import "./style.css"
-import { StyledButton } from "./styledComponents.js"
-import API from '../../utils/API'
+import React, { useState } from 'react';
+import { Form, Image, Grid, Segment } from 'semantic-ui-react';
+import Logo from "./signup.png";
+import "./style.css";
+import { StyledButton } from "./styledComponents.js";
+import API from '../../utils/API';
+// import axios from 'axios';
 
 function SignupForm()  {
   const [formObject, setFormObject] = useState();
@@ -13,13 +14,27 @@ function SignupForm()  {
     setFormObject({...formObject, [name]: value});
   };
 
-  // still needs completed. errors 404.
   const handleFormSubmit = (event) => {
-    console.log(formObject); // fires
     event.preventDefault();
-    API.signupUser(formObject)
-    .then(() => setFormObject({}))
-    .catch(err => console.log(err));
+    console.log("---HANDLE FORM---\n", formObject); // fires
+    let newUser = API.signupUser(formObject);
+    console.log("---Hello---\n", newUser); // return promise { 422 unprocessable entity }
+    // axios.get('/user', {
+      //   params: {
+      //     ID: response._id
+      //   }
+      // })
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // })
+    //   .then((request, response) => { 
+    //   console.log("---SIGNUP REQ---\n", request); // does not fire.
+    //   console.log("---SIGNUP RES---\n", response); // does not fire.
+    //   setFormObject({});
+    // }).catch(err => console.log(err));
   };
 
   // render() {
