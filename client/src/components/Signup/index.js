@@ -5,7 +5,7 @@ import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
 // import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function SignupForm()  {
   const [formObject, setFormObject] = useState();
@@ -15,15 +15,17 @@ function SignupForm()  {
     setFormObject({...formObject, [name]: value});
   };
 
-  const handleFormSubmit = (event) => {
+  let loggedIn = false;
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log("---HANDLE FORM---\n", formObject); // fires
-    let newUser = API.signupUser(formObject);
-    console.log("---Hello---\n", newUser);
+    let newUser = await API.signupUser(formObject);
+    console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`)
     // pseudocode
     // global state = (create object with necessary user data)
   };
 
+  // once user is logged in (need to add auto login after signup)
   // will use to redirect
   // const redirectToReferrer = () => {
   //   if (globalstate.loggedIn === true) {
