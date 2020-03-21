@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Navbar from "./components/Navbar/index.js"
-import Login from "./components/Login/index.js"
-import Body from "./components/Body/index.js"
-import Signup from "./components/Signup/index.js"
-import Arrow from "./components/Arrow/index.js"
-import About from "./components/About/index.js"
-import Event from "./components/Event/index.js"
-import Copyright from "./components/Copyright/index.js"
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Body from "./components/Body";
+import Signup from "./components/Signup";
+import Arrow from "./components/Arrow"
+import About from "./components/About"
+import Event from "./components/Event"
+import Copyright from "./components/Copyright"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
