@@ -5,9 +5,11 @@ import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
+import { useHistory } from 'react-router-dom';
 
 function SignupForm()  {
   const [formObject, setFormObject] = useState();
+  let history = useHistory();
   
   const handleInputChange = (event) => {
     // username
@@ -17,6 +19,10 @@ function SignupForm()  {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value});
   };
+
+  const signupSuccess = () => {
+    history.push('/login');
+  }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -31,12 +37,15 @@ function SignupForm()  {
         email: formObject.email
       }
       let newUser = await API.signupUser(newObj);
-      console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`)
+      if (newUser.status === 200) {
+        console.log(newUser);
+        console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
+        signupSuccess();
+      }
+      else {
+        console.log(`Error ${newUser.status}: ${newUser.statusText}`)
+      }
     }
-    else {
-      // alertUser;
-    }
-    
     // pseudocode
     // global state = (create object with necessary user data)
   };
