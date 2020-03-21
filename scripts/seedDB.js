@@ -18,6 +18,19 @@ const userSeed = [
   }
 ];
 
+const eventSeed = [
+  {
+    event_name: "Presentations",
+    image: "image",
+    location: "Charlotte, NC",
+    start_time: new Date("2020/04/04 10:00:00"),
+    end_time: new Date("2020/04/04 14:00:00"),
+    description: "UNC-Charlotte Full Stack Project Presentations",
+    host_id: "",
+    vendors: []
+  }
+];
+
 const vendorSeed = [{                
   vendor_name: "Virtual Host",
   image: "../images/virtualHost.png",
@@ -32,7 +45,19 @@ db.User
   .remove({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data.result.n + " user records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+  db.Event
+  .remove({})
+  .then(() => db.Event.collection.insertMany(userSeed))
+  .then(data => {
+    console.log(data.result.n + " event records inserted!");
     process.exit(0);
   })
   .catch(err => {
@@ -44,7 +69,7 @@ db.Vendor
   .remove({})
   .then(() => db.Vendor.collection.insertMany(vendorSeed))
   .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data.result.n + " vendor records inserted!");
     process.exit(0);
   }).catch(err => {
     console.error(err);

@@ -5,6 +5,7 @@ import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
 // import axios from 'axios';
+import { Redirect } from "react-router-dom";
 
 function SignupForm()  {
   const [formObject, setFormObject] = useState();
@@ -14,30 +15,25 @@ function SignupForm()  {
     setFormObject({...formObject, [name]: value});
   };
 
-  const handleFormSubmit = (event) => {
+  let loggedIn = false;
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log("---HANDLE FORM---\n", formObject); // fires
-    let newUser = API.signupUser(formObject);
-    console.log("---Hello---\n", newUser); // return promise { 422 unprocessable entity }
-    // axios.get('/user', {
-      //   params: {
-      //     ID: response._id
-      //   }
-      // })
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // })
-    //   .then((request, response) => { 
-    //   console.log("---SIGNUP REQ---\n", request); // does not fire.
-    //   console.log("---SIGNUP RES---\n", response); // does not fire.
-    //   setFormObject({});
-    // }).catch(err => console.log(err));
+    let newUser = await API.signupUser(formObject);
+    console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`)
+    // pseudocode
+    // global state = (create object with necessary user data)
   };
 
-  // render() {
+  // once user is logged in (need to add auto login after signup)
+  // will use to redirect
+  // const redirectToReferrer = () => {
+  //   if (globalstate.loggedIn === true) {
+  //           return <Redirect to={"/user" + newUser._id} />
+  //       }
+  // }
+        
+
     return(
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
        <Grid.Column id="container">
@@ -82,7 +78,7 @@ function SignupForm()  {
                 name="last_name"
                 onChange={handleInputChange}
                 />
-                <StyledButton fluid size='large' onClick={handleFormSubmit}>
+                <StyledButton fluid size='large' onClick={handleFormSubmit} href="/login">
                   Join the Community
                 </StyledButton>
               </div>

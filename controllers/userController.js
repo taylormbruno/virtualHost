@@ -40,7 +40,7 @@ module.exports = {
       .create(req.body)
       .then(dbModel => {
         console.log("---dbModel---\n", dbModel); // fires on postman and browser
-        res.status(200).json(dbmodel);
+        res.status(200).json(dbModel);
       })
       .catch(err => res.status(422).json(err));
   },
