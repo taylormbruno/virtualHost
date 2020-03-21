@@ -5,6 +5,8 @@ const reUp = /[A-Z]/;
 // eslint-disable-next-line
 const reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+
+// need to add validation for unique username and email
 function validateForm(form) {
     // username
     if(!reSpec.test(form.username)) {
