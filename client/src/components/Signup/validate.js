@@ -17,7 +17,6 @@ function validateForm(form) {
     // password
     if(form.pass1.length < 6) {
         alert("Error: Password must contain at least six characters!");
-        // event.target.focus()
         return false;
     }
     if(!reNum.test(form.pass1)) {
