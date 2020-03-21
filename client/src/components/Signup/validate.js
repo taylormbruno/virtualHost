@@ -45,12 +45,23 @@ function validateForm(form) {
         return false;
     }
 
+    // first name
+    if (!form.first_name) {
+        alert("Error: Please enter a valid first name!");
+        return false;
+    }
+
+    // last name
+    if (!form.last_name) {
+        alert("Error: Please enter a valid last name!");
+        return false;
+    }
+
     // all passes
     else {
         alert(`Welcome ${form.first_name} ${form.last_name}`);
         return true;
     }
-    
 }
 
 export default validateForm;
