@@ -10,12 +10,12 @@ const VendorCard = () => (
       <div class="column">
         <div class="ui fluid card link card" href="https://virtual-host.herokuapp.com/">
           <div class="image">
-            <img src={VirtualHost} />
+            <img src={VirtualHost} alt="logo" />
           </div>
           <div class="content">
             <div class="header" className="eventVendor">Virtual Host</div>
             <div class="meta">
-              <a>Taylor Bruno - Kacie Hatley - Jodi Rhoades</a>
+              <span>Taylor Bruno - Kacie Hatley - Jodi Rhoades</span>
             </div>
             <div class="description">
               Virtual Host uses notifications on your phone to guide your through the event informing you along the way.
@@ -33,12 +33,12 @@ const VendorCard = () => (
       <div class="column">
         <div class="ui fluid card">
           <div class="image">
-            <img src={VirtualHost} />
+            <img src={VirtualHost} alt="logo" />
           </div>
           <div class="content">
             <div class="header" className="eventVendor">Virtual Host</div>
             <div class="meta">
-              <a>Taylor Bruno - Kacie Hatley - Jodi Rhoades</a>
+              <span>Taylor Bruno - Kacie Hatley - Jodi Rhoades</span>
             </div>
             <div class="description">
               Virtual Host uses notifications on your phone to guide your through the event informing you along the way.
@@ -56,12 +56,12 @@ const VendorCard = () => (
       <div class="column">
         <div class="ui fluid card">
           <div class="image">
-            <img src={VirtualHost} />
+            <img src={VirtualHost} alt="logo" />
           </div>
           <div class="content">
             <div class="header" className="eventVendor">Virtual Host</div>
             <div class="meta">
-              <a>Taylor Bruno - Kacie Hatley - Jodi Rhoades</a>
+              <span>Taylor Bruno - Kacie Hatley - Jodi Rhoades</span>
             </div>
             <div class="description">
               Virtual Host uses notifications on your phone to guide your through the event informing you along the way.
