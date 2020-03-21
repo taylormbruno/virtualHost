@@ -5,7 +5,7 @@ module.exports = {
     db.User
       .find()
       .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {res.json(dbModel); console.log(dbModel)})
       .catch(err => res.status(422).json(err));
   },
   findUserById: function(req, res) {
@@ -22,28 +22,27 @@ module.exports = {
           console.log(error);
         }
         else {
-          user.comparePassword(req.body.password, function(err, match) {
+          User.comparePassword(req.body.password, function(err, match) {
             if (err) {
               console.log("Password does not match");
             }
             else {
-              console.log(user);
-              res.json(user);
+              console.log(match);
+              res.json(match);
             }
           });
         }
       });
   },
   create: function(req, res) {
-    console.log("creating new user", req); // does not fire
-    // UNCOMMENT CODE BELOW TO ADD TO DB. DISABLED WHILE TESTING ROUTES
-    // db.User
-    //   .create(req.body)
-    //   .then(dbModel => {
-    //     console.log(dbModel);
-    //     res.redirect('/login');
-    //   })
-    //   .catch(err => res.status(422).json(err));
+    console.log("----creating new user----\n", req.body); // fires on postman and browser to local host 3000
+    db.User
+      .create(req.body)
+      .then(dbModel => {
+        console.log("---dbModel---\n", dbModel); // fires on postman and browser
+        res.status(200).json(dbModel);
+      })
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.User

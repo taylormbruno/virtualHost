@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import { Form, Image, Grid, Segment } from 'semantic-ui-react'
-import Logo from "./signup.png"
-import "./style.css"
-import { StyledButton } from "./styledComponents.js"
-import API from '../../utils/API'
+import React, { useState } from 'react';
+import { Form, Image, Grid, Segment } from 'semantic-ui-react';
+import Logo from "./signup.png";
+import "./style.css";
+import { StyledButton } from "./styledComponents.js";
+import API from '../../utils/API';
+// import axios from 'axios';
+import { Redirect } from "react-router-dom";
 
 function SignupForm()  {
   const [formObject, setFormObject] = useState();
@@ -13,16 +15,25 @@ function SignupForm()  {
     setFormObject({...formObject, [name]: value});
   };
 
-  // still needs completed. errors 404.
-  const handleFormSubmit = (event) => {
-    console.log(formObject); // fires
+  let loggedIn = false;
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    API.signupUser(formObject)
-    .then(() => setFormObject({}))
-    .catch(err => console.log(err));
+    console.log("---HANDLE FORM---\n", formObject); // fires
+    let newUser = await API.signupUser(formObject);
+    console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`)
+    // pseudocode
+    // global state = (create object with necessary user data)
   };
 
-  // render() {
+  // once user is logged in (need to add auto login after signup)
+  // will use to redirect
+  // const redirectToReferrer = () => {
+  //   if (globalstate.loggedIn === true) {
+  //           return <Redirect to={"/user" + newUser._id} />
+  //       }
+  // }
+        
+
     return(
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
        <Grid.Column id="container">
@@ -57,17 +68,17 @@ function SignupForm()  {
                 fluid icon='male'
                 iconPosition='left' 
                 placeholder='First Name'
-                name="firstname"
+                name="first_name"
                 onChange={handleInputChange}
               />
                 <Form.Input 
                 fluid icon='male' 
                 iconPosition='left' 
                 placeholder='Last Name'
-                name="lastname"
+                name="last_name"
                 onChange={handleInputChange}
                 />
-                <StyledButton fluid size='large' onClick={handleFormSubmit}>
+                <StyledButton fluid size='large' onClick={handleFormSubmit} href="/login">
                   Join the Community
                 </StyledButton>
               </div>
