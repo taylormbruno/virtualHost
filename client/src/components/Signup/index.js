@@ -12,7 +12,6 @@ function SignupForm()  {
   let history = useHistory();
   
   const handleInputChange = (event) => {
-    // username
     if (event.target.name === "username") {
       event.target.value = event.target.value.toLowerCase();
     }
@@ -28,7 +27,6 @@ function SignupForm()  {
     event.preventDefault();
     const isValid = validateForm(formObject);
     if (isValid === true) {
-      console.log("---HANDLE FORM---\n", formObject); // fires
       const newObj = {
         username: formObject.username,
         first_name: formObject.first_name,
@@ -38,7 +36,6 @@ function SignupForm()  {
       }
       let newUser = await API.signupUser(newObj);
       if (newUser.status === 200) {
-        console.log(newUser);
         console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
         signupSuccess();
       }

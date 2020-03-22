@@ -31,8 +31,10 @@ function validateForm(form) {
         alert("Error: password must contain at least one uppercase letter (A-Z)!");
         return false;
     }
-    if(form.pass1 === form.username) {
-        alert("Error: Password must be different from Username!");
+
+    const passInclUser = form.pass1.includes(form.username);
+    if(passInclUser) {
+        alert("Error: Password can not contain username!");
         return false;
     }
     if(form.pass1 !== form.pass2) {
