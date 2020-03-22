@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import Seeds from "./seeds";
+import '../../../utils/API'
+
 
 class Vendor extends Component{
     render() {
@@ -18,13 +19,10 @@ class Filter extends Component {
             <div className="Search"> 
                 <form>
                     <div class="ui massive icon input className=searchBar">
-                        <input         
-                            type="text" onkeyup={(event)=> 
-                             this.props.onTextChange(event.target.value)}
-                            placeholder="Search vendors..."
-                            // value={value}
-                            onKeyUp={event =>
-                            this.props.onTextChange(event.target.value)}/>
+                        <input  
+                            name= "filterString"      
+                            type="text"                             
+                            placeholder="Search vendors..."/>
                             <i class="search icon"></i>
                     </div>
                 </form> 
@@ -37,7 +35,7 @@ class SearchFilter extends Component {
     constructor(){
         super();
         this.state ={
-            Seeds:{},
+            seeds:Seeds,
             filterString:""
         }
     }
@@ -46,30 +44,39 @@ class SearchFilter extends Component {
             this.setState({filterString: ''});
         },2000);
     }
+    handleInputChange = async (event) => {
+        const { name, value } = event.target;
+        this.setState({...this.state, [name]: value});
+        let results = await API.searchVendor({vendor_name: this.state.filterString})
+        console.log(results)
+    };   
+
+    vendorToRender = ()=>{ 
+    const term = this.state.filterString;      
+    const results= this.state.seeds
+    .filter(vendor =>
+      vendor.vendor_name.toLowerCase().includes(
+        this.state.filterString.toLowerCase())
+      ) 
+    }
 
     render(){
-        let vendorToRender = this.state.seeds.vendors.vendor_name ? this.state.seeds.vendors.vendor_name
-      .filter(vendor =>
-        vendor.vendor_name.toLowerCase().includes(
-          this.state.filterString.toLowerCase())
-        ) : []
+        
         return(
             <div className = "SearchFilter">{
-                <div>
-                    (this.state.seeds.vendors ? on_true : on_false)            
-                                    
-                        {this.state.seeds.vendors.vendor_name} {/*Do I want this to be {VendorCard} */}
-                    
-                        <Filter onTextChange= {text => {
-                        console.log(text);
-                        this.setState({filterString: text})
-                        }}/> 
+                    <div>
+                        (this.state.seeds.vendors[] ? on_true : on_false)            
+                                        
+                            {this.state.seeds.vendors.vendor_name} {/*Do I want this to be {VendorCard} */}
+                        
+                            <Filter onTextChange= {this.handleInputChange
+                            }/> 
 
-                        {vendorToRender.map(vendor =>
-                        <Vendor vendor={vendor}/>
-                        )} 
-                </div>   
-            } 
+                            {this.state.vendorResults.map(vendor =>
+                            <Vendor vendor={vendor}/>
+                            )} 
+                    </div>   
+                } 
             </div>        
         );       
     }
