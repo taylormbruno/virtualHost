@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const beaconRoutes = require("./beacons");
+const vendorRoutes = require("./vendors");
 const userRoutes = require("./users");
 
-// matches /api/beacons/
-router.use("/beacons", beaconRoutes);
+// matches /api/vendors/
+router.use("/vendors", vendorRoutes);
 
 // matches /api/users/
 router.use("/users", userRoutes);
