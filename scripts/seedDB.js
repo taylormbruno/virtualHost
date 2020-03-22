@@ -10,11 +10,11 @@ mongoose.connect(
 
 const userSeed = [
   {
-    first_name: "Taylor",
-    last_name: "Bruno",
-    username: "taylorbruno",
-    password: "12345678",
-    email: "taylorbruno895@gmail.com"
+    first_name: "Demo",
+    last_name: "User",
+    username: "demouser",
+    password: "user12DEMO",
+    email: "user@demo.com"
   }
 ];
 
@@ -51,11 +51,11 @@ db.User
   .catch(err => {
     console.error(err);
     process.exit(1);
-  });
+});
 
-  db.Event
+db.Event
   .remove({})
-  .then(() => db.Event.collection.insertMany(userSeed))
+  .then(() => db.Event.collection.insertMany(eventSeed))
   .then(data => {
     console.log(data.result.n + " event records inserted!");
     process.exit(0);
@@ -63,7 +63,7 @@ db.User
   .catch(err => {
     console.error(err);
     process.exit(1);
-  });
+});
 
 db.Vendor
   .remove({})
@@ -74,4 +74,4 @@ db.Vendor
   }).catch(err => {
     console.error(err);
     process.exit(1);
-  });
+});

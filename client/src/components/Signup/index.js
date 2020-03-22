@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Form, Image, Grid, Segment } from 'semantic-ui-react';
 import Logo from "./signup.png";
 import "./style.css";
@@ -6,38 +6,53 @@ import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
 import { useHistory } from 'react-router-dom';
+import Passport from "./GoogleAuth";
+import queryString from "query-string";
 
-function SignupForm()  {
-  const [formObject, setFormObject] = useState();
-  let history = useHistory();
+class SignupForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  // const [this.state, setthis.state] = useState();
   
-  const handleInputChange = (event) => {
+  handleInputChange = (event) => {
     if (event.target.name === "username") {
       event.target.value = event.target.value.toLowerCase();
     }
     const { name, value } = event.target;
-    setFormObject({...formObject, [name]: value});
+    this.setState({...this.state, [name]: value });
+    // setthis.state({...this.state, [name]: value});
   };
 
-  const signupSuccess = () => {
+  componentWillMount() {
+    var query = queryString.parse(this.props.location.search);
+    if (query.token) {
+      window.localStorage.setItem("jwt", query.token);
+      this.props.history.push("/");
+   }
+}
+
+  signupSuccess = () => {
+    const history = useHistory();
     history.push('/login');
   }
 
-  const handleFormSubmit = async (event) => {
+  handleFormSubmit = async (event) => {
     event.preventDefault();
-    const isValid = validateForm(formObject);
+    const isValid = validateForm(this.state);
     if (isValid === true) {
       const newObj = {
-        username: formObject.username,
-        first_name: formObject.first_name,
-        last_name: formObject.last_name,
-        password: formObject.pass1,
-        email: formObject.email
+        username: this.state.username,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        password: this.state.pass1,
+        email: this.state.email
       }
       let newUser = await API.signupUser(newObj);
       if (newUser.status === 200) {
         console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
-        signupSuccess();
+        this.signupSuccess();
       }
       else {
         console.log(`Error ${newUser.status}: ${newUser.statusText}`)
@@ -55,9 +70,9 @@ function SignupForm()  {
   //       }
   // }
         
-
+  render() {
     return(
-      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
        <Grid.Column id="container">
         <Form size='large'>
           <Segment stacked>
@@ -68,7 +83,7 @@ function SignupForm()  {
                 iconPosition='left' 
                 placeholder='Username (Required)'
                 name='username'
-                onChange={handleInputChange}  
+                onChange={this.handleInputChange}  
               />
               <Form.Input
                 fluid
@@ -77,7 +92,7 @@ function SignupForm()  {
                 placeholder='Password (Required)'
                 type='password'
                 name='pass1'
-                onChange={handleInputChange}
+                onChange={this.handleInputChange}
               />
               <Form.Input
                 fluid
@@ -86,42 +101,43 @@ function SignupForm()  {
                 placeholder='Password (Required)'
                 type='password'
                 name='pass2'
-                onChange={handleInputChange}
+                onChange={this.handleInputChange}
               />
               <Form.Input 
                 fluid icon='mail outline' 
                 iconPosition='left' 
                 placeholder='Email Address (Required)'
                 name='email'
-                onChange={handleInputChange}
+                onChange={this.handleInputChange}
               />
               <Form.Input 
                 fluid icon='male'
                 iconPosition='left' 
                 placeholder='First Name (Required)'
                 name="first_name"
-                onChange={handleInputChange}
+                onChange={this.handleInputChange}
               />
                 <Form.Input 
                 fluid icon='male' 
                 iconPosition='left' 
                 placeholder='Last Name (Required)'
                 name="last_name"
-                onChange={handleInputChange}
+                onChange={this.handleInputChange}
                 />
-                <StyledButton fluid size='large' onClick={handleFormSubmit} href="/login">
+                <StyledButton fluid size='large' onClick={this.handleFormSubmit} href="/login">
                   Join the Community
                 </StyledButton>
               </div>
             </Segment>
           </Form>
+          <Passport />
           <StyledButton>
             Continue As Guest
           </StyledButton>
         </Grid.Column>
       </Grid>
     );
-  // };
+  }
 };
 
 export default SignupForm;
