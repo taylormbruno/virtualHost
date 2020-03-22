@@ -1,4 +1,4 @@
-const seeds = [
+const vendors = [
     
     {                
         "vendor_name": "Virtual Host",
@@ -29,4 +29,4 @@ const seeds = [
     },
 
 ]
-module.exports = seeds;
+module.exports = vendors;
