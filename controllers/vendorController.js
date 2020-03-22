@@ -8,9 +8,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findVendorById: function(req, res) {
+  searchVendor: function(req, res) {
     db.Vendor
-      .findById(req.params.id)
+      .find(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

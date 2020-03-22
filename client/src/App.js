@@ -10,7 +10,6 @@ import Event from "./components/Event"
 import Copyright from "./components/Copyright"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-
 function App() {
   return (
     <div className="App">
