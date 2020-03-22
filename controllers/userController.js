@@ -35,7 +35,7 @@ module.exports = {
       });
   },
   create: function(req, res) {
-    console.log("----creating new user----\n", req.body); // fires on postman and browser to local host 3000
+    console.log("----creating new user----"); // fires on postman and browser to local host 3000
     db.User
       .create(req.body)
       .then(dbModel => {
