@@ -25,8 +25,8 @@ class SignupForm extends Component {
     // setthis.state({...this.state, [name]: value});
   };
 
-  componentWillMount() {
-    var query = queryString.parse(this.props.location.search);
+  componentWillMount = () => {
+    var query = queryString.parse(window.location.search);
     if (query.token) {
       window.localStorage.setItem("jwt", query.token);
       this.props.history.push("/");
