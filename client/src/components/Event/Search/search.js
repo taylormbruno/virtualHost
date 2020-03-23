@@ -1,56 +1,61 @@
 import React, {Component} from "react";
-import Seeds from "./seeds";
+import API from '../../../utils/API'
+import VendorCards from '../EventCards/VendorCards/vendorCard'
 
-function searchingFor(term){
-    return function(x){
-        return x.first.toLowerCase().includes(term.toLowerCase()) || !term;
-    }
-}
-class SearchFilter extends Component{
-    constructor(props){
-        super(props);
-            this.state = {
-                Seeds: Seeds,
-                term:"",
-            }
-            this.searchHandler = this.searchHandler.bind(this);
-    }
-    searchHandler(event){
-        this.setState({term: event.target.value})
-    }
 
+class Filter extends Component {
     render() {
-        const {term, Seeds} = this.state;
         return(
             <div className="Search"> 
                 <form>
                     <div class="ui massive icon input className=searchBar">
-                        <input         
-                            type="text" 
-                            placeholder="Search vendors..."
-                            value={term}
-                            onChange={this.searchHandler}/>
-                        {/* <i class="search icon"></i> */}
+                        <input  
+                            name= "filterString"      
+                            type="text"                             
+                            placeholder="Search vendors..."/>
+                            <i class="search icon"></i>
                     </div>
-                </form>
-                {
-                    Seeds.filter(searchingFor(term)).map(vendor =>
-                        <ul>
-                            <div key= {vendor.id}>
-                                <li>{vendor.vendor_name}</li>
-                                <li>{vendor.image}</li>
-                                <li>{vendor.beacon_id}</li>
-                                <li>{vendor.web_url}</li>
-                                <li>{vendor.description}</li>
-                                <li>{vendor.manager_id}</li>
-                                <li>{vendor.category}</li>
-                            </div>
-                        </ul>
-                    )
-                }
+                </form> 
             </div>
         );
     }
-}      
+}
+
+class SearchFilter extends Component {
+    constructor(){
+        super();
+        this.state ={
+            results:[],
+            filterString:""
+        }
+    }
+    componentDidMount(){        
+        setTimeout(()=>{
+            this.setState({filterString: ''});
+        },2000);
+    }
+    handleInputChange =  (event) => {
+        const { name, value } = event.target;
+        this.setState({...this.state, [name]: value});
+        let results = API.searchVendor({vendor_name: this.state.filterString})
+        console.log(results)
+    };   
+
+    render(){        
+        return(
+            <div className = "SearchFilter">
+                    <div>
+                                     
+                            <Filter onTextChange= {this.handleInputChange
+                            }/>                            
+                            {this.state.results.map((vendor)=>{
+                            return <VendorCards vendor = {vendor}/>                            
+                            }
+                            )}                  
+                    </div>                 
+            </div>        
+        );       
+    }
+}
 
 export default SearchFilter;
