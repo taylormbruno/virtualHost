@@ -1,43 +1,28 @@
-import React from 'react';
-// import { Menu } from 'semantic-ui-react';
+import React, { useContext } from 'react';
 import 'semantic-ui-css/semantic.min.css';
-// import Logo from './locationIcon.png'
 import "./style.css"
-// import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 import LoggedIn from "./LoggedIn/index"
 import LoggedOut from "./LoggedOut/index"
-
-// if (this.props.login.loggedIn===false)
-//   return {
-//     loginState= <LoggedOut />
-//   }
-
-// const Navbar = () => (
-//   <div>
-//     {loginState}
-//   </div>
-// )
+import UserContext from "../../utils/UserContext";
 
 
-function Navbar(props) {
-  let loginState = props.login.loggedIn
+export default function Navbar(props) {
 
-  switch (loginState) {
+  const { loggedIn, fname } = useContext(UserContext);
+
+  switch (loggedIn) {
     case true:
-      return <LoggedIn />;
+      return <LoggedIn 
+      updateLoginStatus = {props.updateLoginStatus}
+      fname = {fname}
+      />;
     case 'false':
-      return <LoggedOut />;
+      return <LoggedOut 
+      updateLoginStatus = {props.updateLoginStatus}
+      />;
     default:
-      return <LoggedOut />;
+      return <LoggedOut 
+      updateLoginStatus = {props.updateLoginStatus}
+      />;
   }
 }
-
-
-function mapStateToProps(state) {
-  return {
-    login: state.login
-  }
-}
-
-export default connect(mapStateToProps)(Navbar);
