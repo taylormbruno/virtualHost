@@ -25,7 +25,7 @@ class MenuExampleStackable extends Component {
           name='about'
           active={activeItem === 'about'}
           onClick={this.handleItemClick}
-          ref="/#about"
+          href="/#about"
         >
           About Virtual Host
         </Menu.Item>
@@ -34,7 +34,7 @@ class MenuExampleStackable extends Component {
           name='view'
           active={activeItem === 'view'}
           onClick={this.handleItemClick}
-          ref="/event"
+          href="/events"
         >
           View Events
         </Menu.Item>
