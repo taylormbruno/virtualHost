@@ -96,6 +96,12 @@ db.Vendor
   .then(() => db.Vendor.collection.insertMany(vendorSeed))
   .then(data => {
     console.log(data.result.n + " vendor records inserted!");
+    // db.Vendor.createIndex( { vendor_name: "text", description: "text" } );
+    db.Vendor.createIndex({ vendor_name: "text", description: "text" })
+    .then((err, result) => {
+      console.log(result)
+      // callback(result))
+    })
     process.exit(0);
   }).catch(err => {
     console.error(err);

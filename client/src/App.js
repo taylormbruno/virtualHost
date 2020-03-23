@@ -8,6 +8,7 @@ import Arrow from "./components/Arrow"
 import About from "./components/About"
 import Event from "./components/Event"
 import Copyright from "./components/Copyright"
+import Dashboard from "./components/Dashboard"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserContext from "./utils/UserContext";
 
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route exact path={["/event"]}>
             <Event />
+          </Route>
+          <Route exact path={"/mydashboard"}>
+            <Dashboard />
           </Route>
         </Switch>
         <Copyright />

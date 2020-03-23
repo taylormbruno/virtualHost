@@ -5,6 +5,6 @@ export default {
         return axios.post("/api/users/signup", userData);
     },
     searchVendor: function(term) {
-        return axios.get("/api/vendor/search", term);
+        return axios.get("/api/vendors/search", term);
     }
 }
