@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 
 
-function VendorCard (props){
+function VendorCard(props) {
   let active ;
       if (props.vendor) {
         active = (props.vendor);    

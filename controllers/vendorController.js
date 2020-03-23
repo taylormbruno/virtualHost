@@ -10,10 +10,9 @@ module.exports = {
   },
   searchVendor: function(req, res) {
     console.log(req.body);
-
     db.Vendor
       // .find({ $text: { $search: req.body.filterString }})
-      .find({"vendor_name": {$regex : `.*${req.body.vendor_name}.*`}})
+      .find({"vendor_name": {$regex : `.*${req.body.filterString}.*`}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

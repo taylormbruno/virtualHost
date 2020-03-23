@@ -8,12 +8,12 @@ class Filter extends Component {
         return(
             <div className="Search"> 
                 <form>
-                    <div class="ui massive icon input className=searchBar">
+                    <div className="ui massive icon input className=searchBar">
                         <input  
                             name= "filterString"      
                             type="text"                             
                             placeholder="Search vendors..."/>
-                            <i class="search icon"></i>
+                            <i className="search icon"></i>
                     </div>
                 </form> 
             </div>
@@ -34,11 +34,12 @@ class SearchFilter extends Component {
             this.setState({filterString: ''});
         },2000);
     }
-    handleInputChange =  (event) => {
+    handleInputChange =  async (event) => {
+        event.preventDefault();
         const { name, value } = event.target;
         this.setState({...this.state, [name]: value});
-        let results = API.searchVendor({vendor_name: this.state.filterString})
-        console.log(results)
+        const results = await API.searchVendor({filterString: this.state.filterString});
+        this.setState({...this.state, results: results});
     };   
 
     render(){        
