@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Seeds from "./EventCards/VendorCards/seeds"
+// import Seeds from "./EventCards/VendorCards/seeds"
 
 const people= [
 "twitter",

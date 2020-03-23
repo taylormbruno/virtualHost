@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import Logo from '../locationIcon.png'
 import "../style.css"
-// import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 
 class MenuExampleStackable extends Component {
+  
+
+
   state = {}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
+
     const { activeItem } = this.state
+    const greeting = `Hello, ${this.props.fname}!`
 
     return (
       <div id="navbar">
@@ -25,8 +28,9 @@ class MenuExampleStackable extends Component {
           name='about'
           active={activeItem === 'about'}
           onClick={this.handleItemClick}
-        ><a href="/#about">
-          About Virtual Host</a>
+          href="/#about"
+        >
+          About Virtual Host
         </Menu.Item>
 
         <Menu.Item
@@ -36,26 +40,29 @@ class MenuExampleStackable extends Component {
         >
           View Events
         </Menu.Item>
-        {/* This will be an if/else statement...if user is logged in, they will be greeted and have a dropdown menu. Those not logged in will see "Sign in as a user" */}
-        <Menu.Item
-          name='login'
-          active={activeItem === 'login'}
-          onClick={this.handleItemClick}
-          floated="right"
-          position='right'
-        >
-          Welcome {this.props.login.fname} 
-        </Menu.Item>
+        <Menu.Menu position='right'>
+        <Dropdown text={greeting} pointing className='link item'>
+      <Dropdown.Menu>
+        <Dropdown.Header>My Stuff</Dropdown.Header>
+        <Dropdown.Item>My Dashboard</Dropdown.Item>
+        <Dropdown.Item>My Events</Dropdown.Item>
+        <Dropdown.Item>My Beacons</Dropdown.Item>
+        <Dropdown.Item>Notes & Favorites</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item 
+          onClick={() => {
+          console.log('clicked')
+          this.props.updateLoginStatus()
+        }}
+        >Sign Out</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+    </Menu.Menu>
       </Menu>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    login: state.login
-  }
-}
-
-export default connect(mapStateToProps)(MenuExampleStackable);
+export default MenuExampleStackable;

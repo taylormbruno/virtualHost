@@ -3,8 +3,6 @@ import { Menu } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import Logo from '../locationIcon.png'
 import "../style.css"
-// import {bindActionCreators} from 'redux';
-// import {connect} from 'react-redux';
 
 class MenuExampleStackable extends Component {
   state = {}
@@ -13,6 +11,8 @@ class MenuExampleStackable extends Component {
 
   render() {
     const { activeItem } = this.state
+
+    console.log(this.props)
 
     return (
       <div id="navbar">
@@ -25,8 +25,9 @@ class MenuExampleStackable extends Component {
           name='about'
           active={activeItem === 'about'}
           onClick={this.handleItemClick}
-        ><a href="/#about">
-          About Virtual Host</a>
+          ref="/#about"
+        >
+          About Virtual Host
         </Menu.Item>
 
         <Menu.Item
@@ -36,11 +37,13 @@ class MenuExampleStackable extends Component {
         >
           View Events
         </Menu.Item>
-        {/* This will be an if/else statement...if user is logged in, they will be greeted and have a dropdown menu. Those not logged in will see "Sign in as a user" */}
         <Menu.Item
           name='login'
           active={activeItem === 'login'}
-          onClick={this.handleItemClick}
+          onClick={() => {
+            console.log('clicked')
+            this.props.updateLoginStatus()
+          }}
           floated="right"
           position='right'
         >
@@ -52,10 +55,5 @@ class MenuExampleStackable extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     login: state.login
-//   }
-// }
 
 export default MenuExampleStackable;
