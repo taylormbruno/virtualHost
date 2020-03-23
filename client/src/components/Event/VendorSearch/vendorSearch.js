@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import API from '../../../utils/API'
-import VendorCard from '../EventCards/VendorCards/vendorCard'
+import VendorCard from '../VendorCards/vendorCard'
 
 
 class Filter extends Component {

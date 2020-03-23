@@ -4,10 +4,12 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Body from "./components/Body";
 import Signup from "./components/Signup";
-import Arrow from "./components/Arrow"
-import About from "./components/About"
-import Event from "./components/Event"
-import Copyright from "./components/Copyright"
+import Arrow from "./components/Arrow";
+import About from "./components/About";
+import Events from "./components/Events";
+import Event from "./components/Event";
+import Vendor from "./components/Vendor";
+import Copyright from "./components/Copyright";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserContext from "./utils/UserContext";
 
@@ -52,8 +54,14 @@ function App() {
           <Route exact path={["/signup"]}>
             <Signup />
           </Route>
-          <Route exact path={["/event"]}>
+          <Route exact path={["/events"]}>
+            <Events />
+          </Route>
+          <Route path={["/event/:id"]}>
             <Event />
+          </Route>
+          <Route path={["/vendor/:id"]}>
+            <Vendor />
           </Route>
         </Switch>
         <Copyright />

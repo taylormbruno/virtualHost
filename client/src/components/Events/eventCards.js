@@ -1,18 +1,17 @@
 import React from 'react';
 import { Card, Grid, Image } from 'semantic-ui-react';
-import '../style.css'; 
+import './style.css'; 
 import {Link} from 'react-router-dom';
 
 
-
-function VendorCard (props){
+function EventCard (props){
   let active;
-      if (props.vendor) {
-        active = (props.vendor);    
+      if (props.event) {
+        active = (props.event);    
       }
       else {
         active= {
-          "_id": "2468",               
+          "_id": "246",               
           "vendor_name": "Virtual Host",
           "image": "../images/virtualHost.png",
           "beacon_id": 1234,
@@ -29,13 +28,13 @@ function VendorCard (props){
             <Card.Link as ={Link} to="https://virtual-host.herokuapp.com/"/>
             <Image src={active.image} wrapped ui={false} />
             <Card.Content>
-            <Card.Header>{active.vendor_name}</Card.Header>                  
+            <Card.Header>{active.event_name}</Card.Header>                  
             <Card.Description>
-                {active.description}
+                {active.description},{active.vendors}, {active.location}, {active.start_time}, {active.end_time}
             </Card.Description>
             </Card.Content>
             <Card.Content extra>
-            {active.manager_id}, {active.beacon_id}, {active.category},{active.web_url}
+            {active.host_id}, {active.web_url}
             </Card.Content>                
           </Grid.Column>
         </Card>
@@ -44,4 +43,5 @@ function VendorCard (props){
 }
 
 
-export default VendorCard;
+export default EventCard;
+
