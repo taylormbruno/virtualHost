@@ -1,80 +1,47 @@
-import React from 'react'
-import { Card } from 'semantic-ui-react'
+import React from 'react';
+import { Card, Grid, Image } from 'semantic-ui-react';
+import '../style.css'; 
+import {Link} from 'react-router-dom';
 
-const EventCard = () => (
-    <Card.Group>
-      <div class="ui three column grid link stackable cards" id="cardGroup">
-        <div class="column">
-          <div class="ui fluid card link card" href="https://virtual-host.herokuapp.com/">
-            <div class="image">
-              <img src={VirtualHost} />
-            </div>
-            <div class="content">
-              <div class="header" className="eventName">Demo Day</div>
-              <div class="meta">
-                <a className= "location">The Barrel Room at Triple C Brewing</a>
-                <a className= "start_time">Wednesday 6pm - className= "end_time">8pm</a>                
-              </div>
-              <div class="description">
-                Demo Day is an event where recent graduates from UNC-Charlotte's Coding Classes are able to reveal their final projects.
-            </div>
-            </div>
-            <div class="extra content">
-              <span>
-                <i class="right floated star icon"></i>
-                Click Here to See Particpants
-            </span>
-            </div>
-          </div>
-        </div>
-  
-        <div class="column">
-          <div class="ui fluid card">
-            <div class="image">
-              <img src={VirtualHost} />
-            </div>
-            <div class="content">
-              <div class="header" className="eventVendor">Virtual Host</div>
-              <div class="meta">
-                <a>Taylor Bruno - Kacie Hatley - Jodi Rhoades</a>
-              </div>
-              <div class="description">
-                Virtual Host uses notifications on your phone to guide your through the event informing you along the way.
-            </div>
-            </div>
-            <div class="extra content">
-              <span>
-                <i class="right floated star icon"></i>
-                Read More
-            </span>
-            </div>
-          </div>
-        </div>
-  
-        <div class="column">
-          <div class="ui fluid card">
-            <div class="image">
-              <img src={VirtualHost} />
-            </div>
-            <div class="content">
-              <div class="header" className="eventVendor">Virtual Host</div>
-              <div class="meta">
-                <a>Taylor Bruno - Kacie Hatley - Jodi Rhoades</a>
-              </div>
-              <div class="description">
-                Virtual Host uses notifications on your phone to guide your through the event informing you along the way.
-            </div>
-            </div>
-            <div class="extra content">
-              <span>
-                <i class="right floated star icon"></i>
-                Read More
-            </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Card.Group>
-  )
-  
-  export default EventCard;
+
+function EventCard (props){
+  let active;
+      if (props.event) {
+        active = (props.event);    
+      }
+      else {
+        active= {
+          "_id": "246",               
+          "vendor_name": "Virtual Host",
+          "image": "../images/virtualHost.png",
+          "beacon_id": 1234,
+          "web_url": "https://virtual-host.herokuapp.com/",
+          "description": "Virtual Host Using notifications on your phone to guide you through the event, informing you along the way.",
+          "manager_id": 1,
+          "category": "IT "  
+      }
+    }
+      return(
+      <Card.Group grid container columns={3} stackable>
+        <Card>
+          <Grid.Column>
+            <Card.Link as ={Link} to="https://virtual-host.herokuapp.com/"/>
+            <Image src={active.image} wrapped ui={false} />
+            <Card.Content>
+            <Card.Header>{active.event_name}</Card.Header>                  
+            <Card.Description>
+                {active.description},{active.vendors}, {active.location}, {active.start_time}, {active.end_time}
+            </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+            {active.host_id}, {active.web_url}
+            </Card.Content>                
+          </Grid.Column>
+        </Card>
+  </Card.Group>
+  )  
+}
+
+
+export default EventCard;
+
