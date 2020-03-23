@@ -46,12 +46,12 @@ class SearchFilter extends Component {
             <div className = "SearchFilter">
                     <div>
                                      
-                            <Filter onTextChange= {this.handleInputChange
-                            }/>                            
-                            {this.state.results.map((vendor)=>{
-                            return <VendorCards vendor = {vendor}/>                            
-                            }
-                            )}                  
+                        <Filter onTextChange= {this.handleInputChange
+                        }/>                            
+                        {(this.state.active ? this.state.results.map((vendor)=>{
+                        return <VendorCards vendor = {vendor}/>
+                        }): "" )}
+                        )}                  
                     </div>                 
             </div>        
         );       
