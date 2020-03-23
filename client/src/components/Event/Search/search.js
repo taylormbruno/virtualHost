@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import API from '../../../utils/API'
-import VendorCards from '../EventCards/VendorCards/vendorCard'
+import VendorCard from '../EventCards/VendorCards/vendorCard'
 
 
 class Filter extends Component {
@@ -44,14 +44,12 @@ class SearchFilter extends Component {
     render(){        
         return(
             <div className = "SearchFilter">
-                    <div>
-                                     
+                    <div>                                     
                             <Filter onTextChange= {this.handleInputChange
                             }/>                            
-                            {this.state.results.map((vendor)=>{
-                            return <VendorCards vendor = {vendor}/>                            
-                            }
-                            )}                  
+                            {(this.state.active ? this.state.results.map((vendor)=>{
+                            return <VendorCard vendor = {vendor}/>
+                            }): "" )}
                     </div>                 
             </div>        
         );       

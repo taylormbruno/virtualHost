@@ -12,3 +12,9 @@ export const StyledButton = styled(Button)`
         background: #abc5cb;
     }
 `;
+
+// export const StyledCard = styled(Card)`
+//     .cardStyle {
+//         textAlign='center';
+//     }
+// `;
