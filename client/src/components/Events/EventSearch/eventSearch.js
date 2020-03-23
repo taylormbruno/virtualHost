@@ -1,9 +1,25 @@
 import React, {Component} from "react";
-import API from '../../../../utils/API'
-import VendorCard from '../EventCards/VendorCards/vendorCard'
+import API from '../../../utils/API'
+import EventCard from '../../Events/eventCards'
 
-
-class SearchFilter extends Component {
+class Filter extends Component {
+    render() {
+        return(
+            <div className="Search"> 
+                <form>
+                    <div class="ui massive icon input className=searchBar">
+                        <input  
+                            name= "filterString"      
+                            type="text"                             
+                            placeholder="Search vendors..."/>
+                            <i class="search icon"></i>
+                    </div>
+                </form> 
+            </div>
+        );
+    }
+}
+class EventSearchFilter extends Component {
     constructor(){
         super();
         this.state ={
@@ -21,7 +37,8 @@ class SearchFilter extends Component {
         const { name, value } = event.target;
         console.log("SEARCHING FOR " + event.target);
         this.setState({...this.state, [name]: value});
-        
+        let results = API.searchEvent({event_name: this.state.filterString})
+        console.log(results)
     };   
     handleSubmit = (event) => {
         event.preventDefault();
@@ -33,6 +50,13 @@ class SearchFilter extends Component {
     render(){        
         return(
             <div className = "SearchFilter">
+                    <div>                                     
+                            <Filter onTextChange= {this.handleInputChange
+                            }/>                            
+                            {(this.state.active ? this.state.results.map((event)=>{
+                            return <EventCard event = {event}/>
+                            }): "" )}
+                    </div>                 
                 <div>   
                     <div className="Search"> 
                         <form>
@@ -48,11 +72,11 @@ class SearchFilter extends Component {
                             </div>
                         </form> 
                     </div>                                  
-                    {(this.state.active ? this.state.results.map((vendor)=>{return <VendorCard vendor = {vendor}/>}): "" )}
+                    {(this.state.active ? this.state.results.map((vendor)=>{return <EventCard vendor = {vendor}/>}): "" )}
                 </div>                 
             </div>        
         );       
     }
 }
 
-export default SearchFilter;
+export default EventSearchFilter;
