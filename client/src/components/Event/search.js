@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-// import Seeds from "./EventCards/VendorCards/seeds"
+// eslint-disable-next-line
+import Seeds from "./EventCards/VendorCards/seeds";
 
 const people= [
 "twitter",
@@ -7,8 +8,10 @@ const people= [
 "instagram",
 "linkedin"
 ];
+
 function SearchFilter() {
   const [searchTerm, setSearchTerm] = useState("");
+  // eslint-disable-next-line
   const [searchResults, setSearchResults] = useState([]);
   const handleChange = e => {
     setSearchTerm(e.target.value);

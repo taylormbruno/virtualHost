@@ -7,10 +7,12 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "buffer": "4.9.2",
-    "if-env": "^1.0.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.4"
+    "if-env": "^1.0.4",
+    "mongoose": "^5.9.4",
+    "react-syntax-highlighter": "^12.2.1",
+    "passport": "^0.4.1"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
@@ -26,6 +28,6 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build" 
+    "heroku-postbuild": "npm run build"
   }
 }
