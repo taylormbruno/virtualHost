@@ -1,16 +1,18 @@
 a {
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
-   }.button {
+}
+.button {
     display: inline-block;
     max-width: 300px;
     margin-top: 50px;
-    border: 2px solid black;
+    border: 2px solid;
+    border-color:#8b9fa3!important;
     padding: 0 18px;
     text-align: left;
     width: 100%;
     height: 37px;
-    border-radius: 4px;
+    border-radius: 4px;    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: "liga" on;
@@ -19,10 +21,11 @@ a {
     box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
     font: inherit;
     outline: none;
-   }.button .svgIcon {
+}
+.button .svgIcon {
     vertical-align: middle;
     fill: rgba(0, 0, 0, 0.54);
     padding-right: 4px;
     height: 37px;
     display: inline-block;
-   }
+}
