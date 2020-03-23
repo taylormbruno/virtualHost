@@ -10,7 +10,6 @@ module.exports = {
   },
   searchVendor: function(req, res) {
     console.log(req.body);
-
     db.Vendor
       // .find({ $text: { $search: req.body.filterString }})
       .find({"vendor_name": {$regex : `.*${req.body.filterString}.*`}})

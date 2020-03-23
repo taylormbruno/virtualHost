@@ -1,7 +1,8 @@
 a {
     -webkit-tap-highlight-color: transparent;
     text-decoration: none;
-   }.button {
+}
+.button {
     display: inline-block;
     max-width: 300px;
     margin-top: 50px;
@@ -20,10 +21,11 @@ a {
     box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
     font: inherit;
     outline: none;
-   }.button .svgIcon {
+}
+.button .svgIcon {
     vertical-align: middle;
     fill: rgba(0, 0, 0, 0.54);
     padding-right: 4px;
     height: 37px;
     display: inline-block;
-   }
+}
