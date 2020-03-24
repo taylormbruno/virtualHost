@@ -9,7 +9,8 @@ router.use("/api", apiRoutes); // original use based off prev acitivites
 /* GET Google Authentication API. */
 router.get("/auth/google",
   passport.authenticate("google", { 
-    scope: ["profile", "email"] 
+    // scope: ["profile", "email"]
+    scope: 'https://www.google.com/m8/feeds'
   })
 );
 
