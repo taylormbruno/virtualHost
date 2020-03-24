@@ -5,8 +5,8 @@ import "./style.css"
 
 
 const Copyright = () => (
-    <div id="copyright">
-        <p>©2020 Virtual Host</p>
+    <div>
+        <p id="copyright">©2020 Virtual Host</p>
     </div>
 )
 

@@ -1,0 +1,32 @@
+#purple {
+    background-color: #a9a6c9;
+}
+
+#expandIcon {
+    color: white;
+    float: right;
+    right: 0;
+    margin-bottom: 5px;
+    transition: all .2s ease-in-out;
+}
+
+#expandIcon:hover {
+    transform: scale(1.3);
+}
+
+#tableContainer {
+    height: 200px;
+    overflow-y: auto;  /* or auto */
+}
+
+#tableContainer::-webkit-scrollbar:active{
+    display: block;
+  }
+
+#tableContainer::-webkit-scrollbar-thumb {
+    background: #d5d3eb;
+  }
+
+#tableContainer::-webkit-scrollbar-thumb:hover {
+    background: #a9a6c9; 
+  }
