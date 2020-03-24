@@ -34,6 +34,7 @@ class MenuExampleStackable extends Component {
           name='view'
           active={activeItem === 'view'}
           onClick={this.handleItemClick}
+          ref="/event"
         >
           View Events
         </Menu.Item>

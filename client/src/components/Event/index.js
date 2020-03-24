@@ -1,13 +1,15 @@
 import React from "react";
-//import { Card, Grid, Image } from 'semantic-ui-react';
 // import './style.css';
-import SearchFilter from './Search/search';
-// import VendorCard from './EventCards/VendorCards/vendorCard';
+// import VendorCard from '../Event/VendorCards/vendorCard';
+import SearchFilter from './VendorSearch/vendorSearch';
+import SideBar from './eventSideBar';
+
 
 const EventPage = () => (    
     <>
-        <SearchFilter/>
-        {/* <VendorCard/>          */}
+        <SearchFilter/>        
+        {/* <VendorCard/>   */}   
+        <SideBar/>     
     </>
 )
 

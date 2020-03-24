@@ -1,12 +1,11 @@
 import React from 'react';
-import { Card, Grid, Image } from 'semantic-ui-react';
-import '../style.css'; 
+import { Card, Grid, Image } from 'semantic-ui-react'; 
 import {Link} from 'react-router-dom';
 
 
 
-function VendorCard (props){
-  let active;
+function VendorCard(props) {
+  let active ;
       if (props.vendor) {
         active = (props.vendor);    
       }
