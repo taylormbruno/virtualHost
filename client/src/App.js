@@ -61,6 +61,9 @@ function App() {
           <Route path={["/event/:id"]}>
             <Event />
           </Route>
+          <Route path={["/event"]}>
+            <Event />
+          </Route>
           <Route exact path={"/mydashboard"}>
             <Dashboard />
           </Route>
