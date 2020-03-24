@@ -1,9 +1,9 @@
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { Table, Button } from 'semantic-ui-react'
 // import Dashboard from "./dashboard.png"
 import "./style.css"
 // import Events from './Events/index.js'
-import { StyledCell } from "./styledComponents"
+import { StyledCell, StyledButton } from "./styledComponents"
 
 const MyEvents = () => (
 <div id="tableContainer">
@@ -37,6 +37,7 @@ const MyEvents = () => (
       </Table.Row>
     </Table.Body>
   </Table>
+  <StyledButton circular icon='add' />
     </div>       
 )
 

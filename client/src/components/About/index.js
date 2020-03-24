@@ -17,7 +17,7 @@ const About = () => (
 
     <AdminCards />
 
-    <a href="#top"><StyledButton>Return To Top</StyledButton></a>
+    <StyledButton href="#top">Return To Top</StyledButton>
 </Segment>
 )
 
