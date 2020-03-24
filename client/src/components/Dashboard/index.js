@@ -4,12 +4,13 @@ import Dashboard from "./dashboard.png"
 import "./style.css"
 import Events from './Events/index.js'
 import Booths from './Booths/index.js'
+import Notes from './Notes/index.js'
 import {StyledHeader} from './styledComponents'
 
 const MyDashboard = () => (
     <div id="container">
         <Image id="logo" src={Dashboard} />
-            <Grid stackable columns={2} divided textAlign='center' verticalAlign='middle'>
+            <Grid stackable columns={2} textAlign='center' verticalAlign='top'>
                 <Grid.Column width={7}>
                     <Segment>
                     <StyledHeader as='h1'>My Events</StyledHeader>
@@ -21,7 +22,10 @@ const MyDashboard = () => (
                     </Segment>
                 </Grid.Column>
                 <Grid.Column width={9}>
-                    There
+                    <Segment>
+                    <StyledHeader as='h1'>My Notes</StyledHeader>
+                    <Notes />
+                    </Segment>
                 </Grid.Column>
         </Grid>
     </div>       

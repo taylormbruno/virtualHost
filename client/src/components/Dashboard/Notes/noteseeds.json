@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "eventTitle": "Stanly County Farmers Market",
+      "boothName" : "Parsons Peach Farm",
+      "noteBody": "Great customer service",
+      "lastEditedOn": ""
+    },
+    {
+        "id": 2,
+        "eventTitle": "Stanly County Farmers Market",
+        "boothName" : "Almond Christmas Tree Farm",
+        "noteBody": "Noticed part of proceeds go towards camper scholarships.",
+        "lastEditedOn": ""
+    },
+    {
+        "id": 3,
+        "eventTitle": "Stanly County Farmers Market",
+        "boothName" : "Dennis Vienyards",
+        "noteBody": "It seems they have a wide variety of seasonal wines.",
+        "lastEditedOn": ""
+    },
+    {
+        "id": 4,
+        "eventTitle": "Gibson Mill Antique Mall",
+        "boothName" : "Teresa's Records",
+        "noteBody": "On Fridays you can get all vinyls for half off",
+        "lastEditedOn": ""
+    },
+    {
+        "id": 5,
+        "eventTitle": "Gibson Mill Antique Mall",
+        "boothName" : "Vintage Technology",
+        "noteBody": "Go back later this week to see if vintage TV is still available",
+        "lastEditedOn": ""
+    },
+    {
+        "id": 6,
+        "eventTitle": "NoDa Arts Expo",
+        "boothName" : "Pottery People",
+        "noteBody": "Christmas gift idea for mom.",
+        "lastEditedOn": ""
+    },
+    {
+        "id": 4,
+        "eventTitle": "NoDa Arts Expo",
+        "boothName" : "Appalachain Sculptures",
+        "noteBody": "Contract option for community art project?",
+        "lastEditedOn": ""
+    }
+]

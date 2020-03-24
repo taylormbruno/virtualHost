@@ -1,0 +1,21 @@
+#purpleHeader {
+    color: #a9a6c9;
+}
+
+#notesContainer {
+    height: 200px;
+    overflow-y: auto;  /* or auto */
+    margin-top: 20px;
+}
+
+#notesContainer::-webkit-scrollbar:active{
+    display: block;
+  }
+
+#notesContainer::-webkit-scrollbar-thumb {
+    background: #d5d3eb;
+  }
+
+#notesContainer::-webkit-scrollbar-thumb:hover {
+    background: #a9a6c9; 
+  }
