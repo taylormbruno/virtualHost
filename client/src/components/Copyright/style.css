@@ -1,6 +1,7 @@
 #copyright{
     position:fixed;
     bottom: 10px;
-    left:10px
-    
+    left:10px;
+    font-size: 10px;
+    color: gray;
 }

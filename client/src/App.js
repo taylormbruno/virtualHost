@@ -10,6 +10,7 @@ import Events from "./components/Events";
 import Event from "./components/Event";
 import Vendor from "./components/Vendor";
 import Copyright from "./components/Copyright";
+import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserContext from "./utils/UserContext";
 
@@ -59,6 +60,12 @@ function App() {
           </Route>
           <Route path={["/event/:id", "/vendorsearchtest"]}>
             <Event />
+          </Route>
+          <Route path={["/event"]}>
+            <Event />
+          </Route>
+          <Route exact path={"/mydashboard"}>
+            <Dashboard />
           </Route>
           <Route path={["/vendor/:id"]}>
             <Vendor />
