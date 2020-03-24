@@ -3,23 +3,23 @@ import API from '../../../utils/API'
 import VendorCard from '../VendorCards/vendorCard'
 
 
-class Filter extends Component {
-    render() {
-        return(
-            <div className="Search"> 
-                <form>
-                    <div class="ui massive icon input className=searchBar">
-                        <input  
-                            name= "filterString"      
-                            type="text"                             
-                            placeholder="Search vendors..."/>
-                            <i class="search icon"></i>
-                    </div>
-                </form> 
-            </div>
-        );
-    }
-}
+// class Filter extends Component {
+//     render() {
+//         return(
+//             <div className="Search"> 
+//                 <form>
+//                     <div class="ui massive icon input className=searchBar">
+//                         <input  
+//                             name= "filterString"      
+//                             type="text"                             
+//                             placeholder="Search vendors..."/>
+//                             <i class="search icon"></i>
+//                     </div>
+//                 </form> 
+//             </div>
+//         );
+//     }
+// }
 
 class SearchFilter extends Component {
     constructor(){
@@ -45,11 +45,22 @@ class SearchFilter extends Component {
         return(
             <div className = "SearchFilter">
                     <div>                                     
-                            <Filter onTextChange= {this.handleInputChange
-                            }/>                            
-                            {(this.state.active ? this.state.results.map((vendor)=>{
+                    <div className="Search"> 
+                        <form>
+                            <div class="ui massive icon input className=searchBar">
+                                <input  
+                                    name= "filterString"      
+                                    type="text"                             
+                                    placeholder="Search vendors..."
+                                    onChange={this.handleInputChange}
+                                />
+                                    <i class="search icon"></i>
+                                </div>
+                            </form> 
+                        </div>                      
+                        {(this.state.active ? this.state.results.map((vendor)=>{
                             return <VendorCard vendor = {vendor}/>
-                            }): "" )}
+                        }): "" )}
                     </div>                 
             </div>        
         );       

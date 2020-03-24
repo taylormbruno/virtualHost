@@ -7,12 +7,13 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "buffer": "4.9.2",
-    "dotenv": "^8.2.0",
+    "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.4",
-    "react-syntax-highlighter": "^12.2.1",
-    "passport": "^0.4.1"
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
@@ -23,7 +24,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"node 'server.js'\" \"npm run client\"",
+    "start:dev": "concurrently \"node server.js\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",

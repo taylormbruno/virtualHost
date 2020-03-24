@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv-safe').config({
+  allowEmptyValues: true
+});
 const passport = require('passport');
 const express = require("express");
 const mongoose = require("mongoose");
