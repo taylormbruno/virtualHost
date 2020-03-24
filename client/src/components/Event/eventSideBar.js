@@ -1,9 +1,10 @@
-import React, {Component, Sidebar} from "react";
+import React, {Component} from "react";
+import Sidebar from "react-sidebar";
 
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
-class SideBar extends Component {
+class SideBarComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,4 +46,4 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+export default SideBarComponent;
