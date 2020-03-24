@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import API from '../../../utils/API'
 import VendorCard from '../VendorCards/vendorCard'
 
-
 class Filter extends Component {
     render() {
         return(
@@ -12,7 +11,7 @@ class Filter extends Component {
                         <input  
                             name= "filterString"      
                             type="text"                             
-                            placeholder="Search vendors..."/>
+                            placeholder="Search Vendors..."/>
                             <i class="search icon"></i>
                     </div>
                 </form> 
