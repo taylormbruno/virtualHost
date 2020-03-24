@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header, Table } from 'semantic-ui-react';
+import { Header, Table, Button } from 'semantic-ui-react';
 
 
 export const StyledHeader = styled(Header)`
@@ -22,3 +22,13 @@ export const StyledTable = styled(Table)`
     } 
     `;
 
+
+    export const StyledButton = styled(Button)`
+    
+        &&& {
+            background-color: #a9a6c9;
+            color: white !important;
+            width: 30%;
+            margin: 2% !important;  
+            margin-bottom: 20px !important;  
+        }`

@@ -19,3 +19,8 @@
 #notesContainer::-webkit-scrollbar-thumb:hover {
     background: #a9a6c9; 
   }
+
+.hover:hover {
+  background: #eae9f5;
+  cursor: pointer;
+}

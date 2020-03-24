@@ -1,21 +1,41 @@
-// Remember to put a state within this component that identifies which note is the active note and allows user to edit or delete the note. Each note contains the booth name, event name, note body, and "last edited on". All notes will render in a table sort of like my events with an icon to edit and delete note on each row. Active note will also have a save icon. Will need to create a notes seed json file.
+// revisit page once initial notes are completed to add functionality to save and delete buttons
+// data pulling from seeds...needs to be changed to database
 
-import Seeds from "./noteseeds.json"
-import React from 'react'
-import { Divider, Form, Table } from 'semantic-ui-react'
-import { StyledHeader } from './styledComponents'
+
+
+import React, { Component } from 'react'
+import { Divider, Form, Table, Icon, Button } from 'semantic-ui-react'
+import { StyledHeader, StyledButton } from './styledComponents'
 import notes from './noteseeds.json'
 import './style.css'
 
-export default function Notes() {
+export default class Notes extends Component {
+
+    state={
+        eventTitle: "",
+        boothName: "",
+        noteBody: ""
+    };
+
+    // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    handleItemClick = (e) => {
+        let clickedID = e.target.className-1;
+        this.setState({ eventTitle: notes[clickedID].eventTitle, boothName: notes[clickedID].boothName, noteBody: notes[clickedID].noteBody })
+    }
+
+
+
+    render() {
     return (
         <div>
-            <StyledHeader as="h2">Active Booth Here</StyledHeader>
-            <StyledHeader as="h4" className="noPadding">Active Event Here</StyledHeader>
+            <StyledHeader as="h2">{this.state.boothName}</StyledHeader>
+            <StyledHeader as="h4" className="noPadding">{this.state.eventTitle}</StyledHeader>
             <Divider />
             <Form>
-                <Form.TextArea value="Active note here" placeholder='Tell us more about you...' />
+                <Form.TextArea value={this.state.noteBody} placeholder='Tell us more about you...' />
             </Form>
+            <StyledButton><Icon name='save' />Save Note</StyledButton>
+            <StyledButton><Icon name='delete' />Delete Note</StyledButton>
             <div id="notesContainer">
             <Table>
                 <Table.Header>
@@ -23,16 +43,20 @@ export default function Notes() {
                         <Table.HeaderCell>Booth</Table.HeaderCell>
                         <Table.HeaderCell>Event</Table.HeaderCell>
                         <Table.HeaderCell>Note</Table.HeaderCell>
+                        <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
     <Table.Body>
         {notes.map((notes) => (
-            <Table.Row>
-                <Table.Cell>{notes.boothName}</Table.Cell>
-                <Table.Cell>{notes.eventTitle}</Table.Cell>
-                <Table.Cell>
+            <Table.Row className="hover" name={notes.id}>
+                <Table.Cell onClick={this.handleItemClick} className={notes.id}>{notes.boothName}</Table.Cell>
+                <Table.Cell onClick={this.handleItemClick} className={notes.id}>{notes.eventTitle}</Table.Cell>
+                <Table.Cell onClick={this.handleItemClick} className={notes.id}>
                     {notes.noteBody}
+                </Table.Cell>
+                <Table.Cell>
+                    <Icon name='delete' />
                 </Table.Cell>
             </Table.Row>
             ))}
@@ -41,4 +65,5 @@ export default function Notes() {
         </div>
         </div>
     )
+        }
 }
