@@ -9,7 +9,7 @@ router.use("/api", apiRoutes); // original use based off prev acitivites
 /* GET Google Authentication API. */
 router.get("/auth/google",
   passport.authenticate("google", { 
-    cope: ["profile", "email"] 
+    scope: ["profile", "email"] 
   })
 );
 
@@ -20,7 +20,7 @@ router.get("/auth/google/callback",
   function(req, res) {
       const token = req.user.token;
       console.log(req.user);
-      res.redirect("http://localhost:3000?token=" + token);
+      res.redirect("http://localhost:3000/user?token=" + token);
   }
 );
 

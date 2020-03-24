@@ -58,7 +58,7 @@ function App() {
           <Route exact path={["/events"]}>
             <Events />
           </Route>
-          <Route path={["/event/:id"]}>
+          <Route path={["/event/:id", "/vendorsearchtest"]}>
             <Event />
           </Route>
           <Route path={["/event"]}>
