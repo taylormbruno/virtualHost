@@ -1,6 +1,9 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+require('dotenv-safe').config({
+    allowEmptyValues: true
+  });
+  
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -16,12 +19,13 @@ passport.use(
         callbackURL: "http://localhost:3000/auth/google/callback"
     },
     function(accessToken, refreshToken, profile, done) {
+        console.log(profile);
         const userData = {
             email: profile.emails[0].value,
             name: profile.displayName,
             token: accessToken
         };
-   done(null, userData);
+   done(err, userData);
   }
  )
 );
