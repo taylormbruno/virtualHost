@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Segment, Card, Image, Placeholder, Icon, Header} from 'semantic-ui-react'
+import { Segment, Card, Image, Placeholder, Icon, Header} from 'semantic-ui-react'
 import './style.css'
 // import EventCard from  './eventCards'
 import EventSearchFilter from './EventSearch/eventSearch';

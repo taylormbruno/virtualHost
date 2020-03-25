@@ -1,11 +1,9 @@
 import React from "react";
-// import './style.css';
 import EventDetails from './eventDetail';
 
-
-const EventPage = () => (    
-    <>          
-        <EventDetails/> 
+const EventPage = () => (
+    <>
+        <EventDetails />
     </>
 )
 
