@@ -1,3 +1,31 @@
-.sidebar: {
-margin: 70px !important;
+#eventHeader {
+    color:#a9a6c9;
+    font-weight: 400;
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 30px
+}
+
+#vendorHeader {
+    color:#a9a6c9;
+    font-weight: 400;
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 30px;
+}
+
+#column1 {
+    margin: 40px;
+    /* margin-top: 40px;        */
+}
+
+#column2 {
+    margin: 40px;    
+}
+
+form {
+    margin-top: 25px;
+    margin-bottom: 25px;;
+}
+
+#searchIcon {
+    color:#a9a6c9;
 }
