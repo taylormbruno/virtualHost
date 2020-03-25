@@ -39,6 +39,7 @@ const EventDetails = () => (
                             <Card.Content extra textAlign='center'>
                             Your Host - Ashley Neff 
                             <br/>
+                            {/* <a href={web_url} target="_blank" rel="alternate">CLICK Demo Day Website</a> */}
                             <a href='https://www.meetup.com/charlottedevs/events/247770821/' target="_blank" rel="alternate">CLICK Demo Day Website</a>
                             </Card.Content> 
                         </Card>
