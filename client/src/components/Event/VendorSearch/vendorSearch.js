@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import API from '../../../utils/API'
 import VendorCard from '../VendorCards/vendorCard'
+import { StyledForm } from '../styledComponents'
 
 
 // class Filter extends Component {
@@ -43,25 +44,25 @@ class SearchFilter extends Component {
 
     render(){        
         return(
-            <div className = "SearchFilter">
-                    <div>                                     
-                    <div className="Search"> 
-                        <form>
-                            <div class="ui massive icon input className=searchBar">
-                                <input  
-                                    name= "filterString"      
-                                    type="text"                             
-                                    placeholder="Search vendors..."
-                                    onChange={this.handleInputChange}
-                                />
-                                    <i class="search icon"></i>
-                                </div>
-                            </form> 
-                        </div>                      
-                        {(this.state.active ? this.state.results.map((vendor)=>{
-                            return <VendorCard vendor = {vendor}/>
-                        }): "" )}
-                    </div>                 
+            <div>
+            <div>                                     
+                <div className="Search"> 
+                    <StyledForm>
+                        <div class="ui massive icon input className=searchBar">
+                            <input  
+                                name= "filterString"      
+                                type="text"                             
+                                placeholder="Search vendors..."
+                                onChange={this.handleInputChange}
+                            />
+                                <i class="search icon" id='searchIcon'></i>
+                            </div>
+                        </StyledForm> 
+                    </div>                      
+                    {(this.state.active ? this.state.results.map((vendor)=>{
+                        return <VendorCard vendor = {vendor}/>
+                    }): "" )}
+                </div>                 
             </div>        
         );       
     }
