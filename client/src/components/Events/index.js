@@ -1,12 +1,10 @@
 import React from "react";
-// import './style.css';
-import EventSearchFilter from './EventSearch/eventSearch';
-// import EventCard from  './eventCards'
+import EventPage from '../Events/eventsPage'
+
 
 const EventsSearchPage = () => (    
-    <>        
-        <EventSearchFilter/>        
-        {/* <EventCard/> */}
+    <>  
+        <EventPage/>
     </>
 )
 
