@@ -8,7 +8,7 @@ class Filter extends Component {
             <div className="Search"> 
                 <form>
                     <div class="ui massive icon input className=searchBar">
-                        <input fluid
+                        <input id='searchBar'
                             name= "filterString"      
                             type="text"                             
                             placeholder="Search Events..."/>

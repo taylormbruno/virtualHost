@@ -21,3 +21,7 @@ form {
     margin-top: 25px;
     margin-bottom: 25px;;
 }
+
+#searchBar {
+    width: 30%;
+}
