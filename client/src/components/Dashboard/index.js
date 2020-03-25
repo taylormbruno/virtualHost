@@ -5,6 +5,7 @@ import "./style.css"
 import Events from './Events/index.js'
 import Booths from './Booths/index.js'
 import Notes from './Notes/index.js'
+import Favorites from './Favorites/index.js'
 import {StyledHeader} from './styledComponents'
 
 const MyDashboard = () => (
@@ -25,6 +26,10 @@ const MyDashboard = () => (
                     <Segment>
                     <StyledHeader as='h1'>My Notes</StyledHeader>
                     <Notes />
+                    </Segment>
+                    <Segment>
+                    <StyledHeader as='h1'>My Favorites</StyledHeader>
+                    <Favorites />
                     </Segment>
                 </Grid.Column>
         </Grid>
