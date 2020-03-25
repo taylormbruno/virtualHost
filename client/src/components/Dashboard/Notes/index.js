@@ -4,7 +4,7 @@
 
 
 import React, { Component } from 'react'
-import { Divider, Form, Table, Icon, Button } from 'semantic-ui-react'
+import { Divider, Form, Table, Icon } from 'semantic-ui-react'
 import { StyledHeader, StyledButton } from './styledComponents'
 import notes from './noteseeds.json'
 import './style.css'
