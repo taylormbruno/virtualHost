@@ -20,6 +20,7 @@ function App() {
 
   let [userState, setUserState] = useState({
     loggedIn: false,
+    username: "khatley16",
     fname: "Kacie",
     lname: "Hatley",
     light: true
@@ -58,45 +59,46 @@ function App() {
     className="App"
     >
       <UserContext.Provider value={userState}>
-      <Router>
-        <Navbar
-        updateLoginStatus = {updateLoginStatus}
-        />
-        <Switch>
-          <Route exact path={["/", "/login"]}>
-            <Login />
-            <Arrow />
-            <About />
-          </Route>
-          <Route exact path={["/signup"]}>
-            <Signup />
-          </Route>
-          <Route exact path={["/events"]}>
-            <Events />
-          </Route>
-          <Route path={["/event/:id", "/vendorsearchtest"]}>
-            <Event />
-          </Route>
-          <Route path={["/event"]}>
-            <Event />
-          </Route>
-          <Route exact path={"/mydashboard"}>
-            <Dashboard />
-          </Route>
-          <Route exact path={"/settings"}>
-            <Settings 
-            updateLightMode = {updateLightMode}
-            />
-          </Route>
+        <Router>
+          <Navbar
+          updateLoginStatus = {updateLoginStatus}
+          />
+          <Switch>
+            <Route exact path={["/", "/login"]}>
+              <Login />
+              <Arrow />
+              <About />
+            </Route>
+            <Route exact path={["/signup"]}>
+              <Signup />
+            </Route>
+            <Route exact path={["/events"]}>
+              <Events />
+            </Route>
+            <Route path={["/event/:id", "/vendorsearchtest"]}>
+              <Event />
+            </Route>
+            <Route path={["/event"]}>
+              <Event />
+            </Route>
+            <Route exact path={"/mydashboard"}>
+              <Dashboard />
+            </Route>
+            <Route exact path={"/settings"}>
+              <Settings 
+              userState={userState}
+              updateLightMode = {updateLightMode}
+              />
+            </Route>
           {/* <Route path={["/vendor/:id"]}>
             <Vendor />
           </Route> */}
           <Route path={["/vendor"]}>
             <Vendor />
           </Route>
-        </Switch>
-        <Copyright />
-    </Router>
+          </Switch>
+          <Copyright />
+      </Router>
     </UserContext.Provider>
     </div>
 
