@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Button } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 // import Dashboard from "./dashboard.png"
 import "./style.css"
 // import Events from './Events/index.js'

@@ -6,5 +6,8 @@ export default {
     },
     searchVendor: function(term) {
         return axios.get("/api/vendors/search", term);
+    },
+    allVendors: function(eventID) {
+        return axios.get("/api/vendors/all", eventID);
     }
 }

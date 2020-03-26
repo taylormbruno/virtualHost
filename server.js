@@ -23,7 +23,6 @@ app.use(passport.initialize());
 // Add routes, both API and view
 app.use(routes);
 
-// if client package.json is 3001 - 200 on postman, 431 on browser ; on 3000 - 431 receives headers field too large on browser and postman.
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtualhost", { useNewUrlParser: true, useUnifiedTopology: true });

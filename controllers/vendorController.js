@@ -1,9 +1,9 @@
 const db = require("../models");
 
 module.exports = {
-  findAllVendors: function(req, res) {
+  findVendorsByEvent: function(req, res) {
     db.Vendor
-      .find()
+      .find({event_id: req.body.eventID})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -12,7 +12,7 @@ module.exports = {
     console.log(req.body);
     db.Vendor
       // .find({ $text: { $search: req.body.filterString }})
-      .find({"vendor_name": {$regex : `.*${req.body.filterString}.*`}})
+      .find({"vendor_name": {$regex : `.*${req.body.filterString}.*`, "event_id": req.body.eventID}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
