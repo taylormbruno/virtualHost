@@ -8,11 +8,11 @@ class Filter extends Component {
             <div className="Search"> 
                 <form>
                     <div class="ui massive icon input className=searchBar">
-                        <input  
+                        <input id='searchBar'
                             name= "filterString"      
                             type="text"                             
                             placeholder="Search Events..."/>
-                            <i class="search icon"></i>
+                            <i class="search icon" id='searchIcon'></i>
                     </div>
                 </form> 
             </div>

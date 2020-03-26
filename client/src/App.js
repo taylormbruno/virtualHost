@@ -67,7 +67,10 @@ function App() {
           <Route exact path={"/mydashboard"}>
             <Dashboard />
           </Route>
-          <Route path={["/vendor/:id"]}>
+          {/* <Route path={["/vendor/:id"]}>
+            <Vendor />
+          </Route> */}
+          <Route path={["/vendor"]}>
             <Vendor />
           </Route>
         </Switch>

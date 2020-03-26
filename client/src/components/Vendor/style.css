@@ -1,0 +1,29 @@
+#vendorHeader {
+    color:#a9a6c9;
+    font-weight: 400;
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 50px
+}
+
+#bodyContainer {
+    margin: 60px;
+    width: 60%;
+}
+
+#image {
+    margin: 0 auto;    
+}
+
+#vendorName {
+    color:#a9a6c9;
+    font-weight: 400;
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 30px
+}
+
+#contributors {
+    color:#a9a6c9;
+    font-weight: 400;
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 20px
+}

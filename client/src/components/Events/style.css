@@ -1,5 +1,27 @@
-#cardGroup {
-    padding: 45px;
+#column {    
     margin-top: 50px;
+    width: 70%;
+    margin-left: auto;    
+    margin-right: auto;
+    padding-bottom: 70px;    
 }
 
+#eventHeader {
+    color:#a9a6c9;
+    font-weight: 400;
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 30px
+}
+
+#searchIcon {
+    color:#a9a6c9;
+}
+
+form {
+    margin-top: 25px;
+    margin-bottom: 25px;;
+}
+
+#searchBar {
+    width: 30%;
+}

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import API from '../../../utils/API';
-import VendorCard from '../VendorCards/vendorCard';
+import API from '../../../utils/API'
+import VendorCard from '../VendorCards/vendorCard'
+import { StyledForm } from '../styledComponents'
 
 
 // class Filter extends Component {
@@ -55,8 +56,8 @@ class SearchFilter extends Component {
     mapCards = () => {
         console.log("Mapping Cards\n------\n" + this.state.results);
         if (this.state.results !== []) {
-            this.state.results.map((vendor)=>{
-                    return <VendorCard vendor = {vendor} />
+            return this.state.results.map((vendor)=>{
+                     <VendorCard vendor = {vendor} />
             });
         }
         else {
@@ -69,23 +70,21 @@ class SearchFilter extends Component {
 
     render(){        
         return(
-            <div className = "SearchFilter">
-                <div>                                     
-                    <div className="Search"> 
-                        <form>
-                            <div className="ui massive icon input searchBar">
-                                <input  
-                                    name= "filterString"      
-                                    type="text"                             
-                                    placeholder="Search vendors..."
-                                    onChange={this.handleInputChange}
-                                />
-                                    <i class="search icon"></i>
-                                </div>
-                            </form> 
-                        </div>                      
-                        {this.mapCards}
-                    </div>                 
+            <div>                                     
+                <div className="Search"> 
+                    <StyledForm>
+                        <div className="ui massive icon input searchBar">
+                            <input  
+                                name= "filterString"      
+                                type="text"                             
+                                placeholder="Search vendors..."
+                                onChange={this.handleInputChange}
+                            />
+                            <i className="search icon" id='searchIcon'></i>
+                        </div>
+                    </StyledForm> 
+                    {this.mapCards}
+                </div>                 
             </div>        
         );       
     }

@@ -1,5 +1,9 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
+<<<<<<< HEAD
+=======
+import EventModal from "./modal"
+>>>>>>> 70d1fe29317b974528bdc6cf5d2b0ce0c6041104
 // import Dashboard from "./dashboard.png"
 import "./style.css"
 // import Events from './Events/index.js'
@@ -12,10 +16,7 @@ const MyEvents = () => (
       <Table.Row>
         <StyledCell>Event Name</StyledCell>
         <StyledCell>Date</StyledCell>
-        <StyledCell>
-            No. of Booths 
-            <i aria-hidden="true" class="expand icon" id="expandIcon"></i>
-        </StyledCell>
+        <EventModal />
       </Table.Row>
     </Table.Header>
 
