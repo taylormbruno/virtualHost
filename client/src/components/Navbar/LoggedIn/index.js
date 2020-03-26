@@ -6,8 +6,6 @@ import "../style.css"
 
 class MenuExampleStackable extends Component {
   
-
-
   state = {}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

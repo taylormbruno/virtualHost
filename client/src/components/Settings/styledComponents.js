@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Segment, Header, Icon } from 'semantic-ui-react';
+import { Segment, Header, Icon, Form, Button } from 'semantic-ui-react';
 
 
 export const StyledSegment = styled(Segment)`
@@ -23,6 +23,22 @@ export const StyledIcon = styled(Icon)`
         margin: 0 25px 30px 25px;
     }   
     `;
+
+export const StyledForm = styled(Form)`
+    &&& {  
+        width: 60%;
+        margin: auto;
+    }   
+    `;
+
+export const StyledButton = styled(Button)`
+    &&& {
+        background-color: #c7cba9;
+        color: white !important;
+        width: 30%;
+        margin: 2% !important;  
+        margin-bottom: 20px !important;  
+    }`
 
 // export const StyledRadio = styled(Radio)`
 //     &&&::after, &&&:disabled {  
