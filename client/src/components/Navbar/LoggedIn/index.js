@@ -50,7 +50,7 @@ class MenuExampleStackable extends Component {
         <Dropdown.Item>My Beacons</Dropdown.Item>
         <Dropdown.Item>Notes & Favorites</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item href='/settings'>Settings</Dropdown.Item>
         <Dropdown.Item 
           onClick={() => {
           console.log('clicked')
