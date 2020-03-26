@@ -57,7 +57,7 @@ class SearchFilter extends Component {
         console.log("Mapping Cards\n------\n" + this.state.results);
         if (this.state.results !== []) {
             return this.state.results.map((vendor)=>{
-                     <VendorCard vendor = {vendor} />
+                     return <VendorCard vendor = {vendor} />
             });
         }
         else {

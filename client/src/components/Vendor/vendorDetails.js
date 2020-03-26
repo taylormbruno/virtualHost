@@ -18,7 +18,7 @@ const VendorDetails = () => (
                 {/* <p>{active.description}</p> */}
                 <p>Llama adoption agency.  A way for you to find your new best fury friend!</p>
                 {/* <a href={web_url} target="_blank" rel="alternate">Website</a> */}
-                <a href='https://en.wikipedia.org/wiki/Llama' target="_blank" rel="alternate">Website</a>
+                <a href='https://en.wikipedia.org/wiki/Llama' target="_blank" rel="alternate noopener noreferrer">Website</a>
                 {/* <Header id='contributors'>Contributors</Header> */}
 
 
