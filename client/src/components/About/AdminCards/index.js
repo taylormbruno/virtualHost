@@ -60,7 +60,7 @@ const CardExampleGroups = () => (
       </Card.Content>
       <Card.Content extra>
         <div className='ui'>
-        <a href="https://taylormbruno.github.io/">
+        <a href="https://taylorbruno.herokuapp.com/">
           <StyledButton>
             <StyledIcon src={Portfolio}/>
             <Div>Portfolio</Div>

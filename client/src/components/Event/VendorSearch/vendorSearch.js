@@ -26,49 +26,71 @@ class SearchFilter extends Component {
     constructor(){
         super();
         this.state ={
-            results:[{"_id": "28654",               
+            results:[{"event_id":"987",
+            "_id": "28654",               
             "vendor_name": "Virtual Host",
             "image": "../images/virtualHost.png",
-            "beacon_id": 1234,
+            "beacon_id": "1234",
             "web_url": "https://virtual-host.herokuapp.com/",
             "description": "this is a test",
-            "manager_id": 1,
+            "manager_id": "1",
             "category": "IT "  }],
             filterString:""
         }
     }
-    componentDidMount(){        
-        setTimeout(()=>{
-            this.setState({filterString: ''});
-        },2000);
+    componentDidMount= () => {     
+        // let results = API.retrieveAllVendors({ eventID: this.state.eventID }); 
+        // setTimeout(()=>{
+        //     this.setState({filterString: ""});
+        // },2000);
+        console.log("Component Did Mount");
     }
-    handleInputChange =  (event) => {
+    handleInputChange = (event) => {
+        event.preventDefault();
+        console.log("Changing Input: " + event.target.value);
         const { name, value } = event.target;
         this.setState({...this.state, [name]: value});
-        let results = API.searchVendor({vendor_name: this.state.filterString})
-        console.log(results)
+        this.renderCards();
     };   
+
+    renderCards = () => {
+        let results = API.searchVendor({filterString: this.state.filterString, eventID: this.state.eventID})
+        console.log(results);
+        this.setState({...this.state, results: results});
+        this.render();
+    };
+
+    mapCards = () => {
+        console.log("Mapping Cards\n------\n" + this.state.results);
+        if (this.state.results !== []) {
+            return this.state.results.map((vendor)=>{
+                     return <VendorCard vendor = {vendor} />
+            });
+        }
+        else {
+            API.allVendors({eventID: this.state.eventID })
+            .then(resp => this.setState({...this.state, results: resp}))
+            .catch(err => console.log(err));
+            this.mapCards();
+        }
+    }
 
     render(){        
         return(
-            <div>
             <div>                                     
                 <div className="Search"> 
                     <StyledForm>
-                        <div class="ui massive icon input className=searchBar">
+                        <div className="ui massive icon input searchBar">
                             <input  
                                 name= "filterString"      
                                 type="text"                             
                                 placeholder="Search vendors..."
                                 onChange={this.handleInputChange}
                             />
-                                <i class="search icon" id='searchIcon'></i>
-                            </div>
-                        </StyledForm> 
-                    </div>                      
-                    {(this.state.active ? this.state.results.map((vendor)=>{
-                        return <VendorCard vendor = {vendor}/>
-                    }): "" )}
+                            <i className="search icon" id='searchIcon'></i>
+                        </div>
+                    </StyledForm> 
+                    {this.mapCards}
                 </div>                 
             </div>        
         );       

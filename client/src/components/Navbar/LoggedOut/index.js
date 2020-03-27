@@ -12,7 +12,7 @@ class MenuExampleStackable extends Component {
   render() {
     const { activeItem } = this.state
 
-    console.log(this.props)
+    console.log("-----LoggedOut index.js-----\n", this.props)
 
     return (
       <div id="navbar">

@@ -19,18 +19,18 @@ const LoginForm = () => (
             placeholder='Password'
             type='password'
           />
+          </div>
           <StyledButton fluid size='large' id="login">
             Login
           </StyledButton>
-          </div>
-        </Segment>
-      </Form>
-      <StyledButton href="/signup" className="shortBtn">
+                <StyledButton href="/signup" fluid size='large'>
             Create Account
         </StyledButton>
-        <StyledButton className="shortBtn">
+        <StyledButton fluid size='large'>
             Continue As Guest
         </StyledButton>
+        </Segment>
+      </Form>
     </Grid.Column>
   </Grid>
 )
