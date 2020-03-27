@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import API from '../../../utils/API'
-import VendorCard from '../VendorCards/vendorCard'
+import VendorCard from '../../VendorCard/vendorCard'
 import { StyledForm } from '../styledComponents'
 
 
@@ -26,15 +26,7 @@ class SearchFilter extends Component {
     constructor(){
         super();
         this.state ={
-            results:[{"event_id":"987",
-            "_id": "28654",               
-            "vendor_name": "Virtual Host",
-            "image": "../images/virtualHost.png",
-            "beacon_id": "1234",
-            "web_url": "https://virtual-host.herokuapp.com/",
-            "description": "this is a test",
-            "manager_id": "1",
-            "category": "IT "  }],
+            results:[],
             filterString:""
         }
     }
