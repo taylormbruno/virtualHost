@@ -26,9 +26,16 @@ class SearchFilter extends Component {
     constructor(){
         super();
         this.state ={
-            results:[],
-            filterString:"",
-            eventID: "1234demo" // hardcoded for testing. needs to be grabbed from choosing event
+            results:[{"event_id":"987",
+            "_id": "28654",               
+            "vendor_name": "Virtual Host",
+            "image": "../images/virtualHost.png",
+            "beacon_id": "1234",
+            "web_url": "https://virtual-host.herokuapp.com/",
+            "description": "this is a test",
+            "manager_id": "1",
+            "category": "IT "  }],
+            filterString:""
         }
     }
     componentDidMount= () => {     

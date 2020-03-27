@@ -1,10 +1,17 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import VendorDetails from './vendorDetails';
 
-const VendorPage = () => (
+const dumbyData = require('../Events/EventSearch/seeds')
+const VendorPage = () =>{
+ const [vendorData, setVendorData]=useState([])
+ useEffect(()=>{
+    
+    setVendorData(dumbyData)
+ },[])
+return(
     <>
-        <VendorDetails/>
+        <VendorDetails active={vendorData}/>
     </>
 )
-
+}
 export default VendorPage;
