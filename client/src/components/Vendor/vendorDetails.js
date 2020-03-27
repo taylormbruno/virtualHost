@@ -3,30 +3,34 @@ import './style.css';
 import { Container, Segment, Header, Image, Divider} from 'semantic-ui-react'
 import llama from './llama.jpeg'
 
-const VendorDetails = () => (
+const VendorDetails = (props) => {
+    const data = props.active
+
+return (
     <div >
         <Container>
+            {data.map(active=>(
             <Segment centered id='bodyContainer' stackable>
                 <Header id='vendorHeader'>Vendor</Header>
                 <Divider/>
-                {/* <Image src={active.image} wrapped ui={false} /> */}
-                <Image src={llama} size='medium'rounded bordered id='image' />
-                {/* <Header>{active.vendor_name}</Header>*/}
-                <Header id='vendorName'>Adventurous Llama</Header>
+                <Image src={active.image} wrapped ui={false} />
+                {/* <Image src={llama} size='medium'rounded bordered id='image' /> */}
+                <Header>{active.vendor_name}</Header>
+                {/* <Header id='vendorName'>Adventurous Llama</Header> */}
                 <br/>
-                {/* <Description>{active.description}</Description> */}
-                {/* <p>{active.description}</p> */}
-                <p>Llama adoption agency.  A way for you to find your new best fury friend!</p>
-                {/* <a href={web_url} target="_blank" rel="alternate">Website</a> */}
-                <a href='https://en.wikipedia.org/wiki/Llama' target="_blank" rel="alternate">Website</a>
+                <div>{active.description}</div>
+                <p>{active.description}</p>
+                {/* <p>Llama adoption agency.  A way for you to find your new best fury friend!</p> */}
+                <a href={active.web_url} target="_blank" rel="alternate">Website</a>
+                {/* <a href='https://en.wikipedia.org/wiki/Llama' target="_blank" rel="alternate">Website</a> */}
                 {/* <Header id='contributors'>Contributors</Header> */}
 
 
-            </Segment>
+            </Segment>))}
         </Container>
     </div>
 )
-
+}
 export default VendorDetails;
 
 

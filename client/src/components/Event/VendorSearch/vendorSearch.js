@@ -26,7 +26,14 @@ class SearchFilter extends Component {
     constructor(){
         super();
         this.state ={
-            results:[],
+            results:[{"_id": "28654",               
+            "vendor_name": "Virtual Host",
+            "image": "../images/virtualHost.png",
+            "beacon_id": 1234,
+            "web_url": "https://virtual-host.herokuapp.com/",
+            "description": "this is a test",
+            "manager_id": 1,
+            "category": "IT "  }],
             filterString:""
         }
     }
