@@ -67,7 +67,7 @@ const vendorSeed = [{
   "web_url": "https://virtual-host.herokuapp.com/",
   "description": "",
   "manager_id": "",
-  "event_id": "1234demo",
+  "event_id": "notDEMO",
   "category": ""
 }];
 

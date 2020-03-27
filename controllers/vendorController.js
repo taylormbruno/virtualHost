@@ -4,15 +4,13 @@ module.exports = {
   findVendorsByEvent: function(req, res) {
     db.Vendor
       .find({event_id: req.body.eventID})
-      .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   searchVendor: function(req, res) {
     console.log(req.body);
     db.Vendor
-      // .find({ $text: { $search: req.body.filterString }})
-      .find({"vendor_name": {$regex : `.*${req.body.filterString}.*`, "event_id": req.body.eventID}})
+      .find({"vendor_name": {$regex : new RegExp(req.body.filterString, 'i') }, "event_id": req.body.eventID})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
