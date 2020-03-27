@@ -1,8 +1,8 @@
 import React from 'react'
-import { Grid, Segment, Container, Card, Image, Placeholder, Icon, Header} from 'semantic-ui-react'
+import { Grid, Segment, Container, Card, Image, Placeholder, Header} from 'semantic-ui-react'
 import JoinUs from '../Event/VendorCards/Images/joinUs.jpeg'
 import './style.css'
-// import VendorCard from '../Event/VendorCards/vendorCard';
+// import VendorCard from '../VendorCard/vendorCard';
 import SearchFilter from './VendorSearch/vendorSearch';
 
 const EventDetails = () => (
@@ -64,10 +64,7 @@ const EventDetails = () => (
                                 </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
-                                <a href="/"> {/* does this need to be an anchor or can we change to span to avoid linting errors*/}
-                                    <Icon name='user' />
-                                    10 Friends
-                                </a>
+                                
                                 </Card.Content>
                             </Card>
                             <Card>
@@ -80,10 +77,7 @@ const EventDetails = () => (
                                 </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
-                                <a href="/"> {/* does this need to be an anchor or can we change to span to avoid linting errors*/}
-                                    <Icon name='user' />
-                                    10 Friends
-                                </a>
+                                
                                 </Card.Content>
                             </Card>
                             <Card>
@@ -96,10 +90,7 @@ const EventDetails = () => (
                                 </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
-                                <a href="/"> {/* does this need to be an anchor or can we change to span to avoid linting errors*/}
-                                    <Icon name='user' />
-                                    10 Friends
-                                </a>
+                                
                                 </Card.Content>
                             </Card>
                         </Card.Group>

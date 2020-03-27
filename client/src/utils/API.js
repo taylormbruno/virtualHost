@@ -10,4 +10,7 @@ export default {
     allVendors: function(eventID) {
         return axios.get("/api/vendors/all", eventID);
     }
+    // searchEvents: funtion(eventID) {
+    //     return axios.get("api/event/search", term);
+    // }
 }

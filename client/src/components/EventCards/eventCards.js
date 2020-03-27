@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid, Image } from 'semantic-ui-react';
-import './style.css'; 
+// import '../Events/style.css'; 
 import {Link} from 'react-router-dom';
 
 

@@ -1,8 +1,8 @@
 import React from 'react'
 // removed Image from import below bc unused lint error.
-import { Segment, Card, Placeholder, Icon, Header} from 'semantic-ui-react'
+import { Segment, Card, Placeholder, Header} from 'semantic-ui-react'
 import './style.css'
-// import EventCard from  './eventCards'
+// import EventCard from  '../EventCards/eventCards'
 import EventSearchFilter from './EventSearch/eventSearch';
 
 const EventPage = () => (
@@ -23,10 +23,7 @@ const EventPage = () => (
                                     </Card.Description>
                                     </Card.Content>
                                     <Card.Content extra>
-                                    <a href="/"> {/* does this need to be an anchor or can we change to span to avoid linting errors*/}
-                                        <Icon name='user' />
-                                        10 Friends
-                                    </a>
+                                    
                                     </Card.Content>
                                 </Card>
                                 <Card>
@@ -39,10 +36,7 @@ const EventPage = () => (
                                     </Card.Description>
                                     </Card.Content>
                                     <Card.Content extra>
-                                    <a href="/"> {/* does this need to be an anchor or can we change to span to avoid linting errors*/}
-                                        <Icon name='user' />
-                                        10 Friends
-                                    </a>
+                                    
                                     </Card.Content>
                                 </Card>
                                 <Card>
@@ -55,10 +49,7 @@ const EventPage = () => (
                                     </Card.Description>
                                     </Card.Content>
                                     <Card.Content extra>
-                                    <a href="/"> {/* does this need to be an anchor or can we change to span to avoid linting errors*/}
-                                        <Icon name='user' />
-                                        10 Friends
-                                    </a>
+                                    
                                     </Card.Content>
                                 </Card>
                             </Card.Group>
