@@ -7,6 +7,8 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "buffer": "4.9.2",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",

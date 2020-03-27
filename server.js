@@ -10,6 +10,8 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 const auth = require('./config/passport');
+const cookieParser = require('cookie-parser'),
+const cookieSession = require('cookie-session');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -28,6 +30,11 @@ app.use(passport.initialize());
 // Add routes, both API and view
 app.use(routes);
 
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.COOKIE_KEY]
+}));
+app.use(cookieParser());
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/virtualhost", { useNewUrlParser: true, useUnifiedTopology: true });
