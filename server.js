@@ -1,16 +1,21 @@
 require('dotenv-safe').config({
   allowEmptyValues: true
 });
-const passport = require('passport');
-const express = require("express");
+
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const app = express();
 const PORT = process.env.PORT || 3001;
+
+const express = require('express');
+const app = express();
+const passport = require('passport');
+const auth = require('./config/passport');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+auth(passport);
 app.use(passport.initialize()); 
 
 // Serve up static assets (usually on heroku)

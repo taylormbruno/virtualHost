@@ -13,6 +13,6 @@ const vendorSchema = new Schema({
 });
 
 const Vendor = mongoose.model("Vendor", vendorSchema);
-Vendor.collection.createIndex({ vendor_name: "text", description: "text" });
+// Vendor.collection.createIndex({ vendor_name: "text", description: "text" });
 
 module.exports = Vendor;

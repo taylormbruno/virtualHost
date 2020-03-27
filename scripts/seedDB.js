@@ -8,6 +8,8 @@ mongoose.connect(
   "mongodb://localhost/virtualhost"
 );
 
+db.Vendor.collection.createIndex({ vendor_name: "text", description: "text" });
+
 const userSeed = [
   {
     first_name: "Demo",
@@ -67,33 +69,33 @@ const vendorSeed = [{
   "web_url": "https://virtual-host.herokuapp.com/",
   "description": "",
   "manager_id": "",
-  "event_id": "1234demo",
+  "event_id": "notDEMO",
   "category": ""
 }];
 
-db.User
-  .remove({})
-  .then(() => db.User.collection.insertMany(userSeed))
-  .then(data => {
-    console.log(data.result.n + " user records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-});
+// db.User
+//   .remove({})
+//   .then(() => db.User.collection.insertMany(userSeed))
+//   .then(data => {
+//     console.log(data.result.n + " user records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+// });
 
-db.Event
-  .remove({})
-  .then(() => db.Event.collection.insertMany(eventSeed))
-  .then(data => {
-    console.log(data.result.n + " event records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-});
+// db.Event
+//   .remove({})
+//   .then(() => db.Event.collection.insertMany(eventSeed))
+//   .then(data => {
+//     console.log(data.result.n + " event records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+// });
 
 db.Vendor
   .remove({})

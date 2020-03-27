@@ -4,9 +4,12 @@ const apiRoutes = require("./api");
 const passport = require('passport');
 
 // API Routes
-router.use("/api", apiRoutes); // original use based off prev acitivites
+router.use("/api", apiRoutes);
 
-/* GET Google Authentication API. */
+// GET Google Authentication API.
+router.get('/auth/google', passport.authenticate('google', {
+  scope: ['https://www.googleapis.com/auth/userinfo.profile']
+}));
 router.get("/auth/google",
   passport.authenticate("google", { 
     // scope: ["profile", "email"]
