@@ -35,7 +35,7 @@ const MyEvents = () => (
       </Table.Row>
     </Table.Body>
   </Table>
-  <StyledButton circular icon='add' />
+  <StyledButton href="/register" circular icon='add' />
     </div>       
 )
 

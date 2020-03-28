@@ -44,7 +44,7 @@ class MenuExampleStackable extends Component {
       <Dropdown.Menu>
         <Dropdown.Header>My Stuff</Dropdown.Header>
         <Dropdown.Item href='/mydashboard'>My Dashboard</Dropdown.Item>
-        <Dropdown.Item>My Events</Dropdown.Item>
+        <Dropdown.Item href="/mydashboard/#eventModal">My Events</Dropdown.Item>
         <Dropdown.Item>My Beacons</Dropdown.Item>
         <Dropdown.Item>Notes & Favorites</Dropdown.Item>
         <Dropdown.Divider />

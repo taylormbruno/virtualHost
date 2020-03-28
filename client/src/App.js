@@ -3,7 +3,7 @@ import './App.css';
 import './style.css';
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-// import Body from "./components/Body";
+import Register from "./components/Register";
 import Signup from "./components/Signup";
 import Arrow from "./components/Arrow";
 import About from "./components/About";
@@ -71,6 +71,9 @@ function App() {
             </Route>
             <Route exact path={["/signup"]}>
               <Signup />
+            </Route>
+            <Route exact path={["/register"]}>
+              <Register />
             </Route>
             <Route exact path={["/events"]}>
               <Events />
