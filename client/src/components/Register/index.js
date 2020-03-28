@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyledHeader, StyledSegment, StyledButton } from "./styledComponents";
-import { Form, Input, TextArea, Select, Icon, Header } from "semantic-ui-react";
+import { Form, Input, TextArea, Select, Icon } from "semantic-ui-react";
 import { VendorForm } from "./vendor";
 
 class Settings extends Component {
