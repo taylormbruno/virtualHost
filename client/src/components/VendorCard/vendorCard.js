@@ -14,15 +14,16 @@ function VendorCard(props) {
           "_id": "2468",               
           "vendor_name": "Virtual Host",
           "image": "../images/virtualHost.png",
-          "beacon_id": 1234,
+          "beacon_id": "1234",
           "web_url": "https://virtual-host.herokuapp.com/",
           "description": "Virtual Host Using notifications on your phone to guide you through the event, informing you along the way.",
-          "manager_id": 1,
-          "category": "IT "  
+          "manager_id": "1",
+          "category": "IT ", 
+          "event_id": "2222"  
       }
     }
       return(
-      <Card.Group grid container columns={3} stackable>
+      
         <Card>
           <Grid.Column>
             <Card.Link as ={Link} to="https://virtual-host.herokuapp.com/"/>
@@ -34,13 +35,14 @@ function VendorCard(props) {
             </Card.Description>
             </Card.Content>
             <Card.Content extra>
-            {active.manager_id}, {active.beacon_id}, {active.category},{active.web_url}
+            {active.manager_id}, {active._id}, {active.beacon_id}, {active.category},{active.web_url}, {active.event_id}
             </Card.Content>                
           </Grid.Column>
-        </Card>
-  </Card.Group>
+        </Card>  
   )  
 }
 
 
 export default VendorCard;
+
+
