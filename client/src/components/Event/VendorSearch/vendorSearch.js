@@ -46,7 +46,8 @@ class SearchFilter extends Component {
     };   
 
     renderCards = () => {
-        let results = API.searchVendor({filterString: this.state.filterString, eventID: this.state.eventID})
+        //let results = API.searchVendor({filterString: this.state.filterString, eventID: this.state.eventID})
+        let results = API.searchVendor(this.state.SearchFilter);
         console.log(results);
         this.setState({...this.state, results: results});
     };

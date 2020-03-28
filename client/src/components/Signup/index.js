@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Image, Grid, Segment } from 'semantic-ui-react';
+import { Form, Image, Grid } from 'semantic-ui-react';
 import Logo from "./signup.png";
 import "./style.css";
-import { StyledButton } from "./styledComponents.js";
+import { StyledButton, StyledSegment } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
 // import { useHistory } from 'react-router-dom';
@@ -65,7 +65,7 @@ class SignupForm extends Component {
     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
        <Grid.Column id="container">
         <Form size='large'>
-          <Segment stacked>
+          <StyledSegment stacked>
             <Image id="logo" src={Logo} />
             <div id="formContainer">
               <Form.Input 
@@ -118,10 +118,10 @@ class SignupForm extends Component {
                   Join the Community
                 </StyledButton>
               </div>
-            </Segment>
+            </StyledSegment>
           </Form>
           <Passport />
-          <StyledButton>
+          <StyledButton className="bottom">
             Continue As Guest
           </StyledButton>
         </Grid.Column>

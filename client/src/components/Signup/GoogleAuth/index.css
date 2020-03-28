@@ -5,22 +5,23 @@ a {
 .button {
     display: inline-block;
     max-width: 300px;
-    margin-top: 50px;
-    border: 2px solid;
-    border-color:#8b9fa3!important;
+    margin-top: 20px;
+    background-color:#9fb8bf;
+    color: white !important;
     padding: 0 18px;
-    text-align: left;
+    text-align: center;
     width: 100%;
     height: 37px;
     border-radius: 4px;    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: "liga" on;
-    color: rgba(0, 0, 0, 0.84) !important;
+    /* color: rgba(0, 0, 0, 0.84) !important; */
     fill: rgba(0, 0, 0, 0.84) !important;
     box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
     font: inherit;
     outline: none;
+    font-weight: bold;
 }
 .button .svgIcon {
     vertical-align: middle;

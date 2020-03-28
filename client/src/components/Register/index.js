@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { StyledHeader, StyledSegment, StyledButton } from "./styledComponents";
-import { Form, Input, TextArea, Select, Icon, Header } from "semantic-ui-react";
+import { Form, Input, TextArea, Select, Icon } from "semantic-ui-react";
 import { VendorForm } from "./vendor";
 
 class Settings extends Component {
@@ -121,7 +121,7 @@ class Settings extends Component {
               id="form-textarea-control-opinion"
               control={TextArea}
               label="Event Description"
-              placeholder="Opinion"
+              placeholder="Tell us more about your event"
             />
             <Form.Field
               id="form-input-control-error-email"
