@@ -1,11 +1,25 @@
-import React from 'react'
-import { Grid, Segment, Container, Card, Image, Placeholder, Header} from 'semantic-ui-react'
-import JoinUs from '../Event/VendorCards/Images/joinUs.jpeg'
-import './style.css'
-// import VendorCard from '../VendorCard/vendorCard';
+import React, { useState, useEffect } from 'react'
+import { Grid, Segment, Container, Card, Header} from 'semantic-ui-react'
+// import JoinUs from '../Event/VendorCards/Images/joinUs.jpeg'
+import './style.css';
+import VendorCard from '../VendorCard/vendorCard';
 import SearchFilter from './VendorSearch/vendorSearch';
+import axios from 'axios';
 
-const EventDetails = () => (
+
+const EventDetail = () => {
+    const [vendorData, setVendorData] = useState ([])
+    useEffect(() => {        
+        axios.get('http://localhost:3000/api/vendors/all')
+        .then(response => setVendorData(response))
+        .catch(
+            (error) =>  {
+              console.log('Show error notification!')             
+            }
+          )
+    })
+        return( 
+        
     <div>
         <Grid columns={2} divided stackable>
             <Grid.Row stretched>
@@ -17,7 +31,7 @@ const EventDetails = () => (
                         <Container textAlign='justified'>      
                         <Card textAlign='center' centered>
                             {/* <Image src={active.image} wrapped ui={false} /> */}
-                            <Image src={JoinUs} size='medium'/>
+                            {/* <Image src={JoinUs} size='medium'/> */}
                             <Card.Content>
                             {/* <Card.Header>{active.event_name}</Card.Header>*/}
                             <Card.Header textAlign='center'>Demo Day</Card.Header>
@@ -51,48 +65,13 @@ const EventDetails = () => (
                 <Segment id="column2">
                 <Header id='vendorHeader'>Vendors</Header>
                 <SearchFilter/>                
-                    <div> 
-                        <Card.Group centered>  
-                         {/* <VendorCard/>   */}                 
-                            <Card>
-                                <Placeholder.Header image/>
-                                <Card.Content>
-                                <Card.Header>Daniel</Card.Header>
-                                <Card.Meta>Joined in 2016</Card.Meta>
-                                <Card.Description>
-                                    Daniel is a comedian living in Nashville.
-                                </Card.Description>
-                                </Card.Content>
-                                <Card.Content extra>
-                                
-                                </Card.Content>
-                            </Card>
-                            <Card>
-                                <Placeholder.Header image/>
-                                <Card.Content>
-                                <Card.Header>Daniel</Card.Header>
-                                <Card.Meta>Joined in 2016</Card.Meta>
-                                <Card.Description>
-                                    Daniel is a comedian living in Nashville.
-                                </Card.Description>
-                                </Card.Content>
-                                <Card.Content extra>
-                                
-                                </Card.Content>
-                            </Card>
-                            <Card>
-                                <Placeholder.Header image/>
-                                <Card.Content>
-                                <Card.Header>Daniel</Card.Header>
-                                <Card.Meta>Joined in 2016</Card.Meta>
-                                <Card.Description>
-                                    Daniel is a comedian living in Nashville.
-                                </Card.Description>
-                                </Card.Content>
-                                <Card.Content extra>
-                                
-                                </Card.Content>
-                            </Card>
+                    <div>                         
+                       <Card.Group  centered grid container columns={3} stackable>  
+                       {vendorData.map(data=> 
+                        <VendorCard vendor= {data} /> 
+                       )
+                                     
+                        }        
                         </Card.Group>
                     </div>
                 </Segment>
@@ -101,5 +80,5 @@ const EventDetails = () => (
         </Grid>
 </div>
 )
-
-export default EventDetails;
+}
+export default EventDetail;

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Grid, Image } from 'semantic-ui-react';
-// import '../Events/style.css'; 
+import { Card, Grid, Image } from 'semantic-ui-react'; 
 import {Link} from 'react-router-dom';
 
 
@@ -12,12 +11,14 @@ function EventCard (props){
       else {
         active= {
           "_id": "246",               
-          "vendor_name": "Virtual Host",
+          "event_name": "Virtual Host",
           "image": "../images/virtualHost.png",
-          "beacon_id": 1234,
+          "locaction": "123 ABC St.",
+          "start_time": "Date default",   
+          "end_time": "Date Default",       
           "web_url": "https://virtual-host.herokuapp.com/",
           "description": "Virtual Host Using notifications on your phone to guide you through the event, informing you along the way.",
-          "manager_id": 1,
+          "host_id": "1",
           "category": "IT "  
       }
     }
@@ -34,7 +35,7 @@ function EventCard (props){
             </Card.Description>
             </Card.Content>
             <Card.Content extra>
-            {active.host_id}, {active.web_url}
+            {active.host_id}, {active.web_url}, {active.event_id}
             </Card.Content>                
           </Grid.Column>
         </Card>
@@ -45,3 +46,15 @@ function EventCard (props){
 
 export default EventCard;
 
+// const eventSchema = new Schema({
+//   _id: {type: String, required: true},  
+//   event_name: { type: String, required: true },
+//   image: { type: String, required: true },
+//   location: { type: String, required: true },
+//   start_time: { type: Date, required: true },
+//   end_time: { type: Date, required: true },
+//   description: { type: String, required: true },
+//   host_id: { type: String, required: true },
+//   vendors: { type: Array, default: [] },
+//   web_url: { type: String, required: false }
+// });
