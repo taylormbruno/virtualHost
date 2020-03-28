@@ -2,8 +2,11 @@ import React from 'react';
 import './index.css';
 
 function Passport() {
+
+
     return (
-        <a href="/auth/google" className="button">
+        // <button className="button" onClick={API.googleAuth}>
+        <a href="http://localhost:3001/auth/google" className="button">
           <div>
             <span className="svgIcon t-popup-svg">
               <svg

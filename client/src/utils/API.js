@@ -49,8 +49,20 @@ export default {
         console.log('test')
         // return axios.get("/api/vendors/all", eventID);
         return vendorSeed
+    },
+    googleAuth: function() {
+        const params = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost:3000",    
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+                "Access-Control-Allow-Headers": "X-Requested-With,content-type",    
+                "Access-Control-Allow-Credentials": true,
+            },
+            withCredentials: true,
+            data: undefined
+        }
+        return axios('/auth/google', params) ;
     }
-    // searchEvents: funtion(eventID) {
-    //     return axios.get("api/event/search", term);
-    // }
 }
