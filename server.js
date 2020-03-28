@@ -20,18 +20,21 @@ app.use(express.json());
 auth(passport);
 app.use(passport.initialize()); 
 
+console.log(process.env.NODE_ENV);
+
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
-// else {
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+else {
   app.use(express.static("client/public"));
-// }
+}
 // Add routes, both API and view
 app.use(routes);
 
 app.use(cookieSession({
   name: 'session',
+  maxAge: 24 * 60 * 60 * 1000, // one day
   keys: [process.env.COOKIE_KEY]
 }));
 app.use(cookieParser());
