@@ -120,7 +120,7 @@ class Settings extends Component {
               id="form-textarea-control-opinion"
               control={TextArea}
               label="Event Description"
-              placeholder="Opinion"
+              placeholder="Tell us more about your event"
             />
             <Form.Field
               id="form-input-control-error-email"
