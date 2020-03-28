@@ -5,7 +5,7 @@ import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import Passport from "./GoogleAuth";
 import queryString from "query-string";
 
@@ -25,18 +25,17 @@ class SignupForm extends Component {
     // setthis.state({...this.state, [name]: value});
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     var query = queryString.parse(window.location.search);
     if (query.token) {
       window.localStorage.setItem("jwt", query.token);
-      this.props.history.push("/");
     }
   }
 
+  // history = useHistory();
 
-  // signupSuccess = () => {
-  //   let history = useHistory();
-  //   history.push('/login');
+  // signupSuccess = (id) => {
+  //   history.push('/user' + id);
   // }
 
   handleFormSubmit = async (event) => {
@@ -53,7 +52,7 @@ class SignupForm extends Component {
       let newUser = await API.signupUser(newObj);
       if (newUser.status === 200) {
         console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
-        // this.props.history.push('/user' + newUser.data._id);
+        this.signupSuccess(newUser.data._id);
       }
       else {
         console.log(`Error ${newUser.status}: ${newUser.statusText}`)
