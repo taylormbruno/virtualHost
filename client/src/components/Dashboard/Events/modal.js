@@ -5,7 +5,7 @@ import "./style.css"
 
 export default function EventModal() {
 return (
-<Modal trigger={<StyledCell>
+<Modal id="eventModal" trigger={<StyledCell>
             No. of Booths 
             <i aria-hidden="true" class="expand icon" id="expandIcon"></i>
         </StyledCell>} basic>
