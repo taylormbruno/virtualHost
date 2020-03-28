@@ -15,30 +15,37 @@ export class VendorForm extends Component {
       <StyledSegment>
         <StyledHeader2>Register Vendor</StyledHeader2>
         <Form>
-          <Form.Group widths="equal">
-            <Form.Field
+        <Form.Field
               id="form-input-control-first-name"
               control={Input}
               label="Event Title"
               placeholder="Enter name of your event here"
             />
+          <Form.Group widths="equal">
             <Form.Field
               id="form-input-control-first-name"
               control={Input}
-              label="Beacon ID"
-              placeholder="Enter name of your event here"
+              label="Beacon Form ID"
+              placeholder="Enter name of your Beacon Form ID here"
+            />
+            <Form.Field
+              id="form-input-control-first-name"
+              control={Input}
+              label="Beacon Instance ID"
+              placeholder="Enter name of your Beacon Instance ID here"
             />
           </Form.Group>
           <Form.Field
             id="form-input-control-error-email"
             control={Input}
             label="Photo URL"
+            placeholder="Add URL path to photo. This will display on your booth's card."
           />
           <Form.Field
             id="form-textarea-control-opinion"
             control={TextArea}
             label="Booth Description"
-            placeholder="Opinion"
+            placeholder="Tell us more about your booth"
           />
           <Form.Field
             id="form-input-control-error-email"
