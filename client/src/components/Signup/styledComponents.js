@@ -4,7 +4,7 @@ import { Button, Segment } from 'semantic-ui-react';
 
 export const StyledButton = styled(Button)`
     &&& {  
-        background-color: #8b9fa3;
+        background-color: #9fb8bf;
         color: white !important;
         margin: 10px auto;
     }   

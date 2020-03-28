@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Form, Image, Grid, Segment } from 'semantic-ui-react';
+import { Form, Image, Grid } from 'semantic-ui-react';
 import Logo from "./signup.png";
 import "./style.css";
 import { StyledButton, StyledSegment } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import Passport from "./GoogleAuth";
 import queryString from "query-string";
 
