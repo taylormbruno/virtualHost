@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = {
   findVendorsByEvent: function(req, res) {
     db.Vendor
-      .find({event_id: req.body.eventID})
+      .find({event_id: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
