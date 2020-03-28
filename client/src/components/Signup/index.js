@@ -30,13 +30,14 @@ class SignupForm extends Component {
     if (query.token) {
       window.localStorage.setItem("jwt", query.token);
       this.props.history.push("/");
-   }
-}
-
-  signupSuccess = () => {
-    const history = useHistory();
-    history.push('/login');
+    }
   }
+
+
+  // signupSuccess = () => {
+  //   let history = useHistory();
+  //   history.push('/login');
+  // }
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -52,23 +53,13 @@ class SignupForm extends Component {
       let newUser = await API.signupUser(newObj);
       if (newUser.status === 200) {
         console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
-        this.signupSuccess();
+        // this.props.history.push('/user' + newUser.data._id);
       }
       else {
         console.log(`Error ${newUser.status}: ${newUser.statusText}`)
       }
     }
-    // pseudocode
-    // global state = (create object with necessary user data)
   };
-
-  // once user is logged in (need to add auto login after signup)
-  // will use to redirect
-  // const redirectToReferrer = () => {
-  //   if (globalstate.loggedIn === true) {
-  //           return <Redirect to={"/user" + newUser._id} />
-  //       }
-  // }
         
   render() {
     return(

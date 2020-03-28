@@ -57,21 +57,24 @@ class SearchFilter extends Component {
         let results = API.searchVendor({filterString: this.state.filterString, eventID: this.state.eventID})
         console.log(results);
         this.setState({...this.state, results: results});
-        this.render();
     };
 
     mapCards = () => {
         console.log("Mapping Cards\n------\n" + this.state.results);
         if (this.state.results !== []) {
-            return this.state.results.map((vendor)=>{
+          this.state.results.map((vendor)=>{
                      return <VendorCard vendor = {vendor} />
             });
         }
         else {
             API.allVendors({eventID: this.state.eventID })
-            .then(resp => this.setState({...this.state, results: resp}))
+            .then(resp => {
+                this.setState({...this.state, results: resp});
+                this.state.results.map((vendor)=>{
+                    return <VendorCard vendor = {vendor} />
+           });
+            })
             .catch(err => console.log(err));
-            this.mapCards();
         }
     }
 
