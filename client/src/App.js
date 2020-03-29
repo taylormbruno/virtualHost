@@ -78,13 +78,13 @@ function App() {
             <Route exact path={["/events"]}>
               <Events />
             </Route>
-            <Route path={["/event/:id", "/vendorsearchtest"]}>
+            <Route path={["/event/:id"]}>
               <Event />
             </Route>
             <Route path={["/event"]}>
               <Event />
             </Route>
-            <Route exact path={"/mydashboard"}>
+            <Route path={["/mydashboard", "/mydashboard/:id"]}>
               <Dashboard />
             </Route>
             <Route exact path={"/settings"}>
