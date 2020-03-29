@@ -5,7 +5,7 @@ import "./style.css";
 import { StyledButton, StyledSegment } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Passport from "./GoogleAuth";
 import queryString from "query-string";
 
@@ -14,7 +14,6 @@ class SignupForm extends Component {
     super(props)
     this.state = {}
   }
-  // const [this.state, setthis.state] = useState();
   
   handleInputChange = (event) => {
     if (event.target.name === "username") {
@@ -22,7 +21,6 @@ class SignupForm extends Component {
     }
     const { name, value } = event.target;
     this.setState({...this.state, [name]: value });
-    // setthis.state({...this.state, [name]: value});
   };
 
   componentDidMount = () => {
@@ -31,12 +29,11 @@ class SignupForm extends Component {
       window.localStorage.setItem("jwt", query.token);
     }
   }
-
   // history = useHistory();
 
-  // signupSuccess = (id) => {
-  //   history.push('/user' + id);
-  // }
+  signupSuccess = (id) => {
+    useHistory().push('/mydashboard/' + id);
+  };
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -114,7 +111,7 @@ class SignupForm extends Component {
                 name="last_name"
                 onChange={this.handleInputChange}
                 />
-                <StyledButton fluid size='large' onClick={this.handleFormSubmit} href="/login">
+                <StyledButton fluid size='large' onClick={this.handleFormSubmit}>
                   Join the Community
                 </StyledButton>
               </div>

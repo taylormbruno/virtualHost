@@ -63,6 +63,9 @@ export default {
             withCredentials: true,
             data: undefined
         }
-        return axios('/auth/google', params) ;
+        return axios.get('/auth/google', params) ;
+    },
+    loginUser: function(user) {
+      return axios.get("/api/users/login", user);
     }
 }
