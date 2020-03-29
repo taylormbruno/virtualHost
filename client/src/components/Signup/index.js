@@ -5,7 +5,7 @@ import "./style.css";
 import { StyledButton, StyledSegment } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import Passport from "./GoogleAuth";
 import queryString from "query-string";
 
@@ -23,17 +23,17 @@ class SignupForm extends Component {
     this.setState({...this.state, [name]: value });
   };
 
-  componentDidMount = () => {
-    var query = queryString.parse(window.location.search);
-    if (query.token) {
-      window.localStorage.setItem("jwt", query.token);
-    }
-  }
+  // componentDidMount = () => {
+  //   var query = queryString.parse(window.location.search);
+  //   if (query.token) {
+  //     window.localStorage.setItem("jwt", query.token);
+  //   }
+  // }
   // history = useHistory();
 
-  signupSuccess = (id) => {
-    useHistory().push('/mydashboard/' + id);
-  };
+  // signupSuccess = (id) => {
+  //   useHistory().push('/mydashboard/' + id);
+  // };
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
