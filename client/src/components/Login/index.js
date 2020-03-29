@@ -1,14 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import { Form, Grid, Image, Segment } from "semantic-ui-react";
 import Logo from "./logo.png";
 import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
+import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      redirect: false,
+      username: "",
+      password:""
+    };
   }
 
   handleInputChange = (event) => {
@@ -19,8 +24,10 @@ class LoginForm extends Component {
     this.setState({...this.state, [name]: value });
   };
 
-  signupSuccess = (id) => {
-    useHistory().push('/mydashboard/' + id);
+  loginSuccess = (id) => {
+    if (this.state.redirect) {
+      return <Redirect to={'/mydashboard/' + id} />
+    }
   };
 
   handleFormSubmit = async (event) => {
@@ -32,6 +39,7 @@ class LoginForm extends Component {
       let newUser = await API.loginUser(newObj);
       if (newUser.status === 200) {
         console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
+        this.setState({...this.state, redirect: true})
         this.loginSuccess(newUser.data._id);
       }
       else {
