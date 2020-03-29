@@ -12,6 +12,13 @@ module.exports = {
     db.Event
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));      
+  },
+  searchEvent: function(req, res) {
+    console.log(req.body);
+    db.Event
+      .find({"event_name": {$regex : new RegExp(req.body.filterString, 'i') }})
+      .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {

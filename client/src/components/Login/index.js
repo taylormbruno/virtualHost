@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ Component } from "react";
 import { Form, Grid, Image, Segment } from "semantic-ui-react";
 import Logo from "./logo.png";
 import "./style.css";
@@ -19,10 +19,10 @@ class LoginForm extends Component {
     this.setState({...this.state, [name]: value });
   };
 
-  signupSuccess = (id) => {
-    useHistory().push('/mydashboard/' + id);
-  };
-
+  // signupSuccess = (id) => {
+  //   useHistory().push('/mydashboard/' + id);
+  // };
+  
   handleFormSubmit = async (event) => {
     event.preventDefault();
       const newObj = {
