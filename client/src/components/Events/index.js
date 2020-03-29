@@ -2,8 +2,8 @@ import React from "react";
 import EventPage from '../Events/eventsPage'
 
 
-const EventsSearchPage = () => (    
-    <>  
+const EventsSearchPage = () => (  
+    <>
         <EventPage/>
     </>
 )

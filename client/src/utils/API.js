@@ -1,4 +1,18 @@
 import axios from "axios";
+
+const eventSeed = [
+  {
+    event_name: "Presentations",
+    image: "image",
+    location: "Charlotte, NC",
+    start_time: new Date("2020/04/04 10:00:00"),
+    end_time: new Date("2020/04/04 14:00:00"),
+    description: "UNC-Charlotte Full Stack Project Presentations",
+    host_id: "",
+    vendors: []
+  }
+];
+
 const vendorSeed = [{                
     "vendor_name": "Virtual Host",
     "image": "../images/virtualHost.png",
@@ -49,7 +63,11 @@ export default {
         console.log('test')
         // return axios.get("/api/vendors/all", eventID);
         return vendorSeed
-    },
+    },    
+    allEvents: function(eventID) {
+        // return axios.get("/api/events/all", eventID);
+        return eventSeed
+    },  
     googleAuth: function() {
         const params = {
             method: "GET",
