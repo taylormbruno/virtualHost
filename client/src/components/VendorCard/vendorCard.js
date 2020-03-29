@@ -27,8 +27,8 @@ function VendorCard(props) {
       
         <Card>
           <Grid.Column>
-            <Card.Link as ={Link} to="https://virtual-host.herokuapp.com/"/>
-            <Image src={active.image} wrapped ui={false} />
+            {/* <Card.Link as ={active.web_url} to="https://virtual-host.herokuapp.com/"/> */}
+            <img class="ui avatar image" src={active.image}></img>
             <Card.Content>
             <Card.Header>{active.vendor_name}</Card.Header>                  
             <Card.Description>
