@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 
 function EventCard (props){
+  console.log('loaded')
   let active;
       if (props.event) {
         active = (props.event);    
@@ -23,11 +24,12 @@ function EventCard (props){
       }
     }
       return(
-      <Card.Group grid container columns={3} stackable>
+      
         <Card>
           <Grid.Column>
-            <Card.Link as ={Link} to="https://virtual-host.herokuapp.com/"/>
-            <Image src={active.image} wrapped ui={false} />
+            {/* <Card.Link as ={activeLink} to="https://virtual-host.herokuapp.com/"/> */}
+            {/* <Image src={active.image} wrapped ui={false} /> */}
+            <img class="ui avatar image" src={active.image}></img>
             <Card.Content>
             <Card.Header>{active.event_name}</Card.Header>                  
             <Card.Description>
@@ -39,22 +41,10 @@ function EventCard (props){
             </Card.Content>                
           </Grid.Column>
         </Card>
-  </Card.Group>
+  
   )  
 }
 
 
 export default EventCard;
 
-// const eventSchema = new Schema({
-//   _id: {type: String, required: true},  
-//   event_name: { type: String, required: true },
-//   image: { type: String, required: true },
-//   location: { type: String, required: true },
-//   start_time: { type: Date, required: true },
-//   end_time: { type: Date, required: true },
-//   description: { type: String, required: true },
-//   host_id: { type: String, required: true },
-//   vendors: { type: Array, default: [] },
-//   web_url: { type: String, required: false }
-// });
