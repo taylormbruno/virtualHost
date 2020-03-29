@@ -66,6 +66,6 @@ export default {
         return axios.get('/auth/google', params) ;
     },
     loginUser: function(user) {
-      return axios.get("/api/login", user);
+      return axios.get("/api/users/login", user);
     }
 }
