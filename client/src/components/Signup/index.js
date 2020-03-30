@@ -5,22 +5,26 @@ import "./style.css";
 import { StyledButton, StyledSegment } from "./styledComponents.js";
 import API from '../../utils/API';
 import validateForm from './validate';
-// import { useHistory } from 'react-router-dom';
 import Passport from "./GoogleAuth";
 import queryString from "query-string";
 
 class SignupForm extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      formdata: {},
+      returned: {},
+    };
   }
-  
+
+  // change window location without using a hook
+
   handleInputChange = (event) => {
     if (event.target.name === "username") {
       event.target.value = event.target.value.toLowerCase();
     }
     const { name, value } = event.target;
-    this.setState({...this.state, [name]: value });
+    this.setState({...this.state, formdata: {...this.state.formdata, [name]: value }});
   };
 
   componentDidMount = () => {
@@ -31,27 +35,30 @@ class SignupForm extends Component {
   }
 
   // need to redirect not using a hook
-  // history = useHistory();
 
-  // signupSuccess = (id) => {
-  //   useHistory().push('/mydashboard/' + id);
-  // };
-
-  handleFormSubmit = async (event) => {
+  signupSuccess = () => {
+    setTimeout(() => (
+      window.location = ("http://localhost:3000/mydashboard/" + this.state.returned._id)
+      // console.log(this.state.returned._id)
+      ), 2000);
+  };
+  
+  handleFormSubmit = async(event) => {
     event.preventDefault();
-    const isValid = validateForm(this.state);
+    const isValid = validateForm(this.state.formdata);
     if (isValid === true) {
       const newObj = {
-        username: this.state.username,
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        password: this.state.pass1,
-        email: this.state.email
+        username: this.state.formdata.username,
+        first_name: this.state.formdata.first_name,
+        last_name: this.state.formdata.last_name,
+        password: this.state.formdata.pass1,
+        email: this.state.formdata.email
       }
       let newUser = await API.signupUser(newObj);
       if (newUser.status === 200) {
         console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
-        this.signupSuccess(newUser.data._id);
+        this.setState({...this.state, returned: newUser.data });
+        this.signupSuccess();
       }
       else {
         console.log(`Error ${newUser.status}: ${newUser.statusText}`)

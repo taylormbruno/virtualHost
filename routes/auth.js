@@ -6,20 +6,17 @@ const userController = require("../controllers/userController");
 //matches /auth/+
 
 // GET Google Authentication API.
-router.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  // next();
-});
+
 
 router.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: "https://www.googleapis.com/auth/userinfo.profile"
-  })
+  "/", () => { console.log("getting google auth")}
+  // passport.authenticate("google", {
+  //   scope: "https://www.googleapis.com/auth/userinfo.profile"
+  // })
 );
 
 router.get(
-  "/google/callback",
+  "/callback",
   passport.authenticate("google", {
     failureRedirect: "/",
     session: true

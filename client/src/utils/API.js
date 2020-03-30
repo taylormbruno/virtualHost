@@ -91,6 +91,7 @@ export default {
       withCredentials: true,
       data: undefined
     };
+    console.log(params);
     return axios.get("/auth/google", params);
   }
 };
