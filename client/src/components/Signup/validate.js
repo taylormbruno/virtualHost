@@ -62,7 +62,7 @@ function validateForm(form) {
 
     // all passes
     else {
-        alert(`Welcome ${form.first_name} ${form.last_name}`);
+        // alert(`Welcome ${form.first_name} ${form.last_name}`);
         return true;
     }
 }
