@@ -2,9 +2,14 @@ const db = require("../models");
 
 module.exports = {
   findVendorsByEvent: function(req, res) {
+    console.log("Finding all vendors\n", req.headers.referer);
+    str = req.headers.referer.substring(req.headers.referer.indexOf("=") + 1);
+    console.log(str);
     db.Vendor
-      .find({event_id: req.params.id})
-      .then(dbModel => res.json(dbModel))
+    // changed this
+      .find({event_id: str})
+      // .find()
+      .then(dbModel => {console.log(dbModel); res.json(dbModel);})
       .catch(err => res.status(422).json(err));
   },
   searchVendor: function(req, res) {

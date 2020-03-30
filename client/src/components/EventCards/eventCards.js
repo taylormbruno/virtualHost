@@ -25,20 +25,20 @@ function EventCard(props) {
   }
   return (
 
-    <Card>
+    <Card href={"/event/?q="+active._id}>
       <Grid.Column>
-        {/* <Card.Link as ={activeLink} to="https://virtual-host.herokuapp.com/"/> */}
-        {/* <Image src={active.image} wrapped ui={false} /> */}
-        <img class="ui avatar image" src={active.image}></img>
+        {/* <Card.Link as ={activeLink} href={"/event/"+active._id} />  */}
+        <Image src={active.image} wrapped ui={false} />
+        {/* <img class="ui avatar image" src={active.image}></img> */}
         <Card.Content>
           <Card.Header>{active.event_name}</Card.Header>
           <Card.Description>
             {active.description}, {active.vendors}, {active.location}, {active.start_time}, {active.end_time}
           </Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        {/* <Card.Content extra>
           {active.host_id}, {active.web_url}, {active.event_id}
-        </Card.Content>
+        </Card.Content> */}
       </Grid.Column>
     </Card>
 
