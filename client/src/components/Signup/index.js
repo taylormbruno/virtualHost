@@ -23,12 +23,14 @@ class SignupForm extends Component {
     this.setState({...this.state, [name]: value });
   };
 
-  // componentDidMount = () => {
-  //   var query = queryString.parse(window.location.search);
-  //   if (query.token) {
-  //     window.localStorage.setItem("jwt", query.token);
-  //   }
-  // }
+  componentDidMount = () => {
+    var query = queryString.parse(window.location.search);
+    if (query.token) {
+      window.localStorage.setItem("jwt", query.token);
+    }
+  }
+
+  // need to redirect not using a hook
   // history = useHistory();
 
   // signupSuccess = (id) => {
