@@ -76,7 +76,6 @@ db.User
   .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
     console.log(data.result.n + " user records inserted!");
-    process.exit(0);
   })
   .catch(err => {
     console.error(err);
@@ -88,7 +87,6 @@ db.Event
   .then(() => db.Event.collection.insertMany(eventSeed))
   .then(data => {
     console.log(data.result.n + " event records inserted!");
-    process.exit(0);
   })
   .catch(err => {
     console.error(err);
@@ -105,3 +103,5 @@ db.Vendor
     console.error(err);
     process.exit(1);
 });
+
+
