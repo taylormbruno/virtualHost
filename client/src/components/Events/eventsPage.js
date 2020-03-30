@@ -24,7 +24,7 @@ const EventPage = () => {
     }
     return (
         <div>
-            <Grid stackable>
+            <Grid columns={2} divided stackable>
                 <Grid.Row stretched>
                     <Grid.Column floated='right' width={11}>
                         <Segment id="column2">
