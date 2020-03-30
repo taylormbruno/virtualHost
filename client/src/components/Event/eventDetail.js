@@ -46,7 +46,7 @@ const EventDetail = () => {
                                     <Card.Group centered grid container columns={3} stackable>
                                         {vendorData.map((vendor) => {
                                             console.log(vendor)
-                                            return <VendorCard vendor={vendor} />
+                                            return <VendorCard vendor={vendor}/>
                                         })}
                                     </Card.Group>) : null}
                             </div>

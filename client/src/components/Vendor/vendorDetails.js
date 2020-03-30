@@ -19,9 +19,9 @@ const VendorDetails = (active) => (
                 <br/>
                 <>Click card for more details.</>
 
-                {/* <p>{active.description}</p> */}
+                <p>{active.description}</p>
                 {/* <p>Llama adoption agency.  A way for you to find your new best fury friend!</p> */}
-                {/* <a href={active.web_url} target="_blank" rel="alternate noopener noreferrer">Website</a> */}
+                <a href={active.web_url} target="_blank" rel="alternate noopener noreferrer">Website</a>
                 {/* <a href='https://en.wikipedia.org/wiki/Llama' target="_blank" rel="alternatenoopener noreferrer ">Website</a> */}
                 {/* <Header id='contributors'>Contributors</Header> */}
 

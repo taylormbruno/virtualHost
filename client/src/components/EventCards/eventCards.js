@@ -16,7 +16,7 @@ function EventCard(props) {
       "image": "../images/virtualHost.png",
       "locaction": "123 ABC St.",
       "start_time": "Date default",
-      // "end_time": "Date Default",
+      "end_time": "Date Default",
       "web_url": "https://virtual-host.herokuapp.com/",
       "description": "Virtual Host Using notifications on your phone to guide you through the event, informing you along the way.",
       "host_id": "1",
@@ -33,7 +33,7 @@ function EventCard(props) {
         <Card.Content>
           <Card.Header>{active.event_name}</Card.Header>
           <Card.Description>
-            {active.description}, {active.vendors}, {active.location}, {active.start_time}, {active.end_time}
+            {active.description},{active.vendors}, {active.location}, {active.start_time}, {active.end_time}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

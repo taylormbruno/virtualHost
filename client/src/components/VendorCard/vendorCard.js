@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Grid, Image } from 'semantic-ui-react';
+import { Card, Grid, Divider, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 function VendorCard(props) {
@@ -26,6 +26,7 @@ function VendorCard(props) {
     <Card>
       <Grid.Column>
         {/* <Card.Link as ={active.web_url} to="https://virtual-host.herokuapp.com/"/> */}
+        {/* <Card.Link to={"/vendor/" + active._id}/> */}
         <img class="ui avatar image" src={active.image}></img>
         <Card.Content>
           <Card.Header>{active.vendor_name}</Card.Header>
@@ -33,8 +34,9 @@ function VendorCard(props) {
             {active.description}
           </Card.Description>
         </Card.Content>
+        <Divider/>
         <Card.Content extra>
-          {active.manager_id}, {active._id}, {active.beacon_id}, {active.category},{active.web_url}, {active.event_id}
+          Click Card for More Info
         </Card.Content>
       </Grid.Column>
     </Card>
