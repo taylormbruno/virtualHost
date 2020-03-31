@@ -10,13 +10,10 @@ class EventPage extends Component {
     super(props);
     this.state = {
       masterList: [],
-      eventData: []
-      //   event_id: "1234demo" // props.eventID // pass event_id to props
+      eventData: []      
     };
   }
-  // const [eventData, setEventData] = useState([])
-  // const [masterList, setMasterList] = useState([])
-
+  
   componentDidMount() {
     this.retrieveAll().then(response => {
       console.log(response);
@@ -33,19 +30,12 @@ class EventPage extends Component {
     console.log(master.data);
     return master.data;
   };
-
-  // useEffect(() => {
-  //     const fal = API.allEvents()
-  //     console.log(fal)
-  //     setEventData(fal) // this list the one that the map uses
-  //     setMasterList(fal) // this list never changes
-  // });
+  
   theSearch = term => {
     const filtered = this.state.masterList.filter(word => {
       console.log(term, word.event_name);
       return word.event_name.toLowerCase().includes(term.toLowerCase());
-    }); // this uses master list to be able to search all vendors
-    // setEventData(filtered) // this gets replaced with filtered list
+    }); 
     this.setState({ ...this.state, eventData: filtered });
   };
   render() {

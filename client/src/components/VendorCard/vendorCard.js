@@ -24,8 +24,7 @@ function VendorCard(props) {
   return (
 
     <Card href={"/vendor/?q="+active._id}>
-      <Grid.Column>
-        
+      <Grid.Column>        
         <Card.Content>
           <Image src={active.image} wrapped ui={true} />
           <Card.Header>{active.vendor_name}</Card.Header>
@@ -34,10 +33,11 @@ function VendorCard(props) {
             <br/>
           </Card.Description>
         </Card.Content>
-        <Divider/>
-        <Card.Content extra>
+        <br/> 
+        <br/>  
           Click Card for More Info
-        </Card.Content> 
+        <br/> 
+        <br/>
       </Grid.Column>
     </Card>
   )
