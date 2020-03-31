@@ -21,7 +21,7 @@ const userSeed = [
 const eventSeed = [
   {
     event_name: "Presentations",
-    image: "image",
+    image: "../joinUs.jpeg",
     location: "Charlotte, NC",
     start_time: new Date("2020/04/04 10:00:00"),
     end_time: new Date("2020/04/04 14:00:00"),

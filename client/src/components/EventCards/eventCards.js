@@ -21,27 +21,28 @@ function EventCard(props) {
       "host_id": "1",
       "category": "IT "
     }
-  }
-  console.log(active)
+  }  
   return (
 
     <Card href={"/event/?q="+active._id}>
-      <Grid.Column>
-        {/* <Card.Link as ={activeLink} href={"/event/"+active._id} />  */}
-        <Image src={active.image} wrapped ui={true} />
-        {/* <img class="ui avatar image" src={active.image}></img> */}
+      <Grid.Column>                
         <Card.Content>
+          <Image src={active.image} wrapped ui={true} />
           <Card.Header>{active.event_name}</Card.Header>
           <Card.Description>
             <br/>
             <p>{active.description}</p>
             <p>{active.vendors}</p>
             <p>{active.location}</p>
-            <p>{active.start_time}</p> 
-            <br/>           
+            <p>Starting at {active.start_time}</p> 
+            <br/>
           </Card.Description>
         </Card.Content>
-       Click on Card for More Info
+        <br/> 
+        <br/>
+          Click on Card for More Info 
+        <br/> 
+        <br/>
       </Grid.Column>
     </Card>
 
