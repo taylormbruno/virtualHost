@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Icon, Grid, Image } from 'semantic-ui-react'
 import { StyledIcon } from './styledComponents'
+import API from "../../../utils/API";
 
 
 const boothseeds = [
@@ -33,9 +34,17 @@ const boothseeds = [
 
 export default class Booths extends Component {
 
-  state={
-    currentCardIndex: 0
+  // Needs to map through all booths and see if current user's id matches the booth's host id. If they match, the booth's id should be pushed to usersBooths array in state.
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentCardIndex: 0,
+      masterList: [],
+      usersBooths: []    
+    };
   }
+
 
   nextIndex = () => {
     let favorites=[1,2,3];

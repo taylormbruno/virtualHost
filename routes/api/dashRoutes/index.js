@@ -10,6 +10,7 @@ router.get("/loaddashboard", (req, res) => {
   console.log("Hello User 15\n", req);
 });
 
+
 router.get("/logout", (req, res) => {
   req.logout();
   req.session = null;

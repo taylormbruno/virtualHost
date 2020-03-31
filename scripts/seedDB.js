@@ -15,13 +15,21 @@ const userSeed = [
     username: "demouser",
     password: "user12DEMO",
     email: "user@demo.com",
+    favorites: ["1234demo"],
+    notes: [{
+      boothID: "",
+      eventID:"",
+      eventName: "Presentations",
+      boothName: "Virtual Host",
+      note: "This group had a great project idea!"
+    }]
   }
 ];
 
 const eventSeed = [
   {
     event_name: "Presentations",
-    image: "../joinUs.jpeg",
+    image: "https://github.com/taylormbruno/virtualHost/blob/master/client/public/images/joinUs.jpeg?raw=true",
     location: "Charlotte, NC",
     start_time: new Date("2020/04/04 10:00:00"),
     end_time: new Date("2020/04/04 14:00:00"),
