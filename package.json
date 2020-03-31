@@ -14,8 +14,10 @@
     "express-session": "^1.17.0",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.4",
+    "mongoose-find-one-or-create": "^0.2.0",
     "passport": "^0.4.1",
-    "passport-google-oauth": "^2.0.0"
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",

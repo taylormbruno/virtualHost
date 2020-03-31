@@ -47,22 +47,10 @@ userSchema.pre("save", function(next) {
     user.password = Bcrypt.hashSync(user.password, 10);
     next();
   }
-  if (user.externalID) {
-    console.log("Hashing externalID...");
-    // only hash the extID if it has been modified (or is new)
-    if (!user.isModified("externalID")) return next();
-
-    user.externalID = Bcrypt.hashSync(user.externalID, 10);
-    next();
-  }
 });
 
 userSchema.methods.comparePassword = function(plaintext, callback) {
   return callback(null, Bcrypt.compareSync(plaintext, this.password));
-};
-
-userSchema.methods.compareExternal = function(plaintext, callback) {
-  return callback(null, Bcrypt.compareSync(plaintext, this.externalID));
 };
 
 const User = mongoose.model("User", userSchema);
