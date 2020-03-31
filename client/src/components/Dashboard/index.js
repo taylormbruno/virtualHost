@@ -20,12 +20,12 @@ class MyDashboard extends Component {
     if (!this.props.match) {
       console.log("Getting external ID, redirecting to user dashboard");
       API.getExternalUser()
-      .then(response => console.log(response))
+      // .then(response => console.log(response))
 
     } else {
       const { id } = this.props.match.params;
       const user = API.getDashboard({ _id: id });
-      console.log("----Dash 25----\n", user);
+      // console.log("----Dash 25----\n", user);
     }
   };
   render() {
