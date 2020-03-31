@@ -15,6 +15,7 @@ const userController = require("../../../controllers/userController");
 
 router.get("/loaddashboard", userController.findUserById);
 
+
 router.get("/logout", (req, res) => {
   req.logout();
   req.session = null;
