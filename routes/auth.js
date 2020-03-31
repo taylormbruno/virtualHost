@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const userController = require("../controllers/userController");
 const passport = require("passport");
 
 //matches /auth/google+
@@ -19,20 +19,18 @@ router.get(
     failureRedirect: "/",
     session: true
   }),
-  function(req, res) {
+  async function(req, res) {
     console.log("auth req\n", req.user.session);
-    if (!req.session) {
-      res.cookie("token", "");
-      // console.log("---No User: req---\n", req);
+    if (!req.user.session) {
+      res.cookie("session", "");
       console.log("session cookie not set");
-      res.redirect("/");
     } else {
-      console.log("Hello User \n", req.user.session.profile);
       res.cookie("token", req.user.session.token);
-      console.log("---User token ---\n", req.user.session.token);
       console.log("session cookie set");
 
-      res.redirect("http://localhost:3000/user/mydashboard/?extid=" + req.user.session.profile.externalID);
+      res.redirect(
+        "http://localhost:3000/auth/?id=" + req.user.session.profile.externalID
+      );
     }
   }
 );

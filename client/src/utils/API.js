@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export default {
   signupUser: function(userData) {
     return axios.post("/api/users/signup", userData);
@@ -11,6 +10,9 @@ export default {
   getExternalUser: function(condition) {
     return axios.get("/api/dash/getexternal", condition);
   },
+  createExternalUser: function() {
+    return axios.get("/api/dash/createexternal");
+  },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);
   },
@@ -19,28 +21,9 @@ export default {
   },
   allVendors: function() {
     console.log("test");
-
-    return axios.get("/api/vendors/all")
+    return axios.get("/api/vendors/all");
   },
   allEvents: function() {
     return axios.get("/api/events/all");
-    
-  },
-  googleAuth: function() {
-    const params = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-        "Access-Control-Allow-Methods":
-          "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-        "Access-Control-Allow-Headers": "X-Requested-With,content-type",
-        "Access-Control-Allow-Credentials": true
-      },
-      withCredentials: true,
-      data: undefined
-    };
-    // console.log(params);
-    return axios.get("/auth/google", params);
   }
 };

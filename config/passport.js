@@ -27,8 +27,6 @@ module.exports = () => {
         callbackURL: "http://localhost:3001/auth/google/callback"
       },
       (token, refreshToken, profile, done) => {
-        console.log("PROFILE\n", profile);
-        console.log("token\n", token);
         const userProfile = {
           first_name: profile.name.givenName,
           last_name: profile.name.familyName,
@@ -37,7 +35,7 @@ module.exports = () => {
         };
         return done(null, {
           session: {
-            profile: userProfile,  
+            profile: userProfile,
             token: token
           }
         });
@@ -50,18 +48,22 @@ module.exports = () => {
       {
         passReqToCallback: true
       },
-      function(req, done) {
-        console.log("req---\n", req);
+      async function(req, done) {
+        console.log("52---req---\n", req);
+        console.log("---------------------");
         // console.log("----user-----\n", userProfile);
-        db.User.findOne({ externalID: userProfile.id }, function(err, user) {
+        await db.User.find({ externalID: userProfile.id }, function(err, user) {
           // In case of any error, return using the done method
           if (err) return done(err);
           // Username does not exist, log error & redirect back
           if (!user) {
             console.log("User Not Found. \n Creating New User.");
+            
             db.User.create(userProfile, function(err, user) {
               if (err) return done(err);
-
+              console.log("----------66-----------");
+              console.log(user);
+              console.log("---------------------");
               return done(null, user);
             });
           }
