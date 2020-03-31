@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.18.0",
     "dotenv-safe": "^8.2.0",
+    "moment": "^2.24.0",
     "passport": "^0.4.1",
     "query-string": "^6.11.1",
     "react": "^16.6.3",

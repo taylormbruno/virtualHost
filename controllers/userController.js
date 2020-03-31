@@ -6,7 +6,7 @@ module.exports = {
       .sort({ date: -1 })
       .then(dbModel => {
         res.json(dbModel);
-        console.log(dbModel);
+        // console.log(dbModel);
       })
       .catch(err => res.status(422).json(err));
   },
@@ -19,13 +19,13 @@ module.exports = {
     db.User.findOne({ username: req.body.username }, function(err, user) {
       if (user === null) {
         const error = "User not found";
-        console.log(error);
+        // console.log(error);
       } else {
         db.User.comparePassword(req.body.password, function(err, match) {
           if (err) {
             console.log("Password does not match");
           } else {
-            console.log(match);
+            // console.log(match);
             res.json(match);
           }
         });
@@ -33,10 +33,10 @@ module.exports = {
     });
   },
   create: function(req, res) {
-    console.log("----creating new user----\n", req); // fires on postman and browser to local host 3000
+    // console.log("----creating new user----\n", req); // fires on postman and browser to local host 3000
     db.User.create(req.body)
       .then((dbModel, err) => {
-        console.log("---dbModel---\n", dbModel); // fires on postman and browser
+        // console.log("---dbModel---\n", dbModel); // fires on postman and browser
         if (dbModel.externalUser === true) {
           return dbModel;
         } else res.status(200).json(dbModel);
