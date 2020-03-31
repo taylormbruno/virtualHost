@@ -4,7 +4,7 @@ import { Segment, Header, Icon, Form, Button } from 'semantic-ui-react';
 
 export const StyledSegment = styled(Segment)`
     &&& {  
-        margin-top: 10% !important;
+        margin-top: 100px !important;
     }   
     `;
 

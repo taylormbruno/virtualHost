@@ -26,8 +26,27 @@ function App() {
     light: true
   });
 
+  window.onload = function() {
+    let currentBackground = document.getElementById("backgroundColor");
+    console.log("runnin")
+    let lightMode = JSON.parse(window.localStorage.getItem('lightMode'));
+    if (lightMode !== null) {
+      userState.light = lightMode;
+      setUserState({
+        ...userState
+      });
+      console.log("updated userstate")
+    }
+    if (userState.light === true) {
+      currentBackground.setAttribute("style", "background-color: #fbfcf1")
+    }
+    if (userState.light === false) {
+      currentBackground.setAttribute("style", "background-color: gray")
+    }
+  }
+
   function updateLightMode() {
-    let currentBackground = document.getElementById("backgroundColor")
+    let currentBackground = document.getElementById("backgroundColor");
     if (userState.light === true) {
       userState.light = false
       currentBackground.setAttribute("style", "background-color: gray")
@@ -39,6 +58,7 @@ function App() {
     setUserState({
       ...userState
     });
+    window.localStorage.setItem('lightMode', userState.light);
   }
 
   function updateLoginStatus() {
