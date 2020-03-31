@@ -9,7 +9,7 @@ const VendorDetails = (active) => (
             <Segment centered id='bodyContainer' stackable>
                 <Header id='vendorHeader'>Vendor</Header>
                 <Divider/>
-                <Image src={active.image} size='small' wrapped ui={false} />
+                <Image src={active.image} wrapped ui={true} />
                 {/* <Image src={llama} size='medium'rounded bordered id='image' /> */}
                 <Header>{active.vendor_name}</Header>
                 {/* <Header id='vendorName'>Adventurous Llama</Header> */}
@@ -26,7 +26,7 @@ const VendorDetails = (active) => (
                 {/* <Header id='contributors'>Contributors</Header> */}
 
 
-            </Segment>
+            </Segment> 
         </Container>
     </div>
 )

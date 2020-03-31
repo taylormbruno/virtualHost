@@ -1,17 +1,17 @@
 import axios from "axios";
 
-const eventSeed = [
-  {
-    event_name: "Presentations",
-    image: "image",
-    location: "Charlotte, NC",
-    start_time: new Date("2020/04/04 10:00:00"),
-    end_time: new Date("2020/04/04 14:00:00"),
-    description: "UNC-Charlotte Full Stack Project Presentations",
-    host_id: "",
-    vendors: []
-  }
-];
+// const eventSeed = [
+//   {
+//     event_name: "Presentations",
+//     image: "image",
+//     location: "Charlotte, NC",
+//     start_time: new Date("2020/04/04 10:00:00"),
+//     end_time: new Date("2020/04/04 14:00:00"),
+//     description: "UNC-Charlotte Full Stack Project Presentations",
+//     host_id: "",
+//     vendors: []
+//   }
+// ];
 
 // const vendorSeed = [{
 //     "vendor_name": "Virtual Host",

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Grid, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 
 function EventCard(props) {
@@ -23,22 +22,26 @@ function EventCard(props) {
       "category": "IT "
     }
   }
+  console.log(active)
   return (
 
     <Card href={"/event/?q="+active._id}>
       <Grid.Column>
         {/* <Card.Link as ={activeLink} href={"/event/"+active._id} />  */}
-        <Image src={active.image} wrapped ui={false} />
+        <Image src={active.image} wrapped ui={true} />
         {/* <img class="ui avatar image" src={active.image}></img> */}
         <Card.Content>
           <Card.Header>{active.event_name}</Card.Header>
           <Card.Description>
-            {active.description},{active.vendors}, {active.location}, {active.start_time}, {active.end_time}
+            <br/>
+            <p>{active.description}</p>
+            <p>{active.vendors}</p>
+            <p>{active.location}</p>
+            <p>{active.start_time}</p> 
+            <br/>           
           </Card.Description>
         </Card.Content>
-        {/* <Card.Content extra>
-          {active.host_id}, {active.web_url}, {active.event_id}
-        </Card.Content> */}
+       Click on Card for More Info
       </Grid.Column>
     </Card>
 
