@@ -15,7 +15,7 @@ const SearchFilter = props => {
             <div>
                 <div className="Search">
                     <StyledForm>
-                        <div class="ui massive icon input className=searchBar">
+                        <div className="ui massive icon input className=searchBar">
                             <input
                                 name="filterString"
                                 type="text"
@@ -23,7 +23,7 @@ const SearchFilter = props => {
                                 onChange={handleInputChange}
                                 value={term}
                             />
-                            <i class="search icon" id='searchIcon'></i>
+                            <i className="search icon" id='searchIcon'></i>
                         </div>
                     </StyledForm>
                 </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Grid, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 
 function EventCard(props) {
@@ -16,29 +15,34 @@ function EventCard(props) {
       "image": "../images/virtualHost.png",
       "locaction": "123 ABC St.",
       "start_time": "Date default",
-      // "end_time": "Date Default",
+      "end_time": "Date Default",
       "web_url": "https://virtual-host.herokuapp.com/",
       "description": "Virtual Host Using notifications on your phone to guide you through the event, informing you along the way.",
       "host_id": "1",
       "category": "IT "
     }
-  }
+  }  
   return (
 
     <Card href={"/event/?q="+active._id}>
-      <Grid.Column>
-        {/* <Card.Link as ={activeLink} href={"/event/"+active._id} />  */}
-        <Image src={active.image} wrapped ui={false} />
-        {/* <img class="ui avatar image" src={active.image}></img> */}
+      <Grid.Column>                
         <Card.Content>
+          <Image src={active.image} wrapped ui={true} />
           <Card.Header>{active.event_name}</Card.Header>
           <Card.Description>
-            {active.description}, {active.vendors}, {active.location}, {active.start_time}, {active.end_time}
+            <br/>
+            <p>{active.description}</p>
+            <p>{active.vendors}</p>
+            <p>{active.location}</p>
+            <p>Starting at {active.start_time}</p> 
+            <br/>
           </Card.Description>
         </Card.Content>
-        {/* <Card.Content extra>
-          {active.host_id}, {active.web_url}, {active.event_id}
-        </Card.Content> */}
+        <br/> 
+        <br/>
+          Click on Card for More Info 
+        <br/> 
+        <br/>
       </Grid.Column>
     </Card>
 
