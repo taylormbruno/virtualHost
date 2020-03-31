@@ -6,9 +6,11 @@ import { Radio, Form, Icon } from 'semantic-ui-react'
 
 class Settings extends Component {
 
+// get true or false and set localhost
 
     render() {
-        console.log(this.props.userState)
+        let lightMode = document.getElementById("lightMode");
+
         return(
     <StyledSegment id="container">
         <StyledHeader>Settings</StyledHeader>
@@ -16,8 +18,8 @@ class Settings extends Component {
         <Radio 
         toggle 
         onClick={() => {
-        console.log('clicked')
         this.props.updateLightMode()
+        console.log(lightMode)
           }}
         />
         <StyledIcon color='grey' size='large' className="top" name="moon"/>
