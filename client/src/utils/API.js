@@ -8,8 +8,8 @@ export default {
   loginUser: function(user) {
     return axios.get("/api/users/login", user);
   },
-  getExternalUser: function() {
-    return axios.get("/api/dash/getexternal");
+  getExternalUser: function(condition) {
+    return axios.get("/api/dash/getexternal", condition);
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);

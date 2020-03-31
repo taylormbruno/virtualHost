@@ -53,5 +53,9 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  findExt: function(req,res) {
+    console.log("controller request\n",req.session);
+    // db.Event.find()
   }
 };

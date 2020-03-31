@@ -1,6 +1,9 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const LocalStrategy = require("passport-local").Strategy;
+const passportCustom = require("passport-custom");
+const CustomStrategy = passportCustom.Strategy;
+
 const db = require("../models");
 const Bcrypt = require("bcryptjs");
 
@@ -24,41 +27,32 @@ module.exports = () => {
         callbackURL: "http://localhost:3001/auth/google/callback"
       },
       (token, refreshToken, profile, done) => {
-        console.log(profile + "\n" + token);
+        console.log("PROFILE\n", profile);
+        console.log("token\n", token);
         const userProfile = {
           first_name: profile.name.givenName,
           last_name: profile.name.familyName,
           externalUser: true,
           externalID: profile.id
         };
-        db.User.findOneAndUpdate(
-          { externalID: userProfile.id },
-          userProfile,
-          { upsert: true },
-          function(err, user) {
-            console.log("Heres your user! \n", user);
-            if (err) console.log(err);
-            return done(err, {
-              profile: userProfile,
-              user: user,
-              session: { token: token }
-            });
+        return done(null, {
+          session: {
+            profile: userProfile,  
+            token: token
           }
-        );
-        // return done({
-        //   profile: userProfile,
-        //   session: { token: token }
-        // })
+        });
       }
     )
   );
   passport.use(
     "authExt",
-    new LocalStrategy(
+    new CustomStrategy(
       {
         passReqToCallback: true
       },
-      function(req, userProfile, done) {
+      function(req, done) {
+        console.log("req---\n", req);
+        // console.log("----user-----\n", userProfile);
         db.User.findOne({ externalID: userProfile.id }, function(err, user) {
           // In case of any error, return using the done method
           if (err) return done(err);
@@ -73,7 +67,7 @@ module.exports = () => {
           }
           // User and password both match, return user from
           // done method which will be treated like success
-          return done(null, user);
+          else return done(null, user);
         });
       }
     )

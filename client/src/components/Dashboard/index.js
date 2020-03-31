@@ -8,6 +8,7 @@ import Notes from "./Notes/index.js";
 import Favorites from "./Favorites/index.js";
 import { StyledHeader } from "./styledComponents";
 import API from "../../utils/API";
+import queryString from "query-string";
 
 class MyDashboard extends Component {
   constructor(props) {
@@ -17,15 +18,18 @@ class MyDashboard extends Component {
     this.onLoad();
   }
   onLoad = () => {
-    if (!this.props.match) {
+    // figure out how to grab the ID from 
+    const query = queryString.parse(window.location.search);
+    console.log(query.extid);
+    if (!query.extid) {
       console.log("Getting external ID, redirecting to user dashboard");
-      API.getExternalUser()
-      // .then(response => console.log(response))
+      API.getExternalUser({externalID: query.extid})
+      .then(response => console.log(response))
 
     } else {
-      const { id } = this.props.match.params;
-      const user = API.getDashboard({ _id: id });
-      // console.log("----Dash 25----\n", user);
+      console.log(query.id)
+      const user = API.getDashboard({ _id: query.id });
+      console.log("----Dash 25----\n", user);
     }
   };
   render() {
