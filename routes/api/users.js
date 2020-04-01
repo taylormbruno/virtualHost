@@ -7,8 +7,8 @@ router.post("/signup", userController.create);
 
 router.get('/login', userController.login);
 
-router.post("/auth", userController.findExt);
+router.get("/auth", userController.findExt);
 
-router.post("/createext", userController.createExt);
+router.post("/create/ext", userController.ExtCreate);
 
 module.exports = router;
