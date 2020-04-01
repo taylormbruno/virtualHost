@@ -23,8 +23,10 @@ form {
 
 #eventName {    
     font-family: "source Sans Pro", sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     padding-top: 30px;
+    color:#a9a6c9;
+    font-weight: 350;
 }
 
 .eventCardContent {

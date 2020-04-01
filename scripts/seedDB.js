@@ -15,12 +15,12 @@ const userSeed = [
     username: "demouser",
     password: "user12DEMO",
     email: "user@demo.com",
-    favorites: ["1234demo"],
+    favorites: [{vendor_id:"1234", vendor_name: "Virtual Host"},{vendor_id: "1234", vendor_name: "Adventurous Llama"}],
     notes: [{
-      boothID: "",
-      eventID:"",
-      eventName: "Presentations",
-      boothName: "Virtual Host",
+      vendor_id: "1234",
+      event_id:"1111",
+      event_name: "Presentations",
+      Vendor_name: "Virtual Host",
       note: "This group had a great project idea!"
     }]
   }

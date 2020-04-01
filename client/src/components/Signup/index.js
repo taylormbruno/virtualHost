@@ -17,6 +17,11 @@ class SignupForm extends Component {
     };
   }
 
+  componentDidMount = () => {
+    let query = queryString.parse(window.location.search);
+    console.log(query);
+  }
+
   // change window location without using a hook
 
   handleInputChange = (event) => {
@@ -26,13 +31,6 @@ class SignupForm extends Component {
     const { name, value } = event.target;
     this.setState({...this.state, formdata: {...this.state.formdata, [name]: value }});
   };
-
-  componentDidMount = () => {
-    var query = queryString.parse(window.location.search);
-    if (query.token) {
-      window.localStorage.setItem("jwt", query.token);
-    }
-  }
 
   // need to redirect not using a hook
 

@@ -49,9 +49,42 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Event.findById({ _id: req.params.id })
+    db.User.findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  findExt: function(req, res) {
+    console.log("controller request\n", req.body); // fires w. data
+    db.User.find({ externalID: req.body.externalID })
+      .then(dbModel => {
+        if (dbModel === undefined || []) {
+          console.log("62 User is undefined."); // fires
+          res.json({ error: "user not found" });
+        } else {
+          console.log("USER");
+          console.log(dbModel);
+          res.json(dbModel);
+        }
+      })
+      .catch(err => res.status(422).json(err));
+  },
+  createExt: function(req, res) {
+    console.log("73 USER");
+    console.log(req.body); // fires w. data
+    db.User.create(req.body)
+      .then((dbModel) => {
+        console.log("USER"); 
+        console.log(dbModel);
+        if (dbModel === undefined || []) {
+          console.log("User is undefined."); 
+          res.json({ error: "user not found" });
+        } else {
+          res.json(dbModel);
+        }
+      })
+      .catch(err => console.log(err));
   }
 };
+
+// req.headers.cookie to get user cookies from controller request
