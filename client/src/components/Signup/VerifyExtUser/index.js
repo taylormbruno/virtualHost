@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import API from "../../../utils/API";
-import { Dimmer, Loader } from "semantic-ui-react";
+import { Dimmer, Loader, Icon } from "semantic-ui-react";
+import "./style.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Verify extends Component {
   constructor(props) {
@@ -9,61 +12,115 @@ class Verify extends Component {
       first_name: "",
       last_name: "",
       externalID: "",
-      externalUser: false
+      active: false,
+      find: false,
+      create: false,
+      redirectID: ""
     };
   }
 
   componentDidMount = () => {
-    this.findUser();
+    this.onLoad();
   };
 
-  findUser = async () => {
+  onLoad = async () => {
     let query = window.location.search;
     let str = decodeURI(query.substring(query.indexOf("=") + 1));
-    console.log(JSON.parse(str));
+    console.log(JSON.parse(str)); // fires
     const userData = JSON.parse(str);
-    console.log(userData.first_name);
-    this.setState({
-      ...this.state,
-      first_name: userData.first_name,
-      last_name: userData.last_name,
-      externalID: userData.first_name,
-      externalUser: true
+    if (!userData.first_name) {
+      console.log("No user data");
+    } else {
+      console.log(userData);
+      this.setState({
+        ...this.state,
+        first_name: userData.first_name,
+        last_name: userData.last_name,
+        externalID: userData.first_name,
+        find: true
+      });
+    }
+    this.findUser(userData).then(response => {
+      if (response === null) {
+        console.log(response);
+        this.setState({
+          ...this.state,
+          create: true,
+          find: false
+        });
+        this.createExt().then(response => {
+          if (response === null) {
+            console.log(response);
+            this.setState({
+              ...this.state,
+              create: true,
+              find: false
+            });
+          } else {
+            console.log(response);
+            this.setState({
+              ...this.state,
+              active: true,
+              redirectID: response._id
+            });
+          }
+        });
+      } else {
+        console.log(response);
+        this.setState({
+          ...this.state,
+          active: true,
+          redirectID: response._id
+        });
+      }
     });
+  };
 
+  findUser = async (userObj) => {
     const user = await API.findAuth({
-      first_name: userData.first_name,
-      last_name: userData.last_name,
-      externalID: userData.externalID,
+      first_name: userObj.first_name,
+      last_name: userObj.last_name,
+      externalID: userObj.externalID,
       externalUser: true
     });
     console.log("47 USER \n", user.data);
 
     if (user.data.error) {
-      console.log("User Not Found", userData);
-      this.createExt(userData);
+      console.log("User Not Found", this.state);
+      // this.setState({ ...this.state, create: true });
+      return null;
     } else {
       console.log("User found.");
+      return user.data;
     }
   };
 
   createExt = async () => {
-    console.log("Creating new user");
-    const create = await API.createAuth(this.state);
-
-    console.log("49 USER \n", create);
-    console.log("state", this.state);
+    console.log("Creating new user"); // fires
+    const create = await API.createAuth({
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      externalID: this.state.externalID,
+      externalUser: true
+    });
+    console.log("Heres your user!")
+    if (create.data.error) {
+      console.log("User not found.");
+      return null
+    } else {
+      console.log("49 USER \n", create);
+      console.log("state", this.state);
+      return create.data
+    }
   };
+
 
   render() {
     return (
       <div>
         <br />
-        <h1>Welcome {"User"}!</h1>
-        <h3>Please wait while we load your dashboard.</h3>
-        <Dimmer active>
-          <Loader size="massive">Loading</Loader>
-        </Dimmer>
+        <h1>Welcome {this.state.first_name + " " + this.state.last_name}!</h1>
+        {(this.state.active ? (<a href={"/user/mydashboard/?q=" + this.state.redirectID}><FontAwesomeIcon icon={faCheckCircle} size="10x" style={{color:'#C7A7C6', animation: 'mymove 5s infinite'}} /><h4>Take me to my dashboard</h4></a>) : (<Dimmer active><Loader size="massive"><h3>Please wait while we load your dashboard.</h3></Loader></Dimmer>))}
       </div>
     );
   }

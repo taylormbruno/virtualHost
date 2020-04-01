@@ -11,7 +11,7 @@ export default {
     return axios.post("/api/users/auth", term)
   },
   createAuth: function(term) {
-    return axios.post("/api/user/createauth", term)
+    return axios.post("/api/users/createext", term)
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);
