@@ -8,10 +8,10 @@ export default {
     return axios.get("/api/users/login", user);
   },
   findAuth: function(term) {
-    return axios.post("/api/users/auth", term)
+    return axios.get("/api/users/auth", term)
   },
   createAuth: function(term) {
-    return axios.post("./api/users/createext", term)
+    return axios.post("/api/users/create/ext", term)
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);
