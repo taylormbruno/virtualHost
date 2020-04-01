@@ -55,11 +55,11 @@ class VendorDetail extends Component {
           <Segment centered stackable>
             <Header id="vendorHeader">Vendor</Header>
             <Divider />
-            <Card centered href={"/vendor/?q=" + this.state.vendorData._id}>
+            <Card id="card" centered href={"/vendor/?q=" + this.state.vendorData._id}>
                 <Card.Content>
                   <Image src={this.state.vendorData.image} wrapped ui={true} />
-                  <Card.Header>{this.state.vendorData.vendor_name}</Card.Header>
-                  <Card.Description>
+                  <Card.Header id='vendorName'>{this.state.vendorData.vendor_name}</Card.Header>
+                  <Card.Description id='describeIt'>
                     {this.state.vendorData.description}
                     <br />
                   </Card.Description>

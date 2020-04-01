@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react';
 
 const StyledContainer = styled(Container)`
     &&& {  
-        margin:  30px auto
+        margin: 50px auto;
     }  
 `;
 export {StyledContainer};

@@ -17,7 +17,14 @@
     color:#a9a6c9;
     font-weight: 400;
     font-family: "source Sans Pro", sans-serif;
-    font-size: 30px
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+#describeIt {
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 #contributors {
@@ -25,4 +32,9 @@
     font-weight: 400;
     font-family: "source Sans Pro", sans-serif;
     font-size: 20px
+}
+
+#card {
+    margin-top:40px;
+    margin-bottom: 40px;
 }
