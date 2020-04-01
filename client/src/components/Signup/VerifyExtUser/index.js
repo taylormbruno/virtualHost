@@ -13,7 +13,7 @@ class Verify extends Component {
       last_name: "",
       externalID: "",
       active: false,
-      find: false,
+      find: true,
       create: false,
       redirectID: ""
     };
@@ -36,20 +36,22 @@ class Verify extends Component {
         ...this.state,
         first_name: userData.first_name,
         last_name: userData.last_name,
-        externalID: userData.first_name,
-        find: true
+        externalID: userData.first_name
       });
     }
     this.findUser(userData).then(response => {
-      if (response === null) {
+      console.log(response);
+    });
+    this.createExt(userData).then(response => {
+      console.log(response);
+    });
+
+    this.findUser(userData).then(response => {
+      if (!response.first_name || response === null) {
         console.log(response);
-        this.setState({
-          ...this.state,
-          create: true,
-          find: false
-        });
+
         this.createExt().then(response => {
-          if (response === null) {
+          if (!response.first_name || response === null) {
             console.log(response);
             this.setState({
               ...this.state,
@@ -77,21 +79,28 @@ class Verify extends Component {
   };
 
   findUser = async userObj => {
-    const user = await API.findAuth({
-      first_name: userObj.first_name,
-      last_name: userObj.last_name,
-      externalID: userObj.externalID,
-      externalUser: true
-    });
-    console.log("47 USER \n", user.data);
+    if (this.state.active === false || this.state.find === true) {
+      const user = await API.findAuth({
+        first_name: userObj.first_name,
+        last_name: userObj.last_name,
+        externalID: userObj.externalID,
+        externalUser: true
+      });
+      console.log("47 USER \n", user.data);
 
-    if (user.data.error) {
-      console.log("User Not Found", this.state);
-      // this.setState({ ...this.state, create: true });
-      return null;
-    } else {
-      console.log("User found.");
-      return user.data;
+      if (user.data.error) {
+        console.log("User Not Found", this.state);
+        // this.setState({ ...this.state, create: true });
+        this.setState({
+          ...this.state,
+          create: true,
+          find: false
+        });
+        return undefined;
+      } else {
+        console.log("User found.");
+        return user.data;
+      }
     }
   };
 
@@ -133,7 +142,9 @@ class Verify extends Component {
             <Loader size="massive">
               <h3>Please wait while we load your dashboard.</h3>
             </Loader>
-            <a href="/" id="return">Return to Landing Page</a>
+            <a href="/" id="return">
+              Return to Landing Page
+            </a>
           </Dimmer>
         )}
       </div>
