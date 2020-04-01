@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 
 
 export const StyledButton = styled(Button)`
@@ -13,8 +13,17 @@ export const StyledButton = styled(Button)`
     }
 `;
 
-// export const StyledCard = styled(Card)`
-//     .cardStyle {
-//         textAlign='center';
-//     }
-// `;
+const StyledGrid = styled(Grid.Column)`
+    &&& {  
+        margin: auto
+    }  
+`;
+export {StyledGrid};
+
+
+
+
+
+
+
+

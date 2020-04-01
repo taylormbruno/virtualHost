@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Segment, Container, Card, Header } from "semantic-ui-react";
+import { Grid, Segment, Divider, Card, Header } from "semantic-ui-react";
 import "./style.css";
 import VendorCard from "../VendorCard/vendorCard";
 import SearchFilter from "./VendorSearch/vendorSearch";
@@ -10,7 +10,7 @@ import queryString from "query-string";
 class EventDetail extends Component {
   constructor(props) {
     super(props);
-    // this.routeParam = props.match.params.id;
+    
     this.state = {
       masterList: [],
       eventList: [],
@@ -72,27 +72,28 @@ class EventDetail extends Component {
   render() {
     return (
       <div>
-        <Grid columns={2} divided stackable>
+        <Grid columns={2}  divided stackable>
           <Grid.Row stretched>
-            <Grid.Column floated="left" width={5}>
+            <Grid.Column floated="left" width={7}>
               <Segment id="column1">
                 <Header id="eventHeader">Event</Header>
-                <div>
-                  <Container style={{ "textAlign": "center" }}>
+                <Divider/>
+                <div id="eventCard" >
+                  <Card.Group centered container style={{ "textAlign": "center" }}>
                     {this.state.eventList !== []
                         ? this.state.eventList.map(event => {
                             console.log(event);
                             return <EventCard event={event} key={event._id}/>;
                           })
                         : ""}
-                  </Container>
+                  </Card.Group>                  
                 </div>
               </Segment>
             </Grid.Column>
 
-            <Grid.Column floated="right" width={11}>
+            <Grid.Column floated="right" width={9}>
               <Segment id="column2">
-                <Header id="vendorHeader">Vendors</Header>
+                <Header id="vendorHeader"> Participating Vendors</Header>
                 <SearchFilter theSearch={this.theSearch} />
                 <div>
                   <Card.Group centered container columns={3} stackable>
