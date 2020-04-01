@@ -1,5 +1,7 @@
 import React from 'react';
-import { Card, Grid, Divider, Image } from 'semantic-ui-react';
+import { Card, Grid, Image } from 'semantic-ui-react';
+import "./style.css";
+ 
 
 
 function VendorCard(props) {
@@ -23,19 +25,19 @@ function VendorCard(props) {
   }
   return (
 
-    <Card href={"/vendor/?q="+active._id}>
-      <Grid.Column>        
+    <Card id="card" href={"/vendor/?q="+active._id}>
+      <Grid.Column >        
         <Card.Content>
           <Image src={active.image} wrapped ui={true} />
-          <Card.Header>{active.vendor_name}</Card.Header>
-          <Card.Description>
+          <Card.Header id='vendorName'>{active.vendor_name}</Card.Header>
+          <Card.Description id='describeIt'>
             {active.description}
             <br/>
           </Card.Description>
         </Card.Content>
         <br/> 
         <br/>  
-          Click Card for More Info
+          Click Card for More Details
         <br/> 
         <br/>
       </Grid.Column>

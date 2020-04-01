@@ -12,6 +12,14 @@ module.exports = {
       .then(dbModel => {console.log(dbModel); res.json(dbModel);})
       .catch(err => res.status(422).json(err));
   },
+  findVendorById: function(req, res) {
+    str = req.headers.referer.substring(req.headers.referer.indexOf("=") + 1);
+    db.Vendor
+      .findById({_id:str})
+      .then(dbModel => {console.log(dbModel)
+        res.json(dbModel)})
+      .catch(err => res.status(422).json(err));      
+  },
   searchVendor: function(req, res) {
     console.log(req.body);
     db.Vendor

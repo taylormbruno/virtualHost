@@ -83,7 +83,9 @@ class MyDashboard extends Component {
           <Grid.Column width={7}>
             <Segment>
               <StyledHeader as="h1">My Events</StyledHeader>
-              <Events />
+              <Events 
+              userState={this.props.userState}
+              />
             </Segment>
             <Segment>
               <StyledHeader as="h1">My Booths</StyledHeader>

@@ -7,5 +7,7 @@ router.get("/search", vendorController.searchVendor);
 
 router.get('/all', vendorController.findVendorsByEvent);
 
+router.get('/vendor', vendorController.findVendorById);
+
 
 module.exports = router;

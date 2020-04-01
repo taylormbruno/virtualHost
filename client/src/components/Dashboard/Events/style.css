@@ -44,3 +44,8 @@
     transform-origin: center !important;
     transition: all ease .5s;
   }
+
+.hover:hover {
+    background: #eae9f5;
+    cursor: pointer;
+  }
