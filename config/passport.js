@@ -1,6 +1,9 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const LocalStrategy = require("passport-local").Strategy;
+const passportCustom = require("passport-custom");
+const CustomStrategy = passportCustom.Strategy;
+
 const db = require("../models");
 const Bcrypt = require("bcryptjs");
 
@@ -24,56 +27,49 @@ module.exports = () => {
         callbackURL: "http://localhost:3001/auth/google/callback"
       },
       (token, refreshToken, profile, done) => {
-        console.log(profile + "\n" + token);
         const userProfile = {
           first_name: profile.name.givenName,
           last_name: profile.name.familyName,
           externalUser: true,
           externalID: profile.id
         };
-        db.User.findOneAndUpdate(
-          { externalID: userProfile.id },
-          userProfile,
-          { upsert: true },
-          function(err, user) {
-            console.log("Heres your user! \n", user);
-            if (err) console.log(err);
-            return done(err, {
-              profile: userProfile,
-              user: user,
-              session: { token: token }
-            });
+        return done(null, {
+          session: {
+            profile: userProfile,
+            token: token
           }
-        );
-        // return done({
-        //   profile: userProfile,
-        //   session: { token: token }
-        // })
+        });
       }
     )
   );
   passport.use(
     "authExt",
-    new LocalStrategy(
+    new CustomStrategy(
       {
         passReqToCallback: true
       },
-      function(req, userProfile, done) {
-        db.User.findOne({ externalID: userProfile.id }, function(err, user) {
+      async function(req, done) {
+        console.log("52---req---\n", req);
+        console.log("---------------------");
+        // console.log("----user-----\n", userProfile);
+        await db.User.find({ externalID: userProfile.id }, function(err, user) {
           // In case of any error, return using the done method
           if (err) return done(err);
           // Username does not exist, log error & redirect back
           if (!user) {
             console.log("User Not Found. \n Creating New User.");
+            
             db.User.create(userProfile, function(err, user) {
               if (err) return done(err);
-
+              console.log("----------66-----------");
+              console.log(user);
+              console.log("---------------------");
               return done(null, user);
             });
           }
           // User and password both match, return user from
           // done method which will be treated like success
-          return done(null, user);
+          else return done(null, user);
         });
       }
     )

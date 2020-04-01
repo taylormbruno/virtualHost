@@ -1,12 +1,10 @@
 const router = require("express").Router();
-
-const passport = require("passport");
 const userController = require("../controllers/userController");
+const passport = require("passport");
 
-//matches /auth/+
+//matches /auth/google+
 
 // GET Google Authentication API.
-
 
 router.get(
   "/",
@@ -21,27 +19,19 @@ router.get(
     failureRedirect: "/",
     session: true
   }),
-  function(req, res) {
-    console.log("auth req\n",req.profile);
-    // const token = req.user.token;
-    // req.login(); // fails. not valid
-    // console.log("---NEWUSER---\n", req.session.passport.user.profile);
-    if (!req.session) {
-      res.cookie("token", "");
-      // console.log("---No User: req---\n", req);
-      res.json({
-        status: "session cookie not set"
-      });
-      res.redirect('/')
-      
+  async function(req, res) {
+    console.log("auth req\n", req.user.session);
+    if (!req.user.session) {
+      res.cookie("session", "");
+      console.log("session cookie not set");
     } else {
-      console.log("Hello User \n", req.session.token);
-      res.cookie("token", req.session.token);
-      console.log("---User token ---\n", req.session.token);
-      res.json({
-        status: "session cookie set"
-      });
-      res.redirect("http://localhost:3000/user/mydashboard/" + req.profile.id);
+      res.cookie("token", req.user.session.token);
+      console.log("session cookie set");
+      const userString = JSON.stringify(req.user.session.profile)
+      console.log( userString );
+      res.redirect(
+        "http://localhost:3000/auth/google/user?profile=" + userString
+      );
     }
   }
 );
