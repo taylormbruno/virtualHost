@@ -30,5 +30,8 @@ export default {
   },
   allEvents: function() {
     return axios.get("/api/events/all");
+  },
+  findVendorByHost: function() {
+    return axios.get("/api/vendors/byhost");
   }
 };

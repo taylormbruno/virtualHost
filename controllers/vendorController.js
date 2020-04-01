@@ -20,6 +20,15 @@ module.exports = {
         res.json(dbModel)})
       .catch(err => res.status(422).json(err));      
   },
+  findVendorByHost: function(req, res) {
+    console.log("Finding all vendors by manager id\n", req.headers.referer);
+    str = req.headers.referer.substring(req.headers.referer.indexOf("=") + 1);
+    db.Vendor
+      .find({manager_id:str})
+      .then(dbModel => {console.log(dbModel)
+        res.json(dbModel)})
+      .catch(err => res.status(422).json(err));      
+  },
   searchVendor: function(req, res) {
     console.log(req.body);
     db.Vendor

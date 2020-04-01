@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Container } from 'semantic-ui-react';
+import { Container, Button, Header } from 'semantic-ui-react';
 
 const StyledContainer = styled(Container)`
     &&& {  
@@ -7,3 +7,27 @@ const StyledContainer = styled(Container)`
     }  
 `;
 export {StyledContainer};
+
+export const StyledButton = styled(Button)`
+    
+&&& {
+    background-color: #a9a6c9;
+    color: white !important;
+    width: 90%;
+    margin: 20px auto;
+}`
+
+export const StyledHeader2 = styled(Header)`
+    
+&&& {
+    size: 18px;
+    color: #a9a6c9;
+}`
+
+export const StyledImage = styled(Image)`
+    
+&&& {
+    width: 100%;
+    position: absolute; 
+    filter: brightness(50%) !important;
+}`

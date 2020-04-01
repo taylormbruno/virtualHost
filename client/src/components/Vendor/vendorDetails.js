@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./style.css";
 import {
-  Container,
-  Grid,
-  Card,
+  Form,
+  Rating,
+  Icon,
   Segment,
   Header,
   Image,
@@ -11,7 +11,13 @@ import {
 } from "semantic-ui-react";
 import API from "../../utils/API";
 import queryString from "query-string";
-import { StyledContainer } from "./styledComponents";
+import {
+  StyledContainer,
+  StyledButton,
+  StyledHeader2,
+  StyledImage
+} from "./styledComponents";
+import { StyledHeader } from "../Dashboard/Notes/styledComponents";
 
 class VendorDetail extends Component {
   constructor(props) {
@@ -51,33 +57,43 @@ class VendorDetail extends Component {
   };
   render() {
     return (
-        <StyledContainer id="bodyContainer">
-          <Segment centered stackable>
-            <Header id="vendorHeader">Vendor</Header>
-            <Divider />
-            <Card id="card" centered href={"/vendor/?q=" + this.state.vendorData._id}>
-                <Card.Content>
-                  <Image src={this.state.vendorData.image} wrapped ui={true} />
-                  <Card.Header id='vendorName'>{this.state.vendorData.vendor_name}</Card.Header>
-                  <Card.Description id='describeIt'>
-                    {this.state.vendorData.description}
-                    <br />
-                  </Card.Description>
-                </Card.Content>
-                <br />
-                <br />
-                <a
-                  href={this.state.vendorData.web_url}
-                  target="_blank"
-                  rel="alternate noopener noreferrer"
-                >
-                  Website
-                </a>
-                <br />
-                <br />
-            </Card>
-          </Segment>
-        </StyledContainer>
+      <StyledContainer id="bodyContainer">
+        <Segment centered stackable>
+          <Header id="vendorHeader">Vendor</Header>
+          <Divider />
+          <div centered href={"/vendor/?q=" + this.state.vendorData._id}>
+            <div id="smallPicture">
+              <Image src={this.state.vendorData.image} wrapped ui={true} />
+            </div>
+            <StyledHeader2>{this.state.vendorData.vendor_name}</StyledHeader2>
+            <p>
+              {this.state.vendorData.description}
+              <br />
+            </p>
+            <a
+              href={this.state.vendorData.web_url}
+              target="_blank"
+              rel="alternate noopener noreferrer"
+            >
+              Website
+            </a>
+            <br />
+            <Form>
+              <Form.TextArea
+                id="formWidth"
+                value={this.state.noteBody}
+                placeholder="Take a note..."
+              />
+            </Form>
+            <StyledButton>
+              <Icon name="save" />
+              Save Note
+            </StyledButton>
+            <br />
+            <Rating size="huge"/>
+          </div>
+        </Segment>
+      </StyledContainer>
     );
   }
 }

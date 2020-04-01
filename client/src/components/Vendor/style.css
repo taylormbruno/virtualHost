@@ -2,16 +2,22 @@
     color:#a9a6c9;
     font-weight: 400;
     font-family: "source Sans Pro", sans-serif;
-    font-size: 50px
+    font-size: 50px;
+    margin-top: 0 !important;
 }
 
 #bodyContainer {
-    width: 60%;
+    width: 80%;
 }
 
-#image {
-    margin: 0 auto;    
+#smallPicture {
+    width: 60%;
+    margin: auto;
 }
+
+/* #transparency {
+    opacity: 0.5;
+} */
 
 #vendorName {
     color:#a9a6c9;
@@ -34,7 +40,6 @@
     font-size: 20px
 }
 
-#card {
-    margin-top:40px;
-    margin-bottom: 40px;
+#formWidth {
+    width: 90%
 }

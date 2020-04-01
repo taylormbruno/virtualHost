@@ -9,5 +9,7 @@ router.get('/all', vendorController.findVendorsByEvent);
 
 router.get('/vendor', vendorController.findVendorById);
 
+router.get('/byhost', vendorController.findVendorByHost);
+
 
 module.exports = router;
