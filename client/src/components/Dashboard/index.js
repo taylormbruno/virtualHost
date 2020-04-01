@@ -8,6 +8,7 @@ import Notes from "./Notes/index.js";
 import Favorites from "./Favorites/index.js";
 import { StyledHeader } from "./styledComponents";
 import API from "../../utils/API";
+import UserContext from "../../utils/UserContext";
 
 class MyDashboard extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class MyDashboard extends Component {
       // console.log("----Dash 25----\n", user);
     }
   };
+
   render() {
     return (
       <div id="container">
@@ -36,7 +38,9 @@ class MyDashboard extends Component {
           <Grid.Column width={7}>
             <Segment>
               <StyledHeader as="h1">My Events</StyledHeader>
-              <Events />
+              <Events 
+              userState={this.props.userState}
+              />
             </Segment>
             <Segment>
               <StyledHeader as="h1">My Booths</StyledHeader>
