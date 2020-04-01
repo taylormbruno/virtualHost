@@ -44,7 +44,9 @@ class MyDashboard extends Component {
             </Segment>
             <Segment>
               <StyledHeader as="h1">My Booths</StyledHeader>
-              <Booths />
+              <Booths 
+              userState={this.props.userState}
+              />
             </Segment>
           </Grid.Column>
           <Grid.Column width={9}>

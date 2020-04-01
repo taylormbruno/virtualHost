@@ -19,8 +19,7 @@ class MyEvents extends Component {
 
   componentDidMount() {
     // Need to add that if hostID matches the user ID, map results to different array
-    this.retrieveAll().then(response => {
-      console.log(response);
+    this.retrieveAllEvents().then(response => {
       this.setState({
         ...this.state,
         allEvents: response
@@ -28,9 +27,8 @@ class MyEvents extends Component {
     });
   }
 
-  retrieveAll = async () => {
+  retrieveAllEvents = async () => {
     const master = await API.allEvents();
-    console.log(master.data);
     return master.data;
   };
   // routeToDetails = () => {

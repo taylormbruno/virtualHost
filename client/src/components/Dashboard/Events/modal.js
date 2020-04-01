@@ -38,7 +38,7 @@ export default class EventModal extends Component {
         trigger={
           <StyledCell>
             No. of Booths
-            <i aria-hidden="true" class="expand icon" id="expandIcon"></i>
+            <i aria-hidden="true" className="expand icon" id="expandIcon"></i>
           </StyledCell>
         }
         basic
