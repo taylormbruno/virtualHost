@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid, Image } from 'semantic-ui-react';
-
+import moment from "moment";
 
 function EventCard(props) {
   console.log('loaded')
@@ -34,7 +34,7 @@ function EventCard(props) {
             <p>{active.description}</p>
             <p>{active.vendors}</p>
             <p>{active.location}</p>
-            <p>Starting at {active.start_time}</p> 
+            <p>{moment(active.start_time).format("MMMM Do YYYY, h:mm a") +" - "+ moment(active.end_time).format("h:mm a")}</p> 
             <br/>
           </Card.Description>
         </Card.Content>

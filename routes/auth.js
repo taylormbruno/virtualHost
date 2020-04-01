@@ -9,10 +9,10 @@ const userController = require("../controllers/userController");
 
 
 router.get(
-  "/", () => { console.log("getting google auth")}
-  // passport.authenticate("google", {
-  //   scope: "https://www.googleapis.com/auth/userinfo.profile"
-  // })
+  "/",
+  passport.authenticate("google", {
+    scope: "https://www.googleapis.com/auth/userinfo.profile"
+  })
 );
 
 router.get(
@@ -22,20 +22,27 @@ router.get(
     session: true
   }),
   function(req, res) {
-    console.log("Creating User")
-    req.session.token = req.user.token;
+    console.log("auth req\n",req.profile);
     // const token = req.user.token;
-    userController.create({
-      body: {
-        first_name: req.user.profile.name.givenName,
-        last_name: req.user.profile.name.familyName,
-        externalUser: true,
-        externalID: req.user.profile.id
-      }
-    });
-    req.login();
+    // req.login(); // fails. not valid
     // console.log("---NEWUSER---\n", req.session.passport.user.profile);
-    res.redirect("http://localhost:3000/user/mydashboard");
+    if (!req.session) {
+      res.cookie("token", "");
+      // console.log("---No User: req---\n", req);
+      res.json({
+        status: "session cookie not set"
+      });
+      res.redirect('/')
+      
+    } else {
+      console.log("Hello User \n", req.session.token);
+      res.cookie("token", req.session.token);
+      console.log("---User token ---\n", req.session.token);
+      res.json({
+        status: "session cookie set"
+      });
+      res.redirect("http://localhost:3000/user/mydashboard/" + req.profile.id);
+    }
   }
 );
 

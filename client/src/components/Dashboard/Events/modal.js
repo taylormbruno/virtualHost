@@ -1,50 +1,91 @@
-import React from 'react'
-import { Modal, Table } from 'semantic-ui-react'
-import { StyledCell } from "./styledComponents"
-import "./style.css"
+import React, { Component } from "react";
+import { Modal, Table } from "semantic-ui-react";
+import { StyledCell } from "./styledComponents";
+import "./style.css";
+import API from "../../../utils/API";
+import moment from "moment";
 
-export default function EventModal() {
-return (
-<Modal id="eventModal" trigger={<StyledCell>
-            No. of Booths 
+export default class EventModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allEvents: [],
+      eventData: []
+    };
+  }
+
+  componentDidMount() {
+    // Need to add that if hostID matches the user ID, map results to different array
+    this.retrieveAll().then(response => {
+      console.log(response);
+      this.setState({
+        ...this.state,
+        allEvents: response
+      });
+    });
+  }
+
+  retrieveAll = async () => {
+    const master = await API.allEvents();
+    console.log(master.data);
+    return master.data;
+  };
+
+  render() {
+    return (
+      <Modal
+        id="eventModal"
+        trigger={
+          <StyledCell>
+            No. of Booths
             <i aria-hidden="true" class="expand icon" id="expandIcon"></i>
-        </StyledCell>} basic>
-      <Modal.Header>My Events</Modal.Header>
-    <Modal.Content>
-    <Table columns={4}>
-    <Table.Header>
-      <Table.Row>
-        <StyledCell>Event Name</StyledCell>
-        <StyledCell>Date</StyledCell>
-        <StyledCell>Times</StyledCell>
-        <StyledCell>No. of Booths</StyledCell>
-      </Table.Row>
-    </Table.Header>
+          </StyledCell>
+        }
+        basic
+      >
+        <Modal.Header>My Events</Modal.Header>
+        <Modal.Content>
+          <Table columns={4}>
+            <Table.Header>
+              <Table.Row>
+                <StyledCell>Event Name</StyledCell>
+                <StyledCell>Dates and Times</StyledCell>
+                <StyledCell>No. of Booths</StyledCell>
+              </Table.Row>
+            </Table.Header>
 
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>UNCC Demo Night</Table.Cell>
-        <Table.Cell>April 15, 2020</Table.Cell>
-        <Table.Cell>7 PM - 9 PM</Table.Cell>
-        <Table.Cell>15</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Small Town Farmers Market</Table.Cell>
-        <Table.Cell>May 4th, 2020</Table.Cell>
-        <Table.Cell>8 AM - 12 PM</Table.Cell>
-        <Table.Cell>32</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Local Art Expo</Table.Cell>
-        <Table.Cell>June 28th, 2020</Table.Cell>
-        <Table.Cell>6 PM - 9 PM</Table.Cell>
-        <Table.Cell>25</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table>
-
-    </Modal.Content>
-  </Modal>
-)
-
+            <Table.Body>
+            {this.state.allEvents !== [] ? (
+              this.state.allEvents.map(event => {
+                let queryString = `/event/?q=${event._id}`;
+                if (event.host_id === this.props.userState.userID) {
+                  return (
+                    <Table.Row
+                      onClick={() => {
+                        window.location.href = queryString;
+                      }}
+                      className="hover"
+                    >
+                      <Table.Cell>{event.event_name}</Table.Cell>
+                      <Table.Cell>
+                        {moment(event.start_time).format(
+                          "MMMM Do YYYY, h:mm a"
+                        ) +
+                          " - " +
+                          moment(event.end_time).format("h:mm a")}
+                      </Table.Cell>
+                      <Table.Cell>{event.vendors.length}</Table.Cell>
+                    </Table.Row>
+                  );
+                }
+              })
+            ) : (
+              <p>No current data</p>
+            )}
+          </Table.Body>
+          </Table>
+        </Modal.Content>
+      </Modal>
+    );
+  }
 }

@@ -23,7 +23,8 @@ function App() {
     username: "khatley16",
     fname: "Kacie",
     lname: "Hatley",
-    light: true
+    light: true,
+    userID: "5e839a7bd1e335f31afcf404"
   });
 
   window.onload = function() {
@@ -102,7 +103,9 @@ function App() {
               <Event />
             </Route>
             <Route path={["/user/mydashboard", "/user/mydashboard/:id"]}>
-              <Dashboard />
+              <Dashboard 
+              userState={userState}
+              />
             </Route>
             <Route exact path={"/settings"}>
               <Settings 

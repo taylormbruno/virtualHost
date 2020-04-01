@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
-import { Table } from 'semantic-ui-react'
-import EventModal from "./modal"
+import React, { Component } from "react";
+import { Table } from "semantic-ui-react";
+import EventModal from "./modal";
 // import Dashboard from "./dashboard.png"
-import "./style.css"
+import "./style.css";
 // import Events from './Events/index.js'
-import { StyledCell, StyledButton } from "./styledComponents"
+import { StyledCell, StyledButton } from "./styledComponents";
 import API from "../../../utils/API";
+import moment from "moment";
 
 class MyEvents extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      masterList: [],
-      eventData: []      
+      allEvents: [],
+      eventData: []
     };
   }
 
@@ -23,7 +23,7 @@ class MyEvents extends Component {
       console.log(response);
       this.setState({
         ...this.state,
-        masterList: response
+        allEvents: response
       });
     });
   }
@@ -33,36 +33,61 @@ class MyEvents extends Component {
     console.log(master.data);
     return master.data;
   };
+  // routeToDetails = () => {
+  //   document.getElementsByClassName("clickable").onclick = function(event) {
+  //     console.log("clicked")
+  //   }}
+  // document.getElementById(event._id).onclick = function() {
+  //   window.location.href='/vendor/?q='+event._id
 
-  render () {
+  render() {
     return (
-<div id="tableContainer">
-  <Table columns={3}>
-    <Table.Header id="purple">
-      <Table.Row>
-        <StyledCell>Event Name</StyledCell>
-        <StyledCell>Date</StyledCell>
-        <EventModal />
-      </Table.Row>
-    </Table.Header>
+      <div id="tableContainer">
+        <Table columns={3}>
+          <Table.Header id="purple">
+            <Table.Row>
+              <StyledCell>Event Name</StyledCell>
+              <StyledCell>Dates and Times</StyledCell>
+              <EventModal 
+              userState={this.props.userState}
+              />
+            </Table.Row>
+          </Table.Header>
 
-    <Table.Body>
-    {this.state.masterList !== []
-      ? this.state.masterList.map(event => {
-          console.log(event);
-        return (<Table.Row>
-        <Table.Cell>{event.event_name}</Table.Cell>
-        <Table.Cell>{event.start_time}</Table.Cell>
-        <Table.Cell>{event.vendors.length}</Table.Cell>
-        </Table.Row>)
-        ;
-        })
-          : <p>No current data</p>}
+          <Table.Body>
+            {this.state.allEvents !== [] ? (
+              this.state.allEvents.map(event => {
+                let queryString = `/event/?q=${event._id}`;
+                if (event.host_id === this.props.userState.userID) {
+                  return (
+                    <Table.Row
+                      onClick={() => {
+                        window.location.href = queryString;
+                      }}
+                      className="hover"
+                    >
+                      <Table.Cell>{event.event_name}</Table.Cell>
+                      <Table.Cell>
+                        {moment(event.start_time).format(
+                          "MMMM Do YYYY, h:mm a"
+                        ) +
+                          " - " +
+                          moment(event.end_time).format("h:mm a")}
+                      </Table.Cell>
+                      <Table.Cell>{event.vendors.length}</Table.Cell>
+                    </Table.Row>
+                  );
+                }
+              })
+            ) : (
+              <p>No current data</p>
+            )}
+          </Table.Body>
+        </Table>
+        <StyledButton href="/register" circular icon="add" />
+      </div>
+    );
+  }
+}
 
-    </Table.Body>
-  </Table>
-  <StyledButton href="/register" circular icon='add' />
-    </div>       
-)}}
-
-export default MyEvents
+export default MyEvents;

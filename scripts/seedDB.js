@@ -35,48 +35,42 @@ const eventSeed = [
     end_time: new Date("2020/04/04 14:00:00"),
     description: "UNC-Charlotte Full Stack Project Presentations",
     host_id: "",
-    vendors: []
+    vendors: [], 
   }
 ];
 
 const vendorSeed = [{                
   "vendor_name": "Virtual Host",
-  "image": "../images/virtualHost.png",
+  "image": "https://github.com/taylormbruno/virtualHost/blob/master/client/public/images/virtualHost.png?raw=true",
   "beacon_id": 1234,
   "web_url": "https://virtual-host.herokuapp.com/",
   "description": "Virtual Host Using notifications on your phone to guide you through the event, informing you along the way.",
   "manager_id": 1,
   "event_id": "1234demo",
-  "category": "IT "  
+  "category": "IT ",
+  "favorites": []  
 },
 {                
   "vendor_name": "Adventurous Llama",
-  "image": "../images/llama.jpeg" ,
+  "image": "https://github.com/taylormbruno/virtualHost/blob/master/client/public/images/llama.jpeg?raw=true" ,
   "beacon_id": 12345,
   "web_url":" https://en.wikipedia.org/wiki/Llama",
   "description": "Llama adoption agency",
   "manager_id": 2,
   "event_id": "1234demo",
-  "category":  "adoption"  
+  "category":  "adoption",
+  "favorites": []    
 },
 {                
   "vendor_name": "Travelers Paradise",
-  "image": "../images/travelers.jpeg",
+  "image": "https://github.com/taylormbruno/virtualHost/blob/master/client/public/images/travelers.jpeg?raw=true",
   "beacon_id": 123456,
   "web_url": "https://www.journeytoparadise.com/",
   "description": "Travel agency to Paradiseseeds.name",
   "manager_id": 3,
   "event_id": "1234demo",
-  "category": "travel"
-},{                
-  "vendor_name": "Virtual Host",
-  "image": "../images/virtualHost.png",
-  "beacon_id": "1234",
-  "web_url": "https://virtual-host.herokuapp.com/",
-  "description": "",
-  "manager_id": "",
-  "event_id": "notDEMO",
-  "category": ""
+  "category": "travel",
+  "favorites": []  
 }];
 
 db.User

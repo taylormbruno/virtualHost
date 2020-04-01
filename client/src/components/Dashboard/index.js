@@ -8,6 +8,7 @@ import Notes from "./Notes/index.js";
 import Favorites from "./Favorites/index.js";
 import { StyledHeader } from "./styledComponents";
 import API from "../../utils/API";
+import UserContext from "../../utils/UserContext";
 
 class MyDashboard extends Component {
   constructor(props) {
@@ -20,14 +21,15 @@ class MyDashboard extends Component {
     if (!this.props.match) {
       console.log("Getting external ID, redirecting to user dashboard");
       API.getExternalUser()
-      .then(response => console.log(response))
+      // .then(response => console.log(response))
 
     } else {
       const { id } = this.props.match.params;
       const user = API.getDashboard({ _id: id });
-      console.log("----Dash 25----\n", user);
+      // console.log("----Dash 25----\n", user);
     }
   };
+
   render() {
     return (
       <div id="container">
@@ -36,7 +38,9 @@ class MyDashboard extends Component {
           <Grid.Column width={7}>
             <Segment>
               <StyledHeader as="h1">My Events</StyledHeader>
-              <Events />
+              <Events 
+              userState={this.props.userState}
+              />
             </Segment>
             <Segment>
               <StyledHeader as="h1">My Booths</StyledHeader>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 
 
 export const StyledButton = styled(Button)`
@@ -11,6 +11,12 @@ export const StyledButton = styled(Button)`
     &&&:hover {
         background: #abc5cb;
     }
+`;
+
+export const StyledGrid = styled(Grid.Column)`
+    &&& {  
+        margin: auto
+    }  
 `;
 
 // export const StyledCard = styled(Card)`
