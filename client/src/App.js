@@ -15,7 +15,7 @@ import Dashboard from "./components/Dashboard";
 import Settings from "./components/Settings";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserContext from "./utils/UserContext";
-import VerifyExtUser from "./components/Signup/VerifyExtUser"
+import Verify from "./components/Signup/VerifyExtUser"
 
 function App() {
   let [userState, setUserState] = useState({
@@ -92,8 +92,8 @@ function App() {
             <Route exact path={["/signup"]}>
               <Signup />
             </Route>
-            <Route path={["/signup/?id="]}>
-              <VerifyExtUser />
+            <Route path="/auth/">
+              <Verify />
             </Route>
             <Route exact path={["/register"]}>
               <Register />

@@ -54,33 +54,30 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findExt: function(user) {
-    console.log("controller request\n", user);
-    db.User.find({ externalID: user.externalID })
-      .then(async dbModel => {
+  findExt: function(req, res) {
+    console.log("controller request\n", req.body);
+    db.User.find({ externalID: req.body.externalID })
+      .then(dbModel => {
         if (dbModel === undefined || []) {
-          console.log("User is undefined.");
-          console.log(user);
-          await this.createExt(user);
+          console.log("User is undefined."); // last console.
+          res.json({error: "user not found"})
         } else {
           console.log("USER"); //undefined
           console.log(dbModel);
           res.json(dbModel);
         }
       })
-      .catch(err => console.log("ERROR", err));
-    // res.status(422).json(err));
+      .catch(err => res.status(422).json(err));
   },
-  createExt: async function(user) {
-    console.log('USER FROM SESSION');
-    console.log(user);
-    await db.User.create(user)
-    .then(dbModel => {
-      console.log(dbmodel); //does not log
-      res.json(dbModel);
-    })
-    .catch(err => res.status(422).json(err));
-
+  createExt: function(req, res) {
+    console.log("73 USER");
+    console.log(req.body);
+    db.User.create(req.body)
+      .then(dbModel => {
+        console.log(dbmodel); //does not log
+        res.json(dbModel);
+      })
+      .catch(err => console.log(err));
   }
 };
 

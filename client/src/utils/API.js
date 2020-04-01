@@ -7,11 +7,11 @@ export default {
   loginUser: function(user) {
     return axios.get("/api/users/login", user);
   },
-  getExternalUser: function(condition) {
-    return axios.get("/api/dash/getexternal", condition);
+  findAuth: function(term) {
+    return axios.post("/api/users/auth", term)
   },
-  createExternalUser: function() {
-    return axios.get("/api/dash/createexternal");
+  createAuth: function(term) {
+    return axios.post("/api/user/createauth", term)
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);

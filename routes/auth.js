@@ -27,9 +27,10 @@ router.get(
     } else {
       res.cookie("token", req.user.session.token);
       console.log("session cookie set");
-
+      const userString = JSON.stringify(req.user.session.profile)
+      console.log( userString );
       res.redirect(
-        "http://localhost:3000/auth/?id=" + req.user.session.profile.externalID
+        "http://localhost:3000/auth/google/user?profile=" + userString
       );
     }
   }
