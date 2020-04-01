@@ -1,12 +1,41 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Table } from 'semantic-ui-react'
 import EventModal from "./modal"
 // import Dashboard from "./dashboard.png"
 import "./style.css"
 // import Events from './Events/index.js'
 import { StyledCell, StyledButton } from "./styledComponents"
+import API from "../../../utils/API";
 
-const MyEvents = () => (
+class MyEvents extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      masterList: [],
+      eventData: []      
+    };
+  }
+
+  componentDidMount() {
+    // Need to add that if hostID matches the user ID, map results to different array
+    this.retrieveAll().then(response => {
+      console.log(response);
+      this.setState({
+        ...this.state,
+        masterList: response
+      });
+    });
+  }
+
+  retrieveAll = async () => {
+    const master = await API.allEvents();
+    console.log(master.data);
+    return master.data;
+  };
+
+  render () {
+    return (
 <div id="tableContainer">
   <Table columns={3}>
     <Table.Header id="purple">
@@ -18,25 +47,22 @@ const MyEvents = () => (
     </Table.Header>
 
     <Table.Body>
-      <Table.Row>
-        <Table.Cell>UNCC Demo Night</Table.Cell>
-        <Table.Cell>April 15, 2020</Table.Cell>
-        <Table.Cell>15</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Small Town Farmers Market</Table.Cell>
-        <Table.Cell>May 4th, 2020</Table.Cell>
-        <Table.Cell>32</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Local Art Expo</Table.Cell>
-        <Table.Cell>June 28th, 2020</Table.Cell>
-        <Table.Cell>25</Table.Cell>
-      </Table.Row>
+    {this.state.masterList !== []
+      ? this.state.masterList.map(event => {
+          console.log(event);
+        return (<Table.Row>
+        <Table.Cell>{event.event_name}</Table.Cell>
+        <Table.Cell>{event.start_time}</Table.Cell>
+        <Table.Cell>{event.vendors.length}</Table.Cell>
+        </Table.Row>)
+        ;
+        })
+          : <p>No current data</p>}
+
     </Table.Body>
   </Table>
   <StyledButton href="/register" circular icon='add' />
     </div>       
-)
+)}}
 
 export default MyEvents
