@@ -61,7 +61,7 @@ class EventPage extends Component {
               </Segment>
             </StyledGrid>
           </Grid.Row>
-        </Grid>
+        </Grid>       
       </div>
     );
   }

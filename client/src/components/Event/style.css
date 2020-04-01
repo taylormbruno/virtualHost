@@ -2,18 +2,21 @@
     color:#a9a6c9;
     font-weight: 400;
     font-family: "source Sans Pro", sans-serif;
-    font-size: 30px
+    font-size: 60px;
+    padding: 40px;
 }
 
 #vendorHeader {
     color:#a9a6c9;
-    font-weight: 400;
+    font-weight: 300;
     font-family: "source Sans Pro", sans-serif;
-    font-size: 30px;
+    font-size: 25px;    
+    margin-top: 60px;    
 }
 
 #column1 {
     margin: 40px;
+    margin-left: 60px;
 }
 
 #column2 {
@@ -22,9 +25,16 @@
 
 form {
     margin-top: 25px;
-    margin-bottom: 25px;;
+    margin-bottom: 25px;
+    
 }
 
 #searchIcon {
     color:#a9a6c9;
 }
+
+#eventCard {
+    margin-top: 60px;          
+}
+
+
