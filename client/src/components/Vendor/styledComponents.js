@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { Grid } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 
-const StyledGrid = styled(Grid.Column)`
+const StyledContainer = styled(Container)`
     &&& {  
-        margin: auto
+        margin:  30px auto
     }  
 `;
-export {StyledGrid};
-
-
+export {StyledContainer};
