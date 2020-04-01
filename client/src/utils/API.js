@@ -20,7 +20,12 @@ export default {
   allVendors: function() {
     console.log("test");
 
-    return axios.get("/api/vendors/all")
+    return axios.get("/api/vendors/all")    
+  },
+  findVendor: function(id) {
+    console.log("test");
+
+    return axios.get("/api/vendors/vendor", id)
   },
   allEvents: function() {
     return axios.get("/api/events/all");

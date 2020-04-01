@@ -4,6 +4,7 @@ import "./style.css";
 import EventCard from "../EventCards/eventCards";
 import SearchFilter from "../Event/VendorSearch/vendorSearch";
 import API from "../../utils/API";
+import { StyledGrid } from "./styledComponents";
 
 class EventPage extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class EventPage extends Component {
       <div>
         <Grid columns={2} divided stackable>
           <Grid.Row stretched>
-            <Grid.Column floated="right" width={11}>
+            <StyledGrid width={11}>
               <Segment id="column2">
                 <Header id="vendorHeader">Events</Header>
                 <SearchFilter theSearch={this.theSearch} />
@@ -58,9 +59,9 @@ class EventPage extends Component {
                     </Card.Group>
                 </div>
               </Segment>
-            </Grid.Column>
+            </StyledGrid>
           </Grid.Row>
-        </Grid>
+        </Grid>       
       </div>
     );
   }
