@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../../../utils/API";
 import { Dimmer, Loader, Icon } from "semantic-ui-react";
 import "./style.css";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Verify extends Component {
@@ -76,7 +76,7 @@ class Verify extends Component {
     });
   };
 
-  findUser = async (userObj) => {
+  findUser = async userObj => {
     const user = await API.findAuth({
       first_name: userObj.first_name,
       last_name: userObj.last_name,
@@ -103,24 +103,39 @@ class Verify extends Component {
       externalID: this.state.externalID,
       externalUser: true
     });
-    console.log("Heres your user!")
+    console.log("Heres your user!");
     if (create.data.error) {
       console.log("User not found.");
-      return null
+      return null;
     } else {
       console.log("49 USER \n", create);
       console.log("state", this.state);
-      return create.data
+      return create.data;
     }
   };
 
-
   render() {
     return (
-      <div>
+      <div class="ext">
         <br />
         <h1>Welcome {this.state.first_name + " " + this.state.last_name}!</h1>
-        {(this.state.active ? (<a href={"/user/mydashboard/?q=" + this.state.redirectID}><FontAwesomeIcon icon={faCheckCircle} size="10x" style={{color:'#C7A7C6', animation: 'mymove 5s infinite'}} /><h4>Take me to my dashboard</h4></a>) : (<Dimmer active><Loader size="massive"><h3>Please wait while we load your dashboard.</h3></Loader></Dimmer>))}
+        {this.state.active ? (
+          <a href={"/user/mydashboard/?q=" + this.state.redirectID}>
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              size="10x"
+              style={{ color: "#C7A7C6", animation: "mymove 5s infinite" }}
+            />
+            <h4>Take me to my dashboard</h4>
+          </a>
+        ) : (
+          <Dimmer active>
+            <Loader size="massive">
+              <h3>Please wait while we load your dashboard.</h3>
+            </Loader>
+            <a href="/" id="return">Return to Landing Page</a>
+          </Dimmer>
+        )}
       </div>
     );
   }

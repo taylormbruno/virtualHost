@@ -8,6 +8,17 @@ blue #ACC6CD
 purple #ABA7CA
 pink #C7A7C6 */
 
+.ext {
+  padding-top:50px;
+}
+
+#return {
+  color:#ABA7CA;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+}
+
 @keyframes mymove {
   0% {
     color: #C7A7C6;
