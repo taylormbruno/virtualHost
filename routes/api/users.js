@@ -7,8 +7,6 @@ router.post("/signup", userController.create);
 
 router.get('/login', userController.login);
 
-// router.get("/auth", userController.findExt);
-
-// router.post("/create/ext", userController.ExtCreate);
+router.get("/validate", userController.ValidateUser);
 
 module.exports = router;
