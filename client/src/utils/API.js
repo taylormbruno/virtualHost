@@ -30,5 +30,8 @@ export default {
   },
   createEvent: function(obj) {
     return axios.post("/api/events/create", obj);
+  },
+  createVendor: function(obj) {
+    return axios.post("/api/vendors/create", obj);
   }
 };

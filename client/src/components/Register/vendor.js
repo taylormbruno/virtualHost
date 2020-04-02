@@ -1,104 +1,136 @@
 import React, { Component } from "react";
-import { StyledHeader2, StyledSegment } from "./styledComponents";
-import {
-  Form,
-  Input,
-  TextArea
-} from "semantic-ui-react";
+import { StyledHeader2, StyledSegment, StyledButton } from "./styledComponents";
+import { Form, Input, TextArea, Grid, Image } from "semantic-ui-react";
+import queryString from "query-string";
+import API from "../../utils/API";
+
+const Buffer = require('buffer/').Buffer;
 
 export class VendorForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      formObj: {},
+      hostID: "",
+      eventID: "",
+      returnedVendors: []
+    };
+  }
+  componentDidMount = () => {
+    let query = queryString.parse(window.location.search);
+    console.log("event ID: " + this.props.eventID);
+    console.log("query: " + query.user);
+    // this.setState({ ...this.state, hostID: query.user, eventID: this.props.eventID });
+    
+  };
+
+  handleInputChange = (event, data) => {
+    const change = { [data.name]: data.value };
+    console.log(change);
+    this.setState({
+      ...this.state,
+      formObj: { ...this.state.formObj, [data.name]: data.value }
+    });
+    console.log(this.state);
+  };
+  
+  saveVendor = async () => {
+    const concatString = this.state.formObj.namespace + this.state.formObj.instance;
+    var b = Buffer(concatString, "hex");
+    const base64 = await b.toString("base64");
+    const submission = {
+      vendor_name: this.state.formObj.vendor_name,
+      image: this.state.eventFormObj.image,
+      beacon_id: base64,
+      web_url: this.state.formObj.web_url,
+      description: this.state.formObj.description,
+      manager_id: this.state.event.userID,
+      event_id: this.state.eventID
+    };
+    console.log(submission);
+    const newVendor = await API.createVendor(submission);
+    console.log(newVendor.data);
+    const vendor_array = this.state.returnedVendors.push(newVendor.data)
+    this.setState({...this.state, returnedVendors: vendor_array});
+  };
+
   render() {
     return (
       <StyledSegment>
         <StyledHeader2>Register Vendor</StyledHeader2>
         <Form>
-        <Form.Field
-              id="form-input-control-first-name"
-              control={Input}
-              label="Booth Name"
-              placeholder="Enter name of your event here"
-            />
+          <Form.Field
+            id="form-input-control-first-name"
+            control={Input}
+            label="Booth Name"
+            placeholder="Enter name of your event here"
+            onChange={this.handleInputChange}
+            name="vendor_name"
+          />
           <Form.Group widths="equal">
             <Form.Field
               id="form-input-control-first-name"
               control={Input}
-              label="Beacon Form ID"
-              placeholder="Enter name of your Beacon Form ID here"
+              label="Beacon Namespace ID"
+              placeholder="Enter name of your Beacon Namespace ID here"
+              onChange={this.handleInputChange}
+              name="namespace"
             />
             <Form.Field
               id="form-input-control-first-name"
               control={Input}
               label="Beacon Instance ID"
               placeholder="Enter name of your Beacon Instance ID here"
+              onChange={this.handleInputChange}
+              name="instance"
             />
           </Form.Group>
           <Form.Field
             id="form-input-control-error-email"
             control={Input}
             label="Photo URL"
-            placeholder="Add URL path to photo. This will display on your booth's card."
+            placeholder="Add the Image Address to your photo. This will display on your booth's card."
+            onChange={this.handleInputChange}
+            name="image"
           />
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <Image
+                  src={
+                    this.state.verifyImg
+                      ? this.state.eventFormObj.image
+                      : "https://www.sylvansport.com/wp/wp-content/uploads/2018/11/image-placeholder-1200x800.jpg"
+                  }
+                  size="small"
+                  centered
+                />
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <button style={this.verifyBtn} onClick={this.verifyImg}>
+                  Verify Image
+                </button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           <Form.Field
             id="form-textarea-control-opinion"
             control={TextArea}
             label="Booth Description"
             placeholder="Tell us more about your booth"
+            onChange={this.handleInputChange}
+            name="description"
           />
           <Form.Field
             id="form-input-control-error-email"
             control={Input}
             label="Website URL"
+            onChange={this.handleInputChange}
+            name="web_url"
           />
         </Form>
+        <StyledButton onClick={this.saveVendor}>Save Vendor</StyledButton>
       </StyledSegment>
     );
   }
 }
-
-// class VendorSection extends Component {
-//   render() {
-//     return(
-//         <div>
-//         <StyledSegment>
-//             <StyledHeader>
-//                 Register Your Event
-//             </StyledHeader>
-
-//             <Form>
-//     <Form.Group widths='equal'>
-//       <Form.Field
-//         id='form-input-control-first-name'
-//         control={Input}
-//         label='Event Title'
-//         placeholder='Enter name of your event here'
-//       />
-//       <Form.Field
-//         id='form-input-control-last-name'
-//         control={Input}
-//         label='Event Location'
-//         placeholder='101 Main St., Example, US 55555'
-//       />
-//     </Form.Group>
-//     <Form.Field
-//       id='form-textarea-control-opinion'
-//       control={TextArea}
-//       label='Event Description'
-//       placeholder='Opinion'
-//     />
-//     <Form.Field
-//       id='form-input-control-error-email'
-//       control={Input}
-//       label='Website URL'
-//     />
-//     <StyledButton
-//     onClick={()=> {
-//         console.log("Hello")
-//     }}
-//     ><Icon name='add' />Add A Vendor</StyledButton>
-//   </Form>
-
-//         </StyledSegment>
-
-//         <div id="vendorSection"></div>
-//         </div>
-//     )}}

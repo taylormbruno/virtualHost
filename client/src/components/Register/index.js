@@ -70,7 +70,7 @@ class Settings extends Component {
 
   addSection = () => {
     this.setState({
-      vendors: [...this.state.vendors, <VendorForm />]
+      vendors: [...this.state.vendors, <VendorForm eventID={this.state.event.obj._id}/>]
     });
   };
 
