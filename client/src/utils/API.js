@@ -5,7 +5,7 @@ export default {
     return axios.post("/api/users/signup", userData);
   },
   loginUser: function(user) {
-    return axios.get("/api/users/login", user);
+    return axios.post("/api/users/login", user);
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);

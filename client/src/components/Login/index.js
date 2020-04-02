@@ -27,7 +27,11 @@ class LoginForm extends Component {
 
   loginSuccess = (id) => {
     if (this.state.redirect) {
-      return <Redirect to={'/user/mydashboard/?q=' + id} />
+
+    setTimeout(() => (
+      window.location = ("http://localhost:3000/user/mydashboard/?q=" + id)
+      ), 1000);
+      // return <Redirect to={'/user/mydashboard/?q=' + id} />
     }
   };
 
@@ -42,6 +46,7 @@ class LoginForm extends Component {
         console.log(`Hello ${newUser.data.first_name} ${newUser.data.last_name}`);
         this.setState({...this.state, redirect: true})
         this.loginSuccess(newUser.data._id);
+        console.log(newUser.data._id);
       }
       else {
         console.log(`Error ${newUser.status}: ${newUser.statusText}`)

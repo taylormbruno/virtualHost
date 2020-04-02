@@ -5,7 +5,7 @@ const userController = require("../../controllers/userController");
 
 router.post("/signup", userController.create);
 
-router.get('/login', userController.login);
+router.post('/login', userController.login);
 
 router.get("/validate", userController.ValidateUser);
 
