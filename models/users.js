@@ -31,6 +31,9 @@ userSchema.pre("save", function(next) {
     user.password = Bcrypt.hashSync(user.password, 10);
     next();
   }
+  else {
+    next();
+  }
 });
 
 userSchema.methods.comparePassword = function(plaintext, callback) {
