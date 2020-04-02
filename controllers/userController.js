@@ -69,6 +69,15 @@ module.exports = {
       if (err) return handleError(err);
     });
     res.json(new_user);
+  },
+  ValidateUser: async function(req, res) {
+    let fields = {username:[], email:[]}
+    await db.User.distinct("username").then(response => {
+      fields.username=response;
+    });
+    await db.User.distinct("email").then(response => {
+      fields.email=response;
+    });
+    res.json(fields);
   }
 };
-

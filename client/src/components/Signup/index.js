@@ -22,7 +22,6 @@ class SignupForm extends Component {
     console.log(query);
   }
 
-  // change window location without using a hook
 
   handleInputChange = (event) => {
     if (event.target.name === "username") {
@@ -32,12 +31,10 @@ class SignupForm extends Component {
     this.setState({...this.state, formdata: {...this.state.formdata, [name]: value }});
   };
 
-  // need to redirect not using a hook
 
   signupSuccess = () => {
     setTimeout(() => (
-      window.location = ("http://localhost:3000/mydashboard/" + this.state.returned._id)
-      // console.log(this.state.returned._id)
+      window.location = ("http://localhost:3000/user/mydashboard/?q=" + this.state.returned._id)
       ), 2000);
   };
   
