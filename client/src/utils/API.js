@@ -27,5 +27,8 @@ export default {
   },
   findVendorByHost: function() {
     return axios.get("/api/vendors/byhost");
-  }
+  },
+  // validSignup: function(form) {
+  //   return axios.get("/api/users/validate", form);
+  // }
 };

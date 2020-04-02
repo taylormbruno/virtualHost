@@ -5,6 +5,7 @@ import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
 import { Redirect } from 'react-router-dom';
+import Passport from "../Signup/GoogleAuth";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -81,10 +82,13 @@ class LoginForm extends Component {
               <StyledButton fluid size="large" id="login" onClick={this.handleFormSubmit}>
                 Login
               </StyledButton>
+
               <StyledButton href="/signup" fluid size="large" >
                 Create Account
               </StyledButton>
-              <StyledButton fluid size="large">
+              <Passport />
+
+              <StyledButton fluid size="large" href="/events">
                 Continue As Guest
               </StyledButton>
             </Segment>
