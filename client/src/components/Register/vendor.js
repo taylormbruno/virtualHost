@@ -15,7 +15,7 @@ export class VendorForm extends Component {
         <Form.Field
               id="form-input-control-first-name"
               control={Input}
-              label="Event Title"
+              label="Booth Name"
               placeholder="Enter name of your event here"
             />
           <Form.Group widths="equal">

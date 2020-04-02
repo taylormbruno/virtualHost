@@ -9,5 +9,4 @@ router.get('/login', userController.login);
 
 router.get("/validate", userController.ValidateUser);
 
-
 module.exports = router;
