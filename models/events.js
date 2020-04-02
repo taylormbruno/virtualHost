@@ -12,8 +12,7 @@ const eventSchema = new Schema({
     end_time: { type: Date, required: true },
     description: { type: String, required: true },
     host_id: { type: String, required: true },
-    vendors: { type: Array, default: [] },
-    web_url: { type: String, required: false }
+    web_url: { type: String, required: false, default: undefined }
 });
 
 const Event = mongoose.model("Event", eventSchema);

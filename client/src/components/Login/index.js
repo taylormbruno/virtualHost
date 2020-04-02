@@ -26,7 +26,7 @@ class LoginForm extends Component {
 
   loginSuccess = (id) => {
     if (this.state.redirect) {
-      return <Redirect to={'/mydashboard/' + id} />
+      return <Redirect to={'/user/mydashboard/?q=' + id} />
     }
   };
 

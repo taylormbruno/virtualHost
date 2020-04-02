@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const userController = require("../controllers/userController");
 const passport = require("passport");
+const axios = require("axios");
 
 //matches /auth/google+
 
@@ -27,13 +28,43 @@ router.get(
     } else {
       res.cookie("token", req.user.session.token);
       console.log("session cookie set");
-      const userString = JSON.stringify(req.user.session.profile)
-      console.log( userString );
-      res.redirect(
-        "http://localhost:3000/auth/google/user?profile=" + userString
+      const userString = JSON.stringify(req.user.session.profile);
+      console.log(userString);
+      // const response = userController.findOrCreate(req.user.profile);
+      // console.log(response);
+      console.log("finding user")
+      axios({
+        method: "post",
+        url: "http://localhost:3000/auth/google/find",
+        data: req.user.session.profile
+      }).then(response => {
+          if (response.data === null) {
+            console.log("creating user")
+            axios({
+              method: "post",
+              url: "http://localhost:3000/auth/google/create",
+              data: req.user.session.profile
+            }).then(response => {
+              console.log(response)
+            });
+          } else {
+            console.log(response);
+            res.redirect(
+              "http://localhost:3000/user/mydashboard/?q=" + "userID"
+            );
+          }
+        },
+        error => {
+          console.log(error);
+          res.redirect("http://localhost:3000/");
+        }
       );
     }
   }
 );
+
+router.post("/find", userController.findExt);
+router.post("/create", userController.createExt);
+
 
 module.exports = router;

@@ -2,39 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Bcrypt = require("bcryptjs");
 
+const notes = new Schema({vendor_id: String, event_id: String, event_name: String, vendor_name: String, note: String});
+
+const favorites = new Schema({vendor_id: String, vendor_name: String});
+
 const userSchema = new Schema({
-  first_name: {
-    type: String,
-    required: true
-  },
+  first_name: {type: String,required: true},
   last_name: {
     type: String,
-    required: true
+    required: [true, "last name required"]
   },
-  username: {
-    type: String
-  },
-  password: {
-    type: String
-  },
-  email: {
-    type: String
-  },
-  favorites: {
-    type: Array,
-    default: []
-  },
-  notes: {
-    type: Array,
-    default: []
-  },
-  externalUser: {
-    type: Boolean,
-    default: false
-  },
-  externalID: {
-    type: String
-  }
+  username: {type: String},
+  password: {type: String},
+  email: {type: String},
+  favorites: {type: [favorites], default: undefined},
+  notes: {type: [notes], default: undefined},
+  externalUser: {type: Boolean,required: true,default: false},
+  externalID: {type: String}
 });
 
 userSchema.pre("save", function(next) {
