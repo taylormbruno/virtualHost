@@ -10,12 +10,6 @@ class Settings extends Component {
   };
 
   addSection = () => {
-    // let vendorSection = document.getElementById("vendorSection");
-    // let content = document.createElement('div'); // is a node
-    // content.innerHTML = Example;
-    // vendorSection.appendChild(content);
-    // this.state.vendors.push(<div>{"Hello"}</div>)
-
     this.setState({
       vendors: [...this.state.vendors, <VendorForm />]
     });
