@@ -35,7 +35,7 @@ class SignupForm extends Component {
   signupSuccess = () => {
     setTimeout(() => (
       window.location = ("http://localhost:3000/user/mydashboard/?q=" + this.state.returned._id)
-      ), 2000);
+      ), 1000);
   };
   
   handleFormSubmit = async(event) => {

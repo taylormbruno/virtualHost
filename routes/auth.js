@@ -65,4 +65,7 @@ router.get(
   }
 );
 
+router.post("/find", userController.findExt);
+router.post("/create", userController.createExt);
+
 module.exports = router;

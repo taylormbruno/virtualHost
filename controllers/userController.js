@@ -15,15 +15,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   login: function(req, res) {
+    console.log(req.body);
     db.User.findOne({ username: req.body.username }, function(err, user) {
       if (user === null) {
-        const error = "User not found";
+        console.log("User not found");
       } else {
-        db.User.comparePassword(req.body.password, function(err, match) {
+        user.comparePassword(req.body.password, function(err, match) {
           if (err) {
             console.log("Password does not match");
           } else {
-            res.json(match);
+            console.log(match);
+            res.status(200).json(user);
           }
         });
       }
