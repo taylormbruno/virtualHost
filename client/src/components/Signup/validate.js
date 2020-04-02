@@ -15,6 +15,7 @@ function validateForm(form) {
     method: "get",
     url: "http://localhost:3000/api/users/validate"
   }).then(response => {
+    console.log(response.data);
     if (response.data.username.indexOf(form.username)) {
       uniqueUsername = false;
     }
