@@ -19,7 +19,6 @@ export default {
   },
   findVendor: function(id) {
     console.log("test");
-
     return axios.get("/api/vendors/vendor", id)
   },
   allEvents: function() {
