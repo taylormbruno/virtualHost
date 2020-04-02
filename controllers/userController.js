@@ -53,39 +53,21 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findExt: function(req, res) {
-    console.log("--------------------");
-    console.log("59 controller request\n", req.body); // fires w. data
-    console.log("--------------------");
-    db.User.find({ externalID: req.body.externalID })
-      .then(dbModel => {
-        if (dbModel.length === 0) {
-          console.log("----------62----------", dbModel);
-          console.log("65 User is undefined."); // fires
-          res.json({ error: "user not found" });
-        } else {
-          console.log("----------66 USER----------");
-          console.log(dbModel);
-          console.log("--------------------");
-          res.json(dbModel);
-        }
-      })
+    console.log("-----------Req Body---------");
+    console.log(req.body);
+    db.User.findOne({ externalID: req.body.externalID })
+      .then(dbModel => {console.log(dbModel); res.json(dbModel)})
       .catch(err => res.status(422).json(err));
   },
-  ExtCreate: async function(req, res) {
-    console.log("----------75 USER----------");
+  createExt: function(req, res) {
+    console.log("----------63 USER----------");
     console.log(req.body); // fires w. data
     console.log("--------------------");
-    db.User.create({first_name: req.body.first_name, last_name: req.body.last_name, externalID: req.body.externalID, externalUser: true}, function(err, dbModel) { // logs stop here; req.body returns same response. 
-      console.log("---------79 USER---------");
-      console.log(dbModel);
-      console.log("--------------------");
-      if (dbModel === undefined || []) {
-        console.log("83 User is undefined.");
-        res.json({ error: "user not found" });
-      } else {
-        res.json(dbModel);
-      }
-    });
+    db.User.create(req.body, function(err, newUser) { // breaks here then proxy error
+      console.log(newUser);
+    })
+      // .then(dbModel => {console.log(dbModel); res.json(dbModel)})
+      // .catch(err => res.status(422).json(err));
   }
 };
 
