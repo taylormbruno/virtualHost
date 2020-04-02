@@ -36,11 +36,20 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
-    db.Vendor
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  createVendor: function(req, res) {
+    console.log(req.body);
+    const new_vendor = new db.Vendor(req.body);
+    new_vendor.save(function(err) {
+      if (err) console.log(err);
+    });
+    console.log(new_vendor);
+    res.status(200).json(new_vendor);
+    // db.Vendor.create(req.body)
+    //   .then(dbModel => {
+    //     console.log(dbModel);
+    //     res.json(dbModel);
+    //   })
+    //   .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.Vendor

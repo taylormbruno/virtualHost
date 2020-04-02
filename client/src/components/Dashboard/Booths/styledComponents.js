@@ -1,16 +1,24 @@
-import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
-
+import styled from "styled-components";
+import { Icon, Button } from "semantic-ui-react";
 
 export const StyledIcon = styled(Icon)`
-    &&& {  
-        transform: scale(4);
-        padding:0;
-        margin: 0;
-        color: #a9a6c9;
-        transition: all .2s ease;
-    }   
-    &&&:hover {
-        transform: scale(4.7);
-    }
-    `;
+  &&& {
+    transform: scale(4);
+    padding: 0;
+    margin: 0;
+    color: #a9a6c9;
+    transition: all 0.2s ease;
+  }
+  &&&:hover {
+    transform: scale(4.7);
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  &&& {
+    background-color: #a9a6c9;
+    color: white !important;
+    width: 60%;
+    margin: 10px auto;
+  }
+`;

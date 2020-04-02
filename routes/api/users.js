@@ -5,11 +5,9 @@ const userController = require("../../controllers/userController");
 
 router.post("/signup", userController.create);
 
-router.get('/login', userController.login);
+router.post('/login', userController.login);
 
-router.post("/auth", userController.findExt);
-
-router.post("/createext", userController.createExt);
+router.get("/validate", userController.ValidateUser);
 
 router.get('/user/mydashboard/:id', userController.findUserById);
 

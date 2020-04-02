@@ -6,7 +6,6 @@ module.exports = {
       .sort({ date: -1 })
       .then(dbModel => {
         res.json(dbModel);
-        // console.log(dbModel);
       })
       .catch(err => res.status(422).json(err));
   },
@@ -16,30 +15,26 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   login: function(req, res) {
+    console.log(req.body);
     db.User.findOne({ username: req.body.username }, function(err, user) {
       if (user === null) {
-        const error = "User not found";
-        // console.log(error);
+        console.log("User not found");
       } else {
-        db.User.comparePassword(req.body.password, function(err, match) {
+        user.comparePassword(req.body.password, function(err, match) {
           if (err) {
             console.log("Password does not match");
           } else {
-            // console.log(match);
-            res.json(match);
+            console.log(match);
+            res.status(200).json(user);
           }
         });
       }
     });
   },
   create: function(req, res) {
-    // console.log("----creating new user----\n", req); // fires on postman and browser to local host 3000
     db.User.create(req.body)
-      .then((dbModel, err) => {
-        // console.log("---dbModel---\n", dbModel); // fires on postman and browser
-        if (dbModel.externalUser === true) {
-          return dbModel;
-        } else res.status(200).json(dbModel);
+      .then(dbModel => {
+        res.status(200).json(dbModel);
       })
       .catch(err => console.log(err));
   },
@@ -55,36 +50,37 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findExt: function(req, res) {
-    console.log("controller request\n", req.body); // fires w. data
-    db.User.find({ externalID: req.body.externalID })
+    console.log("-----------Req Body---------");
+    console.log(req.body);
+    db.User.findOne({ externalID: req.body.externalID })
       .then(dbModel => {
-        if (dbModel === undefined || []) {
-          console.log("62 User is undefined."); // fires
-          res.json({ error: "user not found" });
-        } else {
-          console.log("USER");
-          console.log(dbModel);
-          res.json(dbModel);
-        }
+        console.log(dbModel);
+        res.json(dbModel);
       })
       .catch(err => res.status(422).json(err));
   },
   createExt: function(req, res) {
-    console.log("73 USER");
+    console.log("----------63 USER----------");
     console.log(req.body); // fires w. data
-    db.User.create(req.body)
-      .then((dbModel) => {
-        console.log("USER"); 
-        console.log(dbModel);
-        if (dbModel === undefined || []) {
-          console.log("User is undefined."); 
-          res.json({ error: "user not found" });
-        } else {
-          res.json(dbModel);
-        }
-      })
-      .catch(err => console.log(err));
+    console.log("--------------------");
+    // Create an instance of model SomeModel
+    const new_user = new db.User(req.body);
+    console.log(new_user);
+    // Save the new model instance, passing a callback
+    new_user.save(function(err) {
+      if (err) return handleError(err);
+    });
+    res.json(new_user);
+  },
+  ValidateUser: async function(req, res) {
+    let fields = {username:[], email:[]}
+    await db.User.distinct("username").then(response => {
+      fields.username=response;
+    });
+    await db.User.distinct("email").then(response => {
+      fields.email=response;
+    });
+    res.json(fields);
   }
 };
 
-// req.headers.cookie to get user cookies from controller request

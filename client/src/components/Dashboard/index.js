@@ -34,7 +34,6 @@ class MyDashboard extends Component {
     });
   }
   
-
   findUser = async (query) => {
     const master = await API.findUserById(query);
     console.log(master.data);

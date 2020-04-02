@@ -5,13 +5,7 @@ export default {
     return axios.post("/api/users/signup", userData);
   },
   loginUser: function(user) {
-    return axios.get("/api/users/login", user);
-  },
-  findAuth: function(term) {
-    return axios.post("/api/users/auth", term)
-  },
-  createAuth: function(term) {
-    return axios.post("./api/users/createext", term)
+    return axios.post("/api/users/login", user);
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);
@@ -25,7 +19,6 @@ export default {
   },
   findVendor: function(id) {
     console.log("test");
-
     return axios.get("/api/vendors/vendor", id)
   },
   allEvents: function() {
@@ -39,4 +32,10 @@ export default {
 
     return axios.get("/api/user/dashboard/" + id)
   }  
+  createEvent: function(obj) {
+    return axios.post("/api/events/create", obj);
+  },
+  createVendor: function(obj) {
+    return axios.post("/api/vendors/create", obj);
+  }
 };
