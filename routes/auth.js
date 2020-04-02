@@ -30,25 +30,29 @@ router.get(
       console.log("session cookie set");
       const userString = JSON.stringify(req.user.session.profile);
       console.log(userString);
-      console.log("finding user")
+      console.log("finding user");
       axios({
         method: "post",
         url: "http://localhost:3000/auth/google/find",
         data: req.user.session.profile
-      }).then(response => {
+      }).then(
+        response => {
           if (response.data === null) {
-            console.log("creating user")
+            console.log("creating user");
             axios({
               method: "post",
               url: "http://localhost:3000/auth/google/create",
               data: req.user.session.profile
             }).then(response => {
-              console.log(response)
+              console.log(response.data);
+              res.redirect(
+                "http://localhost:3000/user/mydashboard/?q=" + response.data._id
+              );
             });
           } else {
-            console.log(response);
+            console.log(response.data);
             res.redirect(
-              "http://localhost:3000/user/mydashboard/?q=" + "userID"
+              "http://localhost:3000/user/mydashboard/?q=" + response.data._id
             );
           }
         },
@@ -63,6 +67,5 @@ router.get(
 
 router.post("/find", userController.findExt);
 router.post("/create", userController.createExt);
-
 
 module.exports = router;
