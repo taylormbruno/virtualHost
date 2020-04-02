@@ -33,7 +33,7 @@ router.get(
       console.log("finding user");
       axios({
         method: "post",
-        url: "http://localhost:3000/auth/google/find",
+        url: process.env.BASE_URL + "/auth/google/find",
         data: req.user.session.profile
       }).then(
         response => {
@@ -41,24 +41,24 @@ router.get(
             console.log("creating user");
             axios({
               method: "post",
-              url: "http://localhost:3000/auth/google/create",
+              url: process.env.BASE_URL + "auth/google/create",
               data: req.user.session.profile
             }).then(response => {
               console.log(response.data);
               res.redirect(
-                "http://localhost:3000/user/mydashboard/?q=" + response.data._id
+                process.env.BASE_URL + "user/mydashboard/?q=" + response.data._id
               );
             });
           } else {
             console.log(response.data);
             res.redirect(
-              "http://localhost:3000/user/mydashboard/?q=" + response.data._id
+              process.env.BASE_URL + "user/mydashboard/?q=" + response.data._id
             );
           }
         },
         error => {
           console.log(error);
-          res.redirect("http://localhost:3000/");
+          res.redirect(process.env.BASE_URL);
         }
       );
     }
