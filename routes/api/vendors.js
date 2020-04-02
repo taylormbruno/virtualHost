@@ -11,5 +11,6 @@ router.get('/vendor', vendorController.findVendorById);
 
 router.get('/byhost', vendorController.findVendorByHost);
 
+router.post('/create', vendorController.createVendor)
 
 module.exports = router;

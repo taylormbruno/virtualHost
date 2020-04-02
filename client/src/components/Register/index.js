@@ -1,126 +1,86 @@
-
 import React, { Component } from "react";
 import { StyledHeader, StyledSegment, StyledButton } from "./styledComponents";
-import { Form, Input, TextArea, Select, Icon } from "semantic-ui-react";
+import options from "./options";
+import API from "../../utils/API";
+import queryString from "query-string";
+
+import {
+  Form,
+  Input,
+  TextArea,
+  Select,
+  Icon,
+  Image,
+  Grid
+} from "semantic-ui-react";
 import { VendorForm } from "./vendor";
 
 class Settings extends Component {
   state = {
-    vendors: []
+    event: {
+      userID: "",
+      active: false,
+      obj: {}
+    },
+    vendors: [],
+    verifyImg: false,
+    eventFormObj: {}
+  };
+
+  componentDidMount = () => {
+    let query = queryString.parse(window.location.search);
+    this.setState({ ...this.state, event: {...this.state.event, userID: query.user} });
+  };
+
+  verifyImg = (event, data) => {
+    event.preventDefault();
+    this.setState({ ...this.state, verifyImg: true });
+  };
+
+  handleInputChange = (event, data) => {
+    const change = { [data.name]: data.value };
+    console.log(change);
+    this.setState({
+      ...this.state,
+      eventFormObj: { ...this.state.eventFormObj, [data.name]: data.value }
+    });
+    console.log(this.state);
+  };
+
+  addEvent = async () => {
+    const submission = {
+      event_name: this.state.eventFormObj.event_name,
+      image: this.state.eventFormObj.image,
+      location: this.state.eventFormObj.location,
+      start_time: new Date(`
+        ${this.state.eventFormObj.year}/${this.state.eventFormObj.month}/${this.state.eventFormObj.day} ${this.state.eventFormObj.start_hour}:${this.state.eventFormObj.start_minute}:00
+      `),
+      end_time: new Date(`
+      ${this.state.eventFormObj.year}/${this.state.eventFormObj.month}/${this.state.eventFormObj.day} ${this.state.eventFormObj.end_hour}:${this.state.eventFormObj.end_minute}:00
+    `),
+      description: this.state.eventFormObj.description,
+      host_id: this.state.event.userID,
+      web_url: this.state.eventFormObj.web_url
+    };
+    console.log(submission.start_time);
+    const newEvent = await API.createEvent(submission);
+    console.log(newEvent.data);
+    this.setState({...this.state,event: {...this.state.event, active: true, obj: newEvent.data}});
   };
 
   addSection = () => {
     this.setState({
-      vendors: [...this.state.vendors, <VendorForm />]
+      vendors: [...this.state.vendors, <VendorForm eventID={this.state.event.obj._id}/>]
     });
   };
 
   scrollDown = () => {
-  console.log("It is reading");
-  var scrollingElement = (document.scrollingElement || document.body);
-  scrollingElement.scrollTop = scrollingElement.scrollHeight;
-  }
+    console.log("It is reading");
+    var scrollingElement = document.scrollingElement || document.body;
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
+  };
 
   render() {
-    const hourOptions = [
-      { key: "0", text: "0", value: "0" },
-      { key: "1", text: "1", value: "1" },
-      { key: "2", text: "2", value: "2" },
-      { key: "3", text: "3", value: "3" },
-      { key: "4", text: "4", value: "4" },
-      { key: "5", text: "5", value: "5" },
-      { key: "6", text: "6", value: "6" },
-      { key: "7", text: "7", value: "7" },
-      { key: "8", text: "8", value: "8" },
-      { key: "9", text: "9", value: "9" },
-      { key: "10", text: "10", value: "10" },
-      { key: "11", text: "11", value: "11" },
-      { key: "12", text: "12", value: "12" },
-      { key: "13", text: "13", value: "13" },
-      { key: "14", text: "14", value: "14" },
-      { key: "15", text: "15", value: "15" },
-      { key: "16", text: "16", value: "16" },
-      { key: "17", text: "17", value: "17" },
-      { key: "18", text: "18", value: "18" },
-      { key: "19", text: "19", value: "19" },
-      { key: "20", text: "20", value: "20" },
-      { key: "21", text: "21", value: "21" },
-      { key: "22", text: "22", value: "22" },
-      { key: "23", text: "23", value: "23" },
-      { key: "24", text: "24", value: "24" }
-    ];
-
-    const minuteOptions = [
-      { key: "00", text: "00", value: "00" },
-      { key: "15", text: "15", value: "15" },
-      { key: "30", text: "30", value: "30" },
-      { key: "45", text: "45", value: "45" }
-    ];
-
-    const monthOptions = [
-      { key: "1", text: "1", value: "01" },
-      { key: "2", text: "2", value: "02" },
-      { key: "3", text: "3", value: "03" },
-      { key: "4", text: "4", value: "04" },
-      { key: "5", text: "5", value: "05" },
-      { key: "6", text: "6", value: "06" },
-      { key: "7", text: "7", value: "07" },
-      { key: "8", text: "8", value: "08" },
-      { key: "9", text: "9", value: "09" },
-      { key: "10", text: "10", value: "10" },
-      { key: "11", text: "11", value: "11" },
-      { key: "12", text: "12", value: "12" },
-    ];
-
-    const dateOptions = [
-      { key: "1", text: "1", value: "01" },
-      { key: "2", text: "2", value: "02" },
-      { key: "3", text: "3", value: "03" },
-      { key: "4", text: "4", value: "04" },
-      { key: "5", text: "5", value: "05" },
-      { key: "6", text: "6", value: "06" },
-      { key: "7", text: "7", value: "07" },
-      { key: "8", text: "8", value: "08" },
-      { key: "9", text: "9", value: "09" },
-      { key: "10", text: "10", value: "10" },
-      { key: "11", text: "11", value: "11" },
-      { key: "12", text: "12", value: "12" },
-      { key: "12", text: "12", value: "12" },
-      { key: "13", text: "13", value: "13" },
-      { key: "14", text: "14", value: "14" },
-      { key: "15", text: "15", value: "15" },
-      { key: "16", text: "16", value: "16" },
-      { key: "17", text: "17", value: "17" },
-      { key: "18", text: "18", value: "18" },
-      { key: "19", text: "19", value: "19" },
-      { key: "20", text: "20", value: "20" },
-      { key: "21", text: "21", value: "21" },
-      { key: "22", text: "22", value: "22" },
-      { key: "23", text: "23", value: "23" },
-      { key: "24", text: "24", value: "24" },
-      { key: "25", text: "25", value: "25" },
-      { key: "26", text: "26", value: "26" },
-      { key: "27", text: "27", value: "27" },
-      { key: "28", text: "28", value: "28" },
-      { key: "29", text: "29", value: "29" },
-      { key: "30", text: "30", value: "30" },
-      { key: "31", text: "31", value: "31" }
-    ];
-
-    const yearOptions = [
-      { key: "2020", text: "2020", value: "2020" },
-      { key: "2021", text: "2021", value: "2021" },
-      { key: "2022", text: "2022", value: "2022" },
-      { key: "2023", text: "2023", value: "2023" },
-      { key: "2024", text: "2024", value: "2024" },
-      { key: "2025", text: "2025", value: "2025" },
-      { key: "2026", text: "2026", value: "2026" },
-      { key: "2027", text: "2027", value: "2027" },
-      { key: "2028", text: "2028", value: "2028" },
-      { key: "2029", text: "2029", value: "2029" },
-      { key: "2030", text: "2030", value: "2030" }
-    ];
-
     return (
       <div className="scrollingContainer">
         <StyledSegment>
@@ -133,73 +93,88 @@ class Settings extends Component {
                 control={Input}
                 label="Event Title"
                 placeholder="Enter name of your event here"
+                name="event_name"
+                onChange={this.handleInputChange}
               />
               <Form.Field
                 id="form-input-control-last-name"
                 control={Input}
                 label="Event Location"
                 placeholder="101 Main St., Example, US 55555"
+                name="location"
+                onChange={this.handleInputChange}
               />
             </Form.Group>
             <strong>Event Date</strong>
             <Form.Group widths="equal">
               <Form.Field
                 control={Select}
-                options={monthOptions}
+                options={options.month}
                 placeholder="Select Month"
                 name="month"
                 search
                 searchInput={{ id: "form-select-control-gender" }}
+                onChange={this.handleInputChange}
               />
               <Form.Field
                 control={Select}
-                options={dateOptions}
+                options={options.day}
                 placeholder="Select Date"
-                name="date"
+                name="day"
                 search
                 searchInput={{ id: "form-select-control-gender" }}
+                onChange={this.handleInputChange}
               />
               <Form.Field
                 control={Select}
-                options={yearOptions}
+                options={options.year}
                 placeholder="Select Year"
                 name="year"
                 search
                 searchInput={{ id: "form-select-control-gender" }}
+                onChange={this.handleInputChange}
               />
             </Form.Group>
             <strong>Starting Time</strong>
             <Form.Group widths="equal">
               <Form.Field
                 control={Select}
-                options={hourOptions}
+                options={options.hour}
                 placeholder="Hour"
                 search
                 searchInput={{ id: "form-select-control-gender" }}
+                onChange={this.handleInputChange}
+                name="start_hour"
               />
               <Form.Field
                 control={Select}
-                options={minuteOptions}
+                options={options.minute}
                 placeholder="Minute"
                 search
                 searchInput={{ id: "form-select-control-gender" }}
+                onChange={this.handleInputChange}
+                name="start_minute"
               />
             </Form.Group>
             <strong>Ending Time</strong>
             <Form.Group widths="equal">
               <Form.Field
                 control={Select}
-                options={hourOptions}
+                options={options.hour}
                 placeholder="Hour"
                 search
                 searchInput={{ id: "form-select-control-gender" }}
+                onChange={this.handleInputChange}
+                name="end_hour"
               />
               <Form.Field
                 control={Select}
-                options={minuteOptions}
+                options={options.minute}
                 placeholder="Minute"
                 search
                 searchInput={{ id: "form-select-control-gender" }}
+                onChange={this.handleInputChange}
+                name="end_minute"
               />
             </Form.Group>
             <Form.Field
@@ -207,45 +182,74 @@ class Settings extends Component {
               control={TextArea}
               label="Event Description"
               placeholder="Tell us more about your event"
+              onChange={this.handleInputChange}
+              name="description"
             />
             <Form.Field
-            id="form-input-control-error-email"
-            control={Input}
-            label="Photo URL"
-            placeholder="Add URL path to photo. This will display on your booth's card."
-          />
+              id="form-input-control-error-email"
+              control={Input}
+              label="Photo URL"
+              placeholder="Add the Image Address to your photo. This will display on your event's card."
+              onChange={this.handleInputChange}
+              name="image"
+            />
+            <Grid>
+              <Grid.Row>
+                <Grid.Column width={8}>
+                  <Image
+                    src={
+                      this.state.verifyImg
+                        ? this.state.eventFormObj.image
+                        : "https://www.sylvansport.com/wp/wp-content/uploads/2018/11/image-placeholder-1200x800.jpg"
+                    }
+                    size="small"
+                    centered
+                  />
+                </Grid.Column>
+                <Grid.Column width={8}>
+                  <button style={this.verifyBtn} onClick={this.verifyImg}>
+                    Verify Image
+                  </button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
             <Form.Field
               id="form-input-control-error-email"
               control={Input}
               label="Website URL"
+              onChange={this.handleInputChange}
+              name="web_url"
             />
           </Form>
+          <StyledButton
+            onClick={() => {
+              this.addEvent();
+              this.scrollDown();
+            }}
+          >
+            <Icon name="save" />
+            Save Event.
+          </StyledButton>
         </StyledSegment>
 
         <div id="vendorSection">
           <>{this.state.vendors}</>
         </div>
 
-        <StyledButton
-              onClick={() => {
-                console.log(this.state.vendors);
-                this.addSection();
-                this.scrollDown();
-              }}
-            >
-              <Icon name="add" />
-              Add A Vendor
-            </StyledButton>
-            <StyledButton
-              onClick={() => {
-                console.log(this.state.vendors);
-                this.addSection();
-                this.scrollDown();
-              }}
-            >
-              <Icon name="save" />
-              Save Event and Vendors
-            </StyledButton>
+        {this.state.event.active ? (
+          <StyledButton
+            onClick={() => {
+              console.log(this.state.vendors);
+              this.addSection();
+              this.scrollDown();
+            }}
+          >
+            <Icon name="add" />
+            Add A Vendor
+          </StyledButton>
+        ) : (
+          ""
+        )}
       </div>
     );
   }

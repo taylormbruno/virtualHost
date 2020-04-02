@@ -28,7 +28,10 @@ export default {
   findVendorByHost: function() {
     return axios.get("/api/vendors/byhost");
   },
-  // validSignup: function(form) {
-  //   return axios.get("/api/users/validate", form);
-  // }
+  createEvent: function(obj) {
+    return axios.post("/api/events/create", obj);
+  },
+  createVendor: function(obj) {
+    return axios.post("/api/vendors/create", obj);
+  }
 };
