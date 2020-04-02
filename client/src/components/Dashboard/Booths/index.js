@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Card, Icon, Grid, Image } from 'semantic-ui-react'
 import { StyledIcon } from './styledComponents'
 import API from "../../../utils/API";
+import { StyledButton } from "./styledComponents"
 
 
 const boothseeds = [
@@ -71,10 +72,10 @@ export default class Booths extends Component {
 
 
   nextIndex = () => {
-    let favorites=[1,2,3];
+    let totalIndexes=this.state.boothData.length-1;
     let newCardIndex = this.state.currentCardIndex+1;
     
-    if (favorites[newCardIndex]) {
+    if (newCardIndex <=totalIndexes) {
       this.setState({ currentCardIndex: newCardIndex })
     }
     else {
@@ -83,10 +84,9 @@ export default class Booths extends Component {
   }
 
   backIndex = () => {
-    let favorites=[1,2,3];
     let newCardIndex = this.state.currentCardIndex-1;
     
-    if (favorites[newCardIndex]) {
+    if (newCardIndex >= 0) {
       this.setState({ currentCardIndex: newCardIndex })
     }
     else {
@@ -95,7 +95,18 @@ export default class Booths extends Component {
   }
 
   render() {
+    // let boothData=this.state.boothData[0]
     let index=this.state.currentCardIndex;
+    let boothName="";
+    let boothImage="";
+    // let eventTitle="";
+    let description="";
+    if (this.state.boothData.length) {
+      boothName = this.state.boothData[index].vendor_name;
+      boothImage = this.state.boothData[index].image;
+      description=this.state.boothData[index].description;
+    }
+    console.log(boothImage);
 
   return(
   <Grid columns='three'>
@@ -109,19 +120,20 @@ export default class Booths extends Component {
     </Grid.Column>
     <Grid.Column width={10}>
       <Card>
-        <Image src={boothseeds[this.state.currentCardIndex].image} wrapped ui={false}/>
+        <Image src={boothImage}/>
         <Card.Content>
-          <Card.Header>{boothseeds[this.state.currentCardIndex].boothTitle}</Card.Header>
+          <Card.Header>{boothName}</Card.Header>
+          {/* This section had the event name however that's an extra API call for every booth. Worth it?
           <Card.Meta>
             <span className='date'>{boothseeds[this.state.currentCardIndex].eventName}</span>
-          </Card.Meta>
+          </Card.Meta> */}
           <Card.Description>
-            {boothseeds[this.state.currentCardIndex].description}
+            {description}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
             <Icon name='star' />
-              {boothseeds[this.state.currentCardIndex].favorites} Favorites
+              Favorites Go Here
         </Card.Content>
       </Card>
     </Grid.Column>
@@ -133,6 +145,14 @@ export default class Booths extends Component {
           console.log(this.state.currentCardIndex)
         }}/>
     </Grid.Column>
+    <StyledButton>
+          <Icon name="wifi" />
+          Activate Beacon
+        </StyledButton>
+    <StyledButton>
+      <Icon name="delete" />
+      Deactivate Beacon
+    </StyledButton>
   </Grid>
   )
   }
