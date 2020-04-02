@@ -1,18 +1,21 @@
 const router = require("express").Router();
 const axios = require("axios");
+// matches /api/beacons/register
 
 router.post("/register", function(req, res) {
+  console.log(req.body)
   axios({
     method: "post",
-    url: "http://localhost:3000/auth/google/find",
+    url: "https://proximitybeacon.googleapis.com/v1beta1/beacons:register?key=" + proccess.env.API_KEY,
     data: {
-      advertisedId: { type: "EDDYSTONE", id: "Fr4Z98nSoW0hgAAAAAAAAg==" },
+      advertisedId: { type: "EDDYSTONE", id: req.body.beaconID },
       status: "ACTIVE",
       expectedStability: "STABLE",
-      description: "An example beacon.",
-      properties: { position: "entryway" }
+      description: req.body.vendor_name,
     }
-  }).then(response => {});
+  }).then(response => {
+    console.log(response);
+  });
 });
 
 module.exports = router;
