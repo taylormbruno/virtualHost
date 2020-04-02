@@ -55,7 +55,7 @@ export default class Booths extends Component {
   componentDidMount() {
     // Need to add that if hostID matches the user ID, map results to different array
     this.retrieveAllVendors().then(response => {
-      console.log(response)
+      console.log(response[0])
       this.setState({
         ...this.state,
         boothData: response
@@ -96,8 +96,6 @@ export default class Booths extends Component {
 
   render() {
     let index=this.state.currentCardIndex;
-    console.log(this.state.boothData[0])
-    // console.log(this.state.boothData[index].vendor_name)
 
   return(
   <Grid columns='three'>
