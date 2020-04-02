@@ -7,17 +7,22 @@ import "./style.css";
 import { StyledCell, StyledButton } from "./styledComponents";
 import API from "../../../utils/API";
 import moment from "moment";
+import queryString from "query-string";
 
 class MyEvents extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userID: "",
       allEvents: [],
       eventData: []
     };
   }
 
   componentDidMount() {
+    let query = queryString.parse(window.location.search);
+    console.log("dashboard events ", query.q);
+    this.setState({...this.state, userID: query.q});
     // Need to add that if hostID matches the user ID, map results to different array
     this.retrieveAllEvents().then(response => {
       this.setState({
@@ -82,7 +87,7 @@ class MyEvents extends Component {
             )}
           </Table.Body>
         </Table>
-        <StyledButton href="/register" circular icon="add" />
+        <StyledButton href={"/register/?user=" + this.state.userID } circular icon="add" />
       </div>
     );
   }
