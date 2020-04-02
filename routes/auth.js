@@ -30,8 +30,6 @@ router.get(
       console.log("session cookie set");
       const userString = JSON.stringify(req.user.session.profile);
       console.log(userString);
-      // const response = userController.findOrCreate(req.user.profile);
-      // console.log(response);
       console.log("finding user")
       axios({
         method: "post",
