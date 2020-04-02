@@ -125,7 +125,7 @@ class SignupForm extends Component {
             </StyledSegment>
           </Form>
           <Passport />
-          <StyledButton className="bottom">
+          <StyledButton className="bottom" href="/events">
             Continue As Guest
           </StyledButton>
         </Grid.Column>
