@@ -11,4 +11,6 @@ router.post("/auth", userController.findExt);
 
 router.post("/createext", userController.createExt);
 
+router.get('/user/mydashboard/:id', userController.findUserById);
+
 module.exports = router;
