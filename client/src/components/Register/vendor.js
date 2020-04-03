@@ -71,6 +71,7 @@ export class VendorForm extends Component {
 
   registerBeacon = async (obj) => {
     const newBeacon = await API.registerBeacon(obj);
+    console.log(newBeacon);
 
   }
 
