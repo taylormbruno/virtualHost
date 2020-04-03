@@ -42,7 +42,7 @@ class MyDashboard extends Component {
     };
     window.localStorage.setItem("loggedIn", true);
     window.localStorage.setItem("userID", master.data._id);
-    window.localStorage.setItem("fname", master.date.first_name);
+    window.localStorage.setItem("fname", master.data.first_name);
     this.setState({
       ...this.state,
       currentUser: user,
