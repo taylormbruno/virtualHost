@@ -14,7 +14,10 @@ class MyDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {}
+      currentUser: {},
+      userID: "",
+      fname: "",
+      loggedIn: false
     };
   }
 
@@ -35,12 +38,41 @@ class MyDashboard extends Component {
     //     }
     //   });
     // } else {
+
     console.log("Finding local user");
+    // if (query.q) {
+    //   window.localStorage.setItem('loggedIn', true);
+    //   window.localStorage.setItem('userID', true);
+    //   window.localStorage.setItem('fname', true);
+    // }
+    if(query.q) {
+    this.retrieveUserInfo().then(response => {
+      console.log("RESPONSE HERE");
+      console.log(response);
+      this.setState({
+        ...this.state,
+        userID: query.q,
+        fname: response.first_name,
+        loggedIn: true
+      });
+      window.localStorage.setItem('loggedIn', true);
+      window.localStorage.setItem('userID', this.state.userID);
+      window.localStorage.setItem('fname', this.state.fname);
+    });
+  }
+
+    console.log(query.q)
     this.getLocal(query).then(response => {
       console.log("Mount.onLoad()\n", response);
     });
+
     // }
   }
+
+  retrieveUserInfo = async () => {
+    const master = await API.findUserByID();
+    return master.data;
+  };
 
   // getExt = async id => {
   //   const extUser = await API.getExternalUser(id);
@@ -76,6 +108,8 @@ class MyDashboard extends Component {
   };
 
   render() {
+    console.log("Current user info")
+    console.log(this.state);
     return (
       <div id="container">
         <Image id="logo" src={Dashboard} />

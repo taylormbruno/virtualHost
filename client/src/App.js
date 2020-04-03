@@ -19,11 +19,9 @@ import UserContext from "./utils/UserContext";
 function App() {
   let [userState, setUserState] = useState({
     loggedIn: false,
-    username: "khatley16",
-    fname: "Kacie",
-    lname: "Hatley",
+    fname: "",
     light: true,
-    userID: "5e839a7bd1e335f31afcf404"
+    userID: ""
   });
 
   window.onload = function() {
@@ -43,6 +41,28 @@ function App() {
     if (userState.light === false) {
       currentBackground.setAttribute("style", "background-color: gray")
     }
+    
+    let fname = window.localStorage.getItem('fname');
+    let userID = window.localStorage.getItem('userID');
+    let loggedIn = JSON.parse(window.localStorage.getItem('loggedIn'));
+    userState.fname=fname;
+    userState.userID=userID;
+    userState.loggedIn=loggedIn;
+    setUserState({
+      ...userState
+    });
+  }
+
+  function logout() {
+    window.localStorage.removeItem('fname');
+    window.localStorage.removeItem('userID');
+    window.localStorage.removeItem('loggedIn');
+    userState.fname="";
+    userState.userID="";
+    userState.loggedIn=false;
+    setUserState({
+      ...userState
+    });
   }
 
   function updateLightMode() {
@@ -61,19 +81,6 @@ function App() {
     window.localStorage.setItem('lightMode', userState.light);
   }
 
-  function updateLoginStatus() {
-
-    if (userState.loggedIn === false) {
-      userState.loggedIn = true;
-    }
-    else if (userState.loggedIn === true) {
-      userState.loggedIn = false
-    }
-    setUserState({
-      ...userState
-    });
-  } 
-
   return (
     <div 
     className="App"
@@ -81,7 +88,7 @@ function App() {
       <UserContext.Provider value={userState}>
         <Router>
           <Navbar
-          updateLoginStatus = {updateLoginStatus}
+          logout = {logout}
           />
           <Switch>
             <Route exact path={["/", "/login"]}>
