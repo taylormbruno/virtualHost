@@ -3,7 +3,7 @@ import "./index.css";
 
 function Passport() {
   return (
-      <a href={process.env.BASE_URL + "auth/google"} className="button">
+      <a href={"/auth/google"} className="button">
       <div>
         <span className="svgIcon t-popup-svg">
           <svg
