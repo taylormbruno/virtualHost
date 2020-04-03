@@ -89,11 +89,11 @@ class LoginForm extends Component {
               <StyledButton href="/signup" fluid size="large" >
                 Create Account
               </StyledButton>
-              <Passport />
-
               <StyledButton fluid size="large" href="/events">
                 Continue As Guest
               </StyledButton>
+              <br/>
+              <Passport />
             </Segment>
           </Form>
         </Grid.Column>
