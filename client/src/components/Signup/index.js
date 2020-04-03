@@ -60,6 +60,13 @@ class SignupForm extends Component {
       }
     }
   };
+
+  showRequirements = () => {
+    document.getElementById('pwRequire').setAttribute("style", "display: block");
+  }
+  hideRequirements = () => {
+    document.getElementById('pwRequire').setAttribute("style", "display: none");
+  }
         
   render() {
     return(
@@ -74,8 +81,10 @@ class SignupForm extends Component {
                 iconPosition='left' 
                 placeholder='Username (Required)'
                 name='username'
-                onChange={this.handleInputChange}  
+                onChange={this.handleInputChange} 
+                onClick={this.hideRequirements} 
               />
+              <p id="pwRequire">**Password must contain 6 characters, 1 number, 1 uppercase letter, and 1 lowercase letter.</p>
               <Form.Input
                 fluid
                 icon='lock'
@@ -84,6 +93,7 @@ class SignupForm extends Component {
                 type='password'
                 name='pass1'
                 onChange={this.handleInputChange}
+                onClick={this.showRequirements}
               />
               <Form.Input
                 fluid
@@ -93,6 +103,7 @@ class SignupForm extends Component {
                 type='password'
                 name='pass2'
                 onChange={this.handleInputChange}
+                onClick={this.showRequirements}
               />
               <Form.Input 
                 fluid icon='mail outline' 
@@ -100,6 +111,7 @@ class SignupForm extends Component {
                 placeholder='Email Address (Required)'
                 name='email'
                 onChange={this.handleInputChange}
+                onClick={this.hideRequirements}
               />
               <Form.Input 
                 fluid icon='male'
@@ -107,6 +119,7 @@ class SignupForm extends Component {
                 placeholder='First Name (Required)'
                 name="first_name"
                 onChange={this.handleInputChange}
+                onClick={this.hideRequirements}
               />
                 <Form.Input 
                 fluid icon='male' 
@@ -114,6 +127,7 @@ class SignupForm extends Component {
                 placeholder='Last Name (Required)'
                 name="last_name"
                 onChange={this.handleInputChange}
+                onClick={this.hideRequirements}
                 />
                 <StyledButton fluid size='large' onClick={this.handleFormSubmit}>
                   Join the Community
