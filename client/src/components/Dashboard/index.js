@@ -13,36 +13,36 @@ import queryString from "query-string";
 class MyDashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       currentUser: {}
     };
   }
 
   componentDidMount() {
     const query = queryString.parse(window.location.search);
-    
     console.log("Finding local user");
-    this.getLocal(query).then(response => {
-      console.log("Mount.onLoad()\n", response);
-    });    
-    this.findUser(query.q).then(response => {
-      console.log(response,'????????');
-      this.setState({
-        ...this.state,
-        currentUser:response
-      });
-    });
+    this.findUser(query.q);
   }
-  
-  findUser = async (query) => {
+
+  findUser = async query => {
+    console.log("Sending api call to find user");
     const master = await API.findUserById(query);
-    console.log(master.data);
-    return master.data;
+    console.log(master.data.notes);
+    let user = {
+      id: master.data._id,
+      first_name: master.data.first_name,
+      last_name: master.data.last_name,
+      notes: master.data.notes ? master.data.notes : [],
+      favorites: master.data.favorites ? master.data.favorites : []
+    };
+    this.setState({
+      ...this.state,
+      currentUser: user
+    });
   };
-  
-  
+
   render() {
-    console.log('======>',this.state,'<======')
+    console.log("Rendering dashboard", this.state)
     return (
       <div id="container">
         <Image id="logo" src={Dashboard} />
@@ -50,25 +50,24 @@ class MyDashboard extends Component {
           <Grid.Column width={7}>
             <Segment>
               <StyledHeader as="h1">My Events</StyledHeader>
-              <Events 
-              userState={this.state.userState}
-              />
+              <Events userState={this.state.currentUser} />
             </Segment>
             <Segment>
               <StyledHeader as="h1">My Booths</StyledHeader>
-              <Booths 
-              userState={this.state.userState}
-              />
+              <Booths userState={this.state.currentUser} />
             </Segment>
           </Grid.Column>
           <Grid.Column width={9}>
             <Segment>
               <StyledHeader as="h1">My Notes</StyledHeader>
-              <Notes user={this.state.currentUser} update={this.updateUser} />
+              <Notes
+                notes={this.state.currentUser.notes}
+                update={this.updateUser}
+              />
             </Segment>
             <Segment>
               <StyledHeader as="h1">My Favorites</StyledHeader>
-              <Favorites user={this.state.currentUser} update={this.updateUser} />
+              <Favorites favs={this.state.currentUser.favorites} update={this.updateUser} />
             </Segment>
           </Grid.Column>
         </Grid>

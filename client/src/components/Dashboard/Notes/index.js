@@ -9,47 +9,40 @@ import "./style.css";
 import API from "../../../utils/API";
 
 export default class Notes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      eventTitle: "",
+      boothName: "",
+      noteBody: "",
+      currentNotes: []
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        eventTitle: "",
-        boothName: "",
-        noteBody: "",
-        currentNotes: []
-        };
-      }
+  componentDidMount() {
+    console.log(this.props.notes);
+    
+    this.checkState();
+  }
 
-      componentDidMount() {
-        this.findUser().then(response => {
-          console.log(response);
-          this.setState({
-            ...this.state,
-            masterList: response,
-            eventData: response
-          });
-        });
-      }
-
-      findUser = async () => {
-        const master = await API.findUserById();
-        console.log(master.data);
-        return master.data;
-      };
-
-
-//   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-//   handleItemClick = e => {
-//     let clickedID = e.target.className - 1;
-//     this.setState({
-//       eventTitle: notes[clickedID].eventTitle,
-//       boothName: notes[clickedID].boothName,
-//       noteBody: notes[clickedID].noteBody
-//     });
-//   };
+checkState = () => {
+  this.setState({
+    ...this.state,
+    currentNotes: this.props.notes
+  });
+}
+    // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    // handleItemClick = e => {
+    //   let clickedID = e.target.className - 1;
+    //   this.setState({
+    //     eventTitle: notes[clickedID].eventTitle,
+    //     boothName: notes[clickedID].boothName,
+    //     noteBody: notes[clickedID].noteBody
+    //   });
+    // };
 
   render() {
-      console.log(this.props)
+    console.log("rendering events", this.props.notes);
     return (
       <div>
         <StyledHeader as="h2">{this.state.boothName}</StyledHeader>
@@ -64,11 +57,17 @@ export default class Notes extends Component {
           />
         </Form>
         <StyledButton>
-          <Icon name="save" onClick={()=>this.props.update(this.state.currentNotes)} />
+          <Icon
+            name="save"
+            onClick={() => this.props.update(this.state.currentNotes)}
+          />
           Save Note
         </StyledButton>
         <StyledButton>
-          <Icon name="delete" onClick={()=>this.props.update(this.state.currentNotes)} />
+          <Icon
+            name="delete"
+            onClick={() => this.props.update(this.state.currentNotes)}
+          />
           Delete Note
         </StyledButton>
         <div id="notesContainer">
@@ -83,31 +82,33 @@ export default class Notes extends Component {
             </Table.Header>
 
             <Table.Body>
-              {this.props.user.notes.map(notes => (
-                <Table.Row className="hover" name={notes.vendor_id}>
-                  <Table.Cell
-                    onClick={this.handleItemClick}
-                    className={notes.vendor_id}
-                  >
-                    {notes.boothName}
-                  </Table.Cell>
-                  <Table.Cell
-                    onClick={this.handleItemClick}
-                    className={notes.vendor_id}
-                  >
-                    {notes.eventTitle}
-                  </Table.Cell>
-                  <Table.Cell
-                    onClick={this.handleItemClick}
-                    className={notes.vendor_id}
-                  >
-                    {notes.noteBody}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Icon name="delete" />
-                  </Table.Cell>
-                </Table.Row>
-              ))}
+              {(this.props.notes !== undefined
+                ? this.props.notes.map(note => (
+                    <Table.Row className="hover" name={note.vendor_id}>
+                      <Table.Cell
+                        onClick={this.handleItemClick}
+                        className={note.vendor_id}
+                      >
+                        {note.vendor_name}
+                      </Table.Cell>
+                      <Table.Cell
+                        onClick={this.handleItemClick}
+                        className={note.vendor_id}
+                      >
+                        {note.event_name}
+                      </Table.Cell>
+                      <Table.Cell
+                        onClick={this.handleItemClick}
+                        className={note.vendor_id}
+                      >
+                        {note.note}
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Icon name="delete" />
+                      </Table.Cell>
+                    </Table.Row>
+                  ))
+                : "")}
             </Table.Body>
           </Table>
         </div>

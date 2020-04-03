@@ -4,6 +4,7 @@ import { StyledCell } from "./styledComponents";
 import "./style.css";
 import API from "../../../utils/API";
 import moment from "moment";
+import queryString from "query-string";
 
 export default class EventModal extends Component {
   constructor(props) {
@@ -15,8 +16,10 @@ export default class EventModal extends Component {
   }
 
   componentDidMount() {
+    let query = queryString.parse(window.location.search);
+    console.log("dashboard events ", query.q);
     // Need to add that if hostID matches the user ID, map results to different array
-    this.retrieveAll().then(response => {
+    this.retrieveAll(query.q).then(response => {
       console.log(response);
       this.setState({
         ...this.state,
@@ -25,9 +28,10 @@ export default class EventModal extends Component {
     });
   }
 
-  retrieveAll = async () => {
-    const master = await API.allEvents();
-    console.log(master.data);
+  retrieveAll = async (query) => {
+    const master = await API.allEventsByUser(query);
+    console.log("RETRIEVE ALL EVENTS");
+    console.log(master.data)
     return master.data;
   };
 
@@ -50,7 +54,6 @@ export default class EventModal extends Component {
               <Table.Row>
                 <StyledCell>Event Name</StyledCell>
                 <StyledCell>Dates and Times</StyledCell>
-                <StyledCell>No. of Booths</StyledCell>
               </Table.Row>
             </Table.Header>
 
@@ -74,7 +77,6 @@ export default class EventModal extends Component {
                           " - " +
                           moment(event.end_time).format("h:mm a")}
                       </Table.Cell>
-                      <Table.Cell>{event.vendors.length}</Table.Cell>
                     </Table.Row>
                   );
                 }

@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Bcrypt = require("bcryptjs");
 
-const notes = new Schema({vendor_id: String, event_id: String, event_name: String, vendor_name: String, note: String});
+const notes = new Schema([{vendor_id: String, event_id: String, event_name: String, vendor_name: String, note: String}]);
 
-const favorites = new Schema({vendor_id: String, vendor_name: String});
+const favorites = new Schema([{vendor_id: String, vendor_name: String}]);
 
 const userSchema = new Schema({
   first_name: {type: String,required: true},
