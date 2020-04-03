@@ -58,7 +58,7 @@ router.get(
         },
         error => {
           console.log(error);
-          res.redirect("/error");
+          res.redirect("/");
         }
       );
     }
