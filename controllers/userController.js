@@ -10,6 +10,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findUserById: function(req, res) {
+    console.log('finding user by id')
+    console.log(req.params.id);
     db.User.findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -72,15 +74,29 @@ module.exports = {
     });
     res.json(new_user);
   },
-  ValidateUser: async function(req, res) {
-    let fields = {username:[], email:[]}
-    await db.User.distinct("username").then(response => {
-      fields.username=response;
+  validSignup: async function(req, res) {
+    console.log(req.body);
+    let unique = {username:false, email:false}
+    await db.User.find({username: req.body.username}).then(response => {
+      console.log(response);
+      if (response.length !== 0) {
+        unique.username=false;
+      }
+      else {
+        unique.username=true;
+      }
     });
-    await db.User.distinct("email").then(response => {
-      fields.email=response;
+    await db.User.find({email: req.body.email}).then(response => {
+      console.log(response);
+      if (response.length !== 0) {
+        unique.email=false;
+      }
+      else {
+        unique.email=true;
+      }
     });
-    res.json(fields);
+    res.json(unique);
+
   }
 };
 

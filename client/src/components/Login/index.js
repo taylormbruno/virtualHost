@@ -4,7 +4,6 @@ import Logo from "./logo.png";
 import "./style.css";
 import { StyledButton } from "./styledComponents.js";
 import API from '../../utils/API';
-import { Redirect } from 'react-router-dom';
 import Passport from "../Signup/GoogleAuth";
 
 class LoginForm extends Component {
@@ -31,7 +30,6 @@ class LoginForm extends Component {
     setTimeout(() => (
       window.location = ("http://localhost:3000/user/mydashboard/?q=" + id)
       ), 1000);
-      // return <Redirect to={'/user/mydashboard/?q=' + id} />
     }
   };
 

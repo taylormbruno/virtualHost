@@ -7,16 +7,20 @@ const authRoutes = require("./auth");
 // API Routes
 router.use("/api", apiRoutes);
 router.use("/user", userRoutes); //err
+
 router.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
 router.use("/auth/google", authRoutes);
 
-
-// If no API routes are hit, send the React app
 router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+  // If no API routes are hit, send the React app
+  if (process.env.NODE_ENV === "production") {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  } else {
+    res.sendFile(path.join(__dirname, "../client/public/index.html"));
+  }
 });
 
 module.exports = router;
