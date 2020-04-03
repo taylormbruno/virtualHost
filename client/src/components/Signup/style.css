@@ -2,3 +2,8 @@
     width: 60%;
     margin-left: 20%;
 }
+
+#pwRequire {
+    margin: 0;
+    display: none;
+}
