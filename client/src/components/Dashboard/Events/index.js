@@ -22,7 +22,7 @@ class MyEvents extends Component {
   componentDidMount() {
     let query = queryString.parse(window.location.search);
     console.log("dashboard events ", query.q);
-    this.setState({...this.state, userID: query.q});
+    this.setState({ ...this.state, userID: query.q });
     // Need to add that if hostID matches the user ID, map results to different array
     this.retrieveAllEvents(query.q).then(response => {
       this.setState({
@@ -53,8 +53,8 @@ class MyEvents extends Component {
             <Table.Row>
               <StyledCell>Event Name</StyledCell>
               <StyledCell>Dates and Times</StyledCell>
-              <EventModal 
-              userState={this.props.userState}
+              <EventModal
+                userState={this.props.userState}
               />
             </Table.Row>
           </Table.Header>
@@ -84,11 +84,11 @@ class MyEvents extends Component {
                 }
               })
             ) : (
-              <p>No current data</p>
-            )}
+                <p>No current data</p>
+              )}
           </Table.Body>
         </Table>
-        <StyledButton href={"/register/?user=" + this.state.userID } circular icon="add" />
+        <StyledButton href={"/register/?user=" + this.state.userID} circular icon="add" />
       </div>
     );
   }

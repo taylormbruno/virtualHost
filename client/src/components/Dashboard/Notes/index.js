@@ -57,14 +57,14 @@ checkState = () => {
           />
         </Form>
         <StyledButton>
-          <Icon
+          <Icon id='save'
             name="save"
             onClick={() => this.props.update(this.state.currentNotes)}
           />
           Save Note
         </StyledButton>
         <StyledButton>
-          <Icon
+          <Icon id='delete'
             name="delete"
             onClick={() => this.props.update(this.state.currentNotes)}
           />

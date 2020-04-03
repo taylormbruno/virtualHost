@@ -18,7 +18,8 @@ export const StyledButton = styled(Button)`
   &&& {
     background-color: #a9a6c9;
     color: white !important;
-    width: 60%;
-    margin: 10px auto;
+    width: 85%;
+    margin: 15px auto;
+    padding-bottom: 30px;
   }
 `;
