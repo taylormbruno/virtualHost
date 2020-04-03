@@ -14,17 +14,15 @@ class MyDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      currentUser: {}
+      currentUser: {notes:[]},
     };
   }
 
   componentDidMount() {
     const query = queryString.parse(window.location.search);
     
-    console.log("Finding local user");
-    this.getLocal(query).then(response => {
-      console.log("Mount.onLoad()\n", response);
-    });    
+    
+    
     this.findUser(query.q).then(response => {
       console.log(response,'????????');
       this.setState({

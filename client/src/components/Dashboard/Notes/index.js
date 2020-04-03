@@ -49,7 +49,7 @@ export default class Notes extends Component {
 //   };
 
   render() {
-      console.log(this.props)
+      console.log("PROPS IN NOTES", this.props)
     return (
       <div>
         <StyledHeader as="h2">{this.state.boothName}</StyledHeader>

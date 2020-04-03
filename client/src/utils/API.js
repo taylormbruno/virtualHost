@@ -31,7 +31,7 @@ export default {
     console.log("test");
 
     return axios.get("/api/user/dashboard/" + id)
-  }  
+  },  
   createEvent: function(obj) {
     return axios.post("/api/events/create", obj);
   },
