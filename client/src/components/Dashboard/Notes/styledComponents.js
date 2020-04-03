@@ -28,7 +28,8 @@ export const StyledTable = styled(Table)`
         &&& {
             background-color: #a9a6c9;
             color: white !important;
-            width: 30%;
+            width: 55%;
+            height:auto;
             margin: 2% !important;  
-            margin-bottom: 20px !important;  
+            margin-bottom: 15px !important; 
         }`

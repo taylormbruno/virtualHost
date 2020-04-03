@@ -7,7 +7,6 @@ const SearchFilter = props => {
     const [term, setTerm] = useState("")
     const handleInputChange = (event) => {
         const currTerm = event.target.value
-        console.log(currTerm)
         props.theSearch(currTerm)
         setTerm(currTerm)
     }

@@ -11,10 +11,10 @@ class EventPage extends Component {
     super(props);
     this.state = {
       masterList: [],
-      eventData: []      
+      eventData: []
     };
   }
-  
+
   componentDidMount() {
     this.retrieveAll().then(response => {
       console.log(response);
@@ -31,12 +31,12 @@ class EventPage extends Component {
     console.log(master.data);
     return master.data;
   };
-  
+
   theSearch = term => {
     const filtered = this.state.masterList.filter(word => {
       console.log(term, word.event_name);
       return word.event_name.toLowerCase().includes(term.toLowerCase());
-    }); 
+    });
     this.setState({ ...this.state, eventData: filtered });
   };
   render() {
@@ -49,19 +49,23 @@ class EventPage extends Component {
                 <Header id="vendorHeader">EVENTS</Header>
                 <SearchFilter theSearch={this.theSearch} />
                 <div>
-                    <Card.Group centered grid container columns={3} stackable>
-                      {this.state.eventData !== []
-                        ? this.state.eventData.map(event => {
-                            console.log(event);
-                            return <EventCard event={event} />;
-                          })
-                        : ""}
-                    </Card.Group>
+                  <Card.Group centered grid container columns={3} stackable>
+                    {this.state.eventData !== []
+                      ? this.state.eventData.map(event => {
+                        console.log(event);
+                        return <EventCard event={event} />;
+                      })
+                      : ""}
+                  </Card.Group>
                 </div>
               </Segment>
             {/* </StyledGrid>
           </Grid.Row>
+<<<<<<< HEAD
         </Grid>        */}
+=======
+        </Grid>
+>>>>>>> a98dfa9f833969d994337a67e35fe8d723d0bef9
       </div>
     );
   }

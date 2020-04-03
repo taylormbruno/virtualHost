@@ -70,7 +70,7 @@ class Settings extends Component {
 
   addSection = () => {
     this.setState({
-      vendors: [...this.state.vendors, <VendorForm eventID={this.state.event.obj._id}/>]
+      vendors: [...this.state.vendors, <VendorForm event={this.state.event.obj}/>]
     });
   };
 
@@ -106,8 +106,9 @@ class Settings extends Component {
               />
             </Form.Group>
             <strong>Event Date</strong>
-            <Form.Group widths="equal">
-              <Form.Field
+            <Form.Group  widths="equal">
+              <Form.Field>
+                <Input fluid
                 control={Select}
                 options={options.month}
                 placeholder="Select Month"
@@ -115,7 +116,8 @@ class Settings extends Component {
                 search
                 searchInput={{ id: "form-select-control-gender" }}
                 onChange={this.handleInputChange}
-              />
+                />
+                </Form.Field>
               <Form.Field
                 control={Select}
                 options={options.day}
