@@ -17,3 +17,61 @@ p {
     padding: 40px;
     font-size: 30px;
 }
+
+/* @media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+  #about{
+    top: -400px;
+  }
+}
+
+@media only screen 
+and (min-device-width : 1024px) 
+and (max-device-width : 1366px) {
+  #about{
+    top: -800px;
+  }
+} */
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1366px) {
+  #about{
+    top: -50vh;
+  }
+  #teamHeader{
+    letter-spacing: 0;
+    padding: 10px;
+}
+}
+
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1366px) 
+and (-webkit-min-device-pixel-ratio: 2)  
+and (orientation: landscape)  {
+    #about{
+        top: -80px;
+      }
+}
+
+@media only screen 
+and (max-device-width : 767px) {
+  #about{
+    top: -130px;
+  }
+  #teamHeader{
+      letter-spacing: 0;
+      padding: 10px;
+  }
+}
+
+@media only screen 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 1)  
+and (orientation: landscape)  {
+    #about{
+        top: 180px;
+      }
+}
