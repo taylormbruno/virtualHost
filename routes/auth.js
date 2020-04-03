@@ -58,7 +58,7 @@ router.get(
         },
         error => {
           console.log(error);
-          res.redirect("http://localhost:3000/");
+          res.redirect(process.env.BASE_URL);
         }
       );
     }
