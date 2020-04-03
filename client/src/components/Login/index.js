@@ -28,7 +28,7 @@ class LoginForm extends Component {
     if (this.state.redirect) {
 
     setTimeout(() => (
-      window.location = (process.env.BASE_URL + "user/mydashboard/?q=" + id)
+      window.location = ("/user/mydashboard/?q=" + id)
       ), 1000);
     }
   };
