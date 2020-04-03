@@ -14,10 +14,8 @@ import queryString from "query-string";
 import {
   StyledContainer,
   StyledButton,
-  StyledHeader2,
-  StyledImage
+  StyledHeader2  
 } from "./styledComponents";
-import { StyledHeader } from "../Dashboard/Notes/styledComponents";
 
 class VendorDetail extends Component {
   constructor(props) {

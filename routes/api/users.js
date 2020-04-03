@@ -9,4 +9,6 @@ router.post('/login', userController.login);
 
 router.post("/validate", userController.validSignup);
 
+router.get('/user/mydashboard/:id', userController.findUserById);
+
 module.exports = router;
