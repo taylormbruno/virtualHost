@@ -9,6 +9,6 @@ router.post('/login', userController.login);
 
 router.post("/validate", userController.validSignup);
 
-router.post("/ID", userController.findUserById);
+router.get('/findbyid/:id', userController.findUserById);
 
 module.exports = router;
