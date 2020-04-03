@@ -46,5 +46,11 @@ export default {
   findEventByID: function(term) {
     console.log("testeventbyid")
     return axios.get("/api/events/find/" + term , term)
+  },  
+  registerBeacon: function(term) {
+    return axios.post("/api/beacons/register", term);
+  },
+  signinGoogle: function() {
+    return axios.get('/auth/google')
   }
 };

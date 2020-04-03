@@ -102,3 +102,10 @@
   font-family: 'Raleway', sans-serif;
 color: #2ecc71;		
 }
+
+@media only screen  
+and (max-device-width : 1024px) {
+  .downArrow{
+    display: none;
+  }
+}
