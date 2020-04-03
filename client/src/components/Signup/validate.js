@@ -1,5 +1,4 @@
 import API from "../../utils/API";
-const axios = require("axios");
 const reSpec = /^\w+$/;
 const reNum = /[0-9]/;
 const reLow = /[a-z]/;
