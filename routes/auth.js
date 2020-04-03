@@ -10,7 +10,7 @@ const axios = require("axios");
 router.get(
   "/",
   passport.authenticate("google", {
-    scope: "https://www.googleapis.com/auth/userinfo.profile"
+    scope: "https://www.googleapis.com/auth/userinfo.profile",
   })
 );
 
@@ -18,9 +18,10 @@ router.get(
   "/callback",
   passport.authenticate("google", {
     failureRedirect: "/",
-    session: true
+    session: true,
   }),
-  async function(req, res) {
+  async function (req, res) {
+    let redirectID = "";
     console.log("auth req\n", req.user.session);
     if (!req.user.session) {
       res.cookie("session", "");
@@ -33,34 +34,30 @@ router.get(
       console.log("finding user");
       axios({
         method: "post",
-        url: "/auth/google/find",
-        data: req.user.session.profile
-      }).then(
-        response => {
-          if (response.data === null) {
-            console.log("creating user");
-            axios({
-              method: "post",
-              url: "/auth/google/create",
-              data: req.user.session.profile
-            }).then(response => {
-              console.log(response.data);
-              res.redirect(
-                "/user/mydashboard/?q=" + response.data._id
-              );
-            });
-          } else {
+        url: process.env.BASE_URL + "auth/google/find",
+        data: req.user.session.profile,
+      }).then((response) => {
+        console.log("hello user");
+        console.log(response);
+        if (response.data === null || response.data === undefined) {
+          console.log("creating user");
+          axios({
+            method: "post",
+            url: process.env.BASE_URL + "auth/google/create",
+            data: req.user.session.profile,
+          }).then((response) => {
             console.log(response.data);
-            res.redirect(
-              "/user/mydashboard/?q=" + response.data._id
-            );
-          }
-        },
-        error => {
-          console.log(error);
-          res.redirect("/");
+          });
+        } else {
+          console.log(response.data);
+          redirectID = response.data._id;
         }
-      );
+        if (redirectID === "") {
+          res.redirect(process.env.BASE_URL);
+        } else {
+          res.redirect(process.env.BASE_URL + "user/mydashboard/?q=" + response.data._id);
+        }
+      });
     }
   }
 );

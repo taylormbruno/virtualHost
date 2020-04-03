@@ -45,5 +45,11 @@ export default {
   },
   findUserByID: function(term) {
     return axios.post("/api/users/ID", term)
+  },
+  registerBeacon: function(term) {
+    return axios.post("/api/beacons/register", term);
+  },
+  signinGoogle: function() {
+    return axios.get('/auth/google')
   }
 };

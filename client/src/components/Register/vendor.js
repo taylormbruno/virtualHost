@@ -4,16 +4,17 @@ import { Form, Input, TextArea, Grid, Image } from "semantic-ui-react";
 import queryString from "query-string";
 import API from "../../utils/API";
 
-const Buffer = require('buffer/').Buffer;
+const Buffer = require("buffer/").Buffer;
 
 export class VendorForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       formObj: {},
       hostID: "",
       eventID: "",
-      returnedVendors: []
+      returnedVendors: [],
+      beacon: false,
     };
   }
   componentDidMount = () => {
@@ -21,38 +22,57 @@ export class VendorForm extends Component {
     console.log("event ID: " + this.props.eventID);
     console.log("query: " + query.user);
     // this.setState({ ...this.state, hostID: query.user, eventID: this.props.eventID });
-    
   };
 
   handleInputChange = (event, data) => {
     const change = { [data.name]: data.value };
     console.log(change);
+    let beacon = false;
+    if (data.name === "namespace" || data.name === "instance") {
+      beacon = true;
+    }
     this.setState({
       ...this.state,
-      formObj: { ...this.state.formObj, [data.name]: data.value }
+      formObj: { ...this.state.formObj, [data.name]: data.value },
+      beacon: beacon,
     });
     console.log(this.state);
   };
-  
+
   saveVendor = async () => {
-    const concatString = this.state.formObj.namespace + this.state.formObj.instance;
-    var b = Buffer(concatString, "hex");
-    const base64 = await b.toString("base64");
+    let base64;
+    if (
+      this.state.formObj.namespace !== undefined &&
+      this.state.formObj.instance !== undefined
+    ) {
+      const concatString =
+        this.state.formObj.namespace + this.state.formObj.instance;
+      var b = Buffer(concatString, "hex");
+      base64 = await b.toString("base64");
+    }
     const submission = {
       vendor_name: this.state.formObj.vendor_name,
       image: this.state.eventFormObj.image,
-      beacon_id: base64,
+      beacon_id: this.state.beacon ? base64 : null,
       web_url: this.state.formObj.web_url,
       description: this.state.formObj.description,
       manager_id: this.state.event.userID,
-      event_id: this.state.eventID
+      event_id: this.state.eventID,
     };
     console.log(submission);
     const newVendor = await API.createVendor(submission);
     console.log(newVendor.data);
-    const vendor_array = this.state.returnedVendors.push(newVendor.data)
-    this.setState({...this.state, returnedVendors: vendor_array});
+    const vendor_array = this.state.returnedVendors.push(newVendor.data);
+    this.setState({ ...this.state, returnedVendors: vendor_array });
+    if (newVendor.data.beacon_id !== null) {
+      this.registerBeacon(newVendor.data);
+    }
   };
+
+  registerBeacon = async (obj) => {
+    const newBeacon = await API.registerBeacon(obj);
+
+  }
 
   render() {
     return (
@@ -129,7 +149,11 @@ export class VendorForm extends Component {
             name="web_url"
           />
         </Form>
-        <StyledButton onClick={this.saveVendor}>Save Vendor</StyledButton>
+        <StyledButton
+          onClick={this.saveVendor()}
+        >
+          Save Vendor
+        </StyledButton>
       </StyledSegment>
     );
   }
