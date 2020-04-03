@@ -34,7 +34,7 @@ class SignupForm extends Component {
 
   signupSuccess = () => {
     setTimeout(() => (
-      window.location = ("http://localhost:3000/user/mydashboard/?q=" + this.state.returned._id)
+      window.location = (process.env.BASE_URL + "user/mydashboard/?q=" + this.state.returned._id)
       ), 1000);
   };
   
