@@ -13,7 +13,7 @@ class EventDetail extends Component {
     
     this.state = {
       masterList: [],
-      eventList: [],
+      event: {},
       vendorData: [],
       event_id: "" 
     };
@@ -38,12 +38,9 @@ class EventDetail extends Component {
       });
     });
 
-    this.retrieveAllEvents().then(response => {
+    this.retrieveAllEvents(query.q).then(response => {
         console.log(response);
-      this.setState({
-        ...this.state,
-        eventList: response        
-      });
+     
     });
   }
 
@@ -53,9 +50,13 @@ class EventDetail extends Component {
     return master.data;
   };
 
-  retrieveAllEvents = async () => {
-    const master = await API.allEvents();
+  retrieveAllEvents = async (query) => {
+    const master = await API.findEventByID(query);
     console.log("EVENT DATA\n", master.data);
+    this.setState({
+      ...this.state,
+      event: master.data        
+    });
     return master.data;
   };
 
@@ -79,13 +80,8 @@ class EventDetail extends Component {
                 <Header id="eventHeader">Event</Header>
                 <Divider/>
                 <div id="eventCard" >
-                  <Card.Group centered container style={{ "textAlign": "center" }}>
-                    {this.state.eventList !== []
-                        ? this.state.eventList.map(event => {
-                            console.log(event);
-                            return <EventCard event={event} key={event._id}/>;
-                          })
-                        : ""}
+                  <Card.Group centered container style={{ "textAlign": "center" }}>                    
+                    <EventCard event={this.state.event} key={this.state.event._id}/>                      
                   </Card.Group>                  
                 </div>
               </Segment>

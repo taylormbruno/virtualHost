@@ -42,11 +42,7 @@ checkState = () => {
     // };
 
   render() {
-<<<<<<< HEAD
-      console.log("PROPS IN NOTES", this.props)
-=======
     console.log("rendering events", this.props.notes);
->>>>>>> 25af6f75e2f85b0c478ffe68fb29ca1c58a8557b
     return (
       <div>
         <StyledHeader as="h2">{this.state.boothName}</StyledHeader>

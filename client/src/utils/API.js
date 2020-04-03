@@ -32,12 +32,7 @@ export default {
   },
   findUserById: function(id) {
     console.log("test");
-<<<<<<< HEAD
-
-    return axios.get("/api/user/dashboard/" + id)
-=======
     return axios.get("/api/users/findbyid/" + id, id)
->>>>>>> 25af6f75e2f85b0c478ffe68fb29ca1c58a8557b
   },  
   createEvent: function(obj) {
     return axios.post("/api/events/create", obj);
@@ -47,8 +42,9 @@ export default {
   },
   validSignup: function(term) {
     return axios.post("/api/users/validate", term)
-  },
-  findUserByID: function(term) {
-    return axios.post("/api/users/ID", term)
+  },  
+  findEventByID: function(term) {
+    console.log("testeventbyid")
+    return axios.get("/api/events/find/" + term , term)
   }
 };
