@@ -5,7 +5,7 @@ a {
 .button {
     display: inline-block;
     max-width: 300px;
-    margin-top: 20px;
+    margin-top: 20px !important;
     background-color:#9fb8bf;
     color: white !important;
     padding: 0 18px;

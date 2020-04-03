@@ -28,7 +28,7 @@ class LoginForm extends Component {
     if (this.state.redirect) {
 
     setTimeout(() => (
-      window.location = ("http://localhost:3000/user/mydashboard/?q=" + id)
+      window.location = ("/user/mydashboard/?q=" + id)
       ), 1000);
     }
   };
@@ -89,11 +89,11 @@ class LoginForm extends Component {
               <StyledButton href="/signup" fluid size="large" >
                 Create Account
               </StyledButton>
-              <Passport />
-
               <StyledButton fluid size="large" href="/events">
                 Continue As Guest
               </StyledButton>
+              <br/>
+              <Passport />
             </Segment>
           </Form>
         </Grid.Column>
