@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Grid, Image } from 'semantic-ui-react';
 import moment from "moment";
 import '../Events/style.css'
+import { StyledImage } from "./styledComponents"
+import "./style.css"
 
 function EventCard(props) {
   console.log('loaded')
@@ -28,7 +30,9 @@ function EventCard(props) {
     <Card href={"/event/?q="+active._id}>
       <Grid.Column>                
         <Card.Content >
-          <Image src={active.image} wrapped ui={true} />
+          <div className="square">
+          <StyledImage src={active.image} wrapped ui={true} />
+          </div>
           <Card.Header id="eventName">{active.event_name}</Card.Header>
           <Card.Description >
             <br/>

@@ -42,9 +42,9 @@ class EventPage extends Component {
   render() {
     return (
       <div>
-        <Grid columns={2} divided stackable>
+        <Grid columns={2} stackable>
           <Grid.Row stretched>
-            <StyledGrid width={11}>
+            <StyledGrid width={14}>
               <Segment id="column2">
                 <Header id="vendorHeader">Events</Header>
                 <SearchFilter theSearch={this.theSearch} />
