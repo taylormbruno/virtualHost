@@ -37,7 +37,6 @@ export default class EventModal extends Component {
         id="eventModal"
         trigger={
           <StyledCell>
-            No. of Booths
             <i aria-hidden="true" className="expand icon" id="expandIcon"></i>
           </StyledCell>
         }
@@ -50,7 +49,7 @@ export default class EventModal extends Component {
               <Table.Row>
                 <StyledCell>Event Name</StyledCell>
                 <StyledCell>Dates and Times</StyledCell>
-                <StyledCell>No. of Booths</StyledCell>
+                <StyledCell></StyledCell>
               </Table.Row>
             </Table.Header>
 
@@ -74,7 +73,6 @@ export default class EventModal extends Component {
                           " - " +
                           moment(event.end_time).format("h:mm a")}
                       </Table.Cell>
-                      <Table.Cell>{event.vendors.length}</Table.Cell>
                     </Table.Row>
                   );
                 }

@@ -14,6 +14,8 @@ class MenuExampleStackable extends Component {
 
     const { activeItem } = this.state
     const greeting = `Hello, ${this.props.fname}!`
+    console.log("Look down");
+    console.log(this.props.userState);
 
     return (
       <div id="navbar">
@@ -43,7 +45,7 @@ class MenuExampleStackable extends Component {
         <Dropdown text={greeting} pointing className='link item'>
       <Dropdown.Menu>
         <Dropdown.Header>My Stuff</Dropdown.Header>
-        <Dropdown.Item href='/user/mydashboard/?q=5e839a7bd1e335f31afcf404'>My Dashboard</Dropdown.Item>
+        <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}`}>My Dashboard</Dropdown.Item>
         <Dropdown.Item href="/user/mydashboard/#eventModal">My Events</Dropdown.Item>
         <Dropdown.Item>My Beacons</Dropdown.Item>
         <Dropdown.Item>Notes & Favorites</Dropdown.Item>

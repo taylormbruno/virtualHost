@@ -89,6 +89,7 @@ function App() {
         <Router>
           <Navbar
           logout = {logout}
+          userState={userState}
           />
           <Switch>
             <Route exact path={["/", "/login"]}>

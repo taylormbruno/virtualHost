@@ -77,7 +77,6 @@ class MyEvents extends Component {
                           " - " +
                           moment(event.end_time).format("h:mm a")}
                       </Table.Cell>
-                      <Table.Cell>{event.vendors.length}</Table.Cell>
                     </Table.Row>
                   );
                 }
