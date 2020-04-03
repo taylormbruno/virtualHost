@@ -41,10 +41,7 @@ class MenuExampleStackable extends Component {
         <Menu.Item
           name='login'
           active={activeItem === 'login'}
-          onClick={() => {
-            console.log('clicked')
-            this.props.updateLoginStatus()
-          }}
+          href="/"
           floated="right"
           position='right'
         >

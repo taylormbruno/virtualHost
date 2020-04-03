@@ -14,14 +14,19 @@ class MyDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: {}
+      currentUser: {},
+      userID: "",
+      fname: "",
+      loggedIn: false
     };
   }
 
   componentDidMount() {
     const query = queryString.parse(window.location.search);
     console.log("Finding local user");
-    this.findUser(query.q);
+    if (query.q) {
+      this.findUser(query.q);
+    }
   }
 
   findUser = async query => {
@@ -35,14 +40,34 @@ class MyDashboard extends Component {
       notes: master.data.notes ? master.data.notes : [],
       favorites: master.data.favorites ? master.data.favorites : []
     };
+    window.localStorage.setItem("loggedIn", true);
+    window.localStorage.setItem("userID", master.data._id);
+    window.localStorage.setItem("fname", master.date.first_name);
     this.setState({
       ...this.state,
-      currentUser: user
+      currentUser: user,
+      fname: master.data.first_name,
+      loggedIn: true
     });
   };
 
+  // if (query.extid) {
+  //   console.log("Finding external user"); //fires
+  //   this.getExt(query.extid).then(response => {
+  //     console.log("Mount.getExt()\n", response); // undefined
+  //     if (response.data.length === 0) {
+  //       console.log("No user found\n", response);
+  //       this.createExternal().then(res => {
+  //         console.log(res); // undefined
+  //       });
+  //     } else {
+  //       console.log("Found you!\n", response.data);
+  //       this.setState({ ...this.state, currentUser: response.data });
+  //     }
+  //   });
+  // } else {
   render() {
-    console.log("Rendering dashboard", this.state)
+    console.log("Rendering dashboard", this.state);
     return (
       <div id="container">
         <Image id="logo" src={Dashboard} />
@@ -67,7 +92,10 @@ class MyDashboard extends Component {
             </Segment>
             <Segment>
               <StyledHeader as="h1">My Favorites</StyledHeader>
-              <Favorites favs={this.state.currentUser.favorites} update={this.updateUser} />
+              <Favorites
+                favs={this.state.currentUser.favorites}
+                update={this.updateUser}
+              />
             </Segment>
           </Grid.Column>
         </Grid>
