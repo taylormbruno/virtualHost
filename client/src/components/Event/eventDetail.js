@@ -10,27 +10,23 @@ import queryString from "query-string";
 class EventDetail extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       masterList: [],
       event: {},
       vendorData: [],
-      event_id: "" 
+      event_id: ""
     };
   }
 
-  
   componentDidMount() {
-    var query = queryString.parse(window.location.search);
-    
-    console.log("QUERY\n", query.q);
+    var query = queryString.parse(window.location.search);   
     this.setState({
       ...this.state,
       event_id: query.q
     });
 
-    this.retrieveAll().then(response => {
-        console.log(response);
+    this.retrieveAll().then(response => {      
       this.setState({
         ...this.state,
         masterList: response,
@@ -38,33 +34,29 @@ class EventDetail extends Component {
       });
     });
 
-    this.retrieveAllEvents(query.q).then(response => {
-        console.log(response);
-     
+    this.retrieveAllEvents(query.q).then(response => {    
+
     });
   }
 
   retrieveAll = async () => {
-    const master = await API.allVendors(this.state.event_id);
-    console.log("MASTER DATA\n", master.data);
+    const master = await API.allVendors(this.state.event_id);    
     return master.data;
   };
 
   retrieveAllEvents = async (query) => {
-    const master = await API.findEventByID(query);
-    console.log("EVENT DATA\n", master.data);
+    const master = await API.findEventByID(query);    
     this.setState({
       ...this.state,
-      event: master.data        
+      event: master.data
     });
     return master.data;
   };
 
   theSearch = term => {
-    const filtered = this.state.masterList.filter(word => {
-      console.log(term, word.vendor_name);
+    const filtered = this.state.masterList.filter(word => {      
       return word.vendor_name.toLowerCase().includes(term.toLowerCase());
-    }); 
+    });
     this.setState({
       ...this.state,
       vendorData: filtered
@@ -73,16 +65,16 @@ class EventDetail extends Component {
   render() {
     return (
       <div>
-        <Grid columns={2}  divided stackable>
+        <Grid floated="left" columns={3} divided stackable>
           <Grid.Row stretched>
             <Grid.Column floated="left" width={7}>
               <Segment id="column1">
                 <Header id="eventHeader">Event</Header>
-                <Divider/>
+                <Divider />
                 <div id="eventCard" >
-                  <Card.Group centered container style={{ "textAlign": "center" }}>                    
-                    <EventCard event={this.state.event} key={this.state.event._id}/>                      
-                  </Card.Group>                  
+                  <Card.Group centered container columns={3} stackable>
+                    <EventCard event={this.state.event} key={this.state.event._id} />
+                  </Card.Group>
                 </div>
               </Segment>
             </Grid.Column>
@@ -95,8 +87,8 @@ class EventDetail extends Component {
                   <Card.Group centered container columns={3} stackable>
                     {this.state.vendorData !== []
                       ? this.state.vendorData.map(vendor => {
-                          return <VendorCard vendor={vendor} key={vendor._id} />;
-                        })
+                        return <VendorCard vendor={vendor} key={vendor._id} />;
+                      })
                       : ""}
                   </Card.Group>
                 </div>
