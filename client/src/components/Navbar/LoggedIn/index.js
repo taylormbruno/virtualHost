@@ -50,10 +50,10 @@ class MenuExampleStackable extends Component {
         <Dropdown.Divider />
         <Dropdown.Item href='/settings'>Settings</Dropdown.Item>
         <Dropdown.Item 
-          onClick={() => {
-          console.log('clicked')
-          this.props.updateLoginStatus()
+        onClick={() => {
+          this.props.logout();
         }}
+        href="/"
         >Sign Out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

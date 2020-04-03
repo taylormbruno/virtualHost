@@ -13,16 +13,14 @@ export default function Navbar(props) {
   switch (loggedIn) {
     case true:
       return <LoggedIn 
-      updateLoginStatus = {props.updateLoginStatus}
+      logout = {props.logout}
       fname = {fname}
       />;
     case 'false':
       return <LoggedOut 
-      updateLoginStatus = {props.updateLoginStatus}
       />;
     default:
       return <LoggedOut 
-      updateLoginStatus = {props.updateLoginStatus}
       />;
   }
 }

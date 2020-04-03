@@ -35,5 +35,8 @@ export default {
   },
   validSignup: function(term) {
     return axios.post("/api/users/validate", term)
+  },
+  findUserByID: function(term) {
+    return axios.post("/api/users/ID", term)
   }
 };
