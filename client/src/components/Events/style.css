@@ -1,16 +1,19 @@
 #column2  {    
-    margin-top: 70px;
-    width: 100%;       
+    margin-top: 70px;     
     padding-bottom: 80px;    
-    margin: auto;
+    margin: 70px auto !important;
+    width: 75%;
 }
 
-#eventHeader {
-    color:#a9a6c9;
+/* #eventHeader {
+    color:#908db3;
     font-weight: 400;
     font-family: "source Sans Pro", sans-serif;
-    font-size: 30px
-}
+    font-size: 30px;
+    letter-spacing: 5px;
+    padding: 0px;
+
+} */
 
 #searchIcon {
     color:#a9a6c9;
@@ -23,13 +26,21 @@ form {
 
 #eventName {    
     font-family: "source Sans Pro", sans-serif;
-    font-size: 40px;
+    font-size: 32px;
     padding-top: 30px;
-    color:#a9a6c9;
+    color:#908db3;
     font-weight: 350;
+    padding-bottom: 20px;
+    border-width: thin;
+    border-bottom: 1px solid lightgrey;
+    width: 90%;
+    margin: auto;
+    line-height: 1;
 }
 
 .eventCardContent {
-    font-size: 20px;
+    font-size: 16px;
+    font-style: italic;
 }
+
 

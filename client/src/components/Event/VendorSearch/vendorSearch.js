@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StyledForm from '../styledComponents';
+import "./style.css"
 
 
 const SearchFilter = props => {
@@ -15,13 +16,14 @@ const SearchFilter = props => {
             <div>
                 <div className="Search">
                     <StyledForm>
-                        <div className="ui massive icon input className=searchBar">
+                        <div className="ui massive icon input searchBar">
                             <input
                                 name="filterString"
                                 type="text"
                                 placeholder="Search vendors..."
                                 onChange={handleInputChange}
                                 value={term}
+                                id="searchBar"
                             />
                             <i className="search icon" id='searchIcon'></i>
                         </div>

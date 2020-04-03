@@ -14,8 +14,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findEventById: function(req, res) {
+    console.log("find events by id",req.params.id);
     db.Event.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        console.log(dbModel)
+        res.json(dbModel)})
       .catch(err => res.status(422).json(err));
   },
   searchEvent: function(req, res) {

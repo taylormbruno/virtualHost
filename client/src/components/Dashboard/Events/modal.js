@@ -58,7 +58,8 @@ export default class EventModal extends Component {
             </Table.Header>
 
             <Table.Body>
-            {this.state.allEvents !== [] ? (
+              
+              {this.state.allEvents !== [] ? (
               this.state.allEvents.map(event => {
                 let queryString = `/event/?q=${event._id}`;
                 if (event.host_id === this.props.userState.userID) {

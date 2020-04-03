@@ -3,7 +3,5 @@ import { Image } from 'semantic-ui-react';
 
 
 export const StyledImage = styled(Image)`
-    &&& {  
-        object-fit: cover;
-    }  
+
 `;
