@@ -1,3 +1,4 @@
+import API from "../../utils/API";
 const axios = require("axios");
 const reSpec = /^\w+$/;
 const reNum = /[0-9]/;
@@ -6,24 +7,21 @@ const reUp = /[A-Z]/;
 // eslint-disable-next-line
 const reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-// need to add validation for unique username and email
+
 function validateForm(form) {
   // unique usernames and emails
+  console.log(form.username);
   let uniqueUsername;
   let uniqueEmail;
-  axios({
-    method: "get",
-    url: "http://localhost:3000/api/users/validate"
-  }).then(response => {
-    if (response.data.username.indexOf(form.username)) {
-      uniqueUsername = false;
-    }
-    else if (response.data.email.indexOf(form.email)) {
-      uniqueEmail = false;
-    }
+
+  API.validSignup({username: form.username, email: form.email}).then(response => {
+    console.log("response");
+    console.log(response.data);
+      uniqueUsername = response.data.username;
+      uniqueEmail = response.data.email;
   });
   // username
-  if (!uniqueUsername) {
+  if (uniqueUsername === false) {
     alert("Username must be unique");
     return false;
   }
@@ -61,14 +59,14 @@ function validateForm(form) {
     alert("Error: Passwords do not match!");
     return false;
   }
-
-  // email
-  if (!uniqueEmail) {
-    alert("Email must be unique");
-    return false;
-  }
   if (!reEmail.test(form.email.toLowerCase())) {
     alert("Error: Please enter a valid email!");
+    return false;
+  }
+
+  //email
+  if (uniqueEmail === false) {
+    alert("Email must be unique");
     return false;
   }
 

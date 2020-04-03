@@ -32,5 +32,8 @@ export default {
   },
   createVendor: function(obj) {
     return axios.post("/api/vendors/create", obj);
+  },
+  validSignup: function(term) {
+    return axios.post("/api/users/validate", term)
   }
 };
