@@ -16,9 +16,8 @@ class Favorites extends Component {
                 <Table.Header>
                     <Table.Row>
                         <StyledHeader>Booth</StyledHeader>
-                        <StyledHeader>Favorites</StyledHeader>
-                        <StyledHeader></StyledHeader>
-                    </Table.Row>
+                        <StyledHeader>Favorites</StyledHeader>                        
+                    </Table.Row>                    
                 </Table.Header>
 
             <Table.Body>
