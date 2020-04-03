@@ -47,9 +47,8 @@ div.ui.image {
     letter-spacing: 5px;
 }
 
-@media only screen 
-and (max-device-width : 767px) {
-  .hidden{
-    display: none;
+@media only screen and (max-width: 900px) {
+    .hidden {
+      display: none !important;
+    }
   }
-}

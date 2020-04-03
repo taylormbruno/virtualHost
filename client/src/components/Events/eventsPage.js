@@ -42,11 +42,8 @@ class EventPage extends Component {
   render() {
     return (
       <div>
-        {/* <Grid stackable>
-          <Grid.Row>
-            <StyledGrid width={14}> */}
               <Segment id="column2">
-                <Header id="vendorHeader">EVENTS</Header>
+                <Header className="eventHeader">EVENTS</Header>
                 <SearchFilter theSearch={this.theSearch} />
                 <div>
                   <Card.Group centered grid container columns={3} stackable>
@@ -59,13 +56,6 @@ class EventPage extends Component {
                   </Card.Group>
                 </div>
               </Segment>
-            {/* </StyledGrid>
-          </Grid.Row>
-<<<<<<< HEAD
-        </Grid>        */}
-=======
-        </Grid>
->>>>>>> a98dfa9f833969d994337a67e35fe8d723d0bef9
       </div>
     );
   }
