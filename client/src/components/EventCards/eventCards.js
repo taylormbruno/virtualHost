@@ -7,6 +7,7 @@ function EventCard(props) {
   console.log('loaded')
   let active;
   if (props.event) {
+    console.log(props.event)
     active = (props.event);
   }
   else {

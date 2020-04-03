@@ -42,10 +42,11 @@ export default {
   },
   validSignup: function(term) {
     return axios.post("/api/users/validate", term)
-  },
-  findUserByID: function(term) {
-    return axios.post("/api/users/ID", term)
-  },
+  },  
+  findEventByID: function(term) {
+    console.log("testeventbyid")
+    return axios.get("/api/events/find/" + term , term)
+  },  
   registerBeacon: function(term) {
     return axios.post("/api/beacons/register", term);
   }
