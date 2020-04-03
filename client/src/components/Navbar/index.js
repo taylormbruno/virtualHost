@@ -15,6 +15,7 @@ export default function Navbar(props) {
       return <LoggedIn 
       logout = {props.logout}
       fname = {fname}
+      userState={props.userState}
       />;
     case 'false':
       return <LoggedOut 
