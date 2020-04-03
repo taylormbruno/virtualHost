@@ -24,7 +24,7 @@ class MyEvents extends Component {
     console.log("dashboard events ", query.q);
     this.setState({...this.state, userID: query.q});
     // Need to add that if hostID matches the user ID, map results to different array
-    this.retrieveAllEvents().then(response => {
+    this.retrieveAllEvents(query.q).then(response => {
       this.setState({
         ...this.state,
         allEvents: response
@@ -32,8 +32,10 @@ class MyEvents extends Component {
     });
   }
 
-  retrieveAllEvents = async () => {
-    const master = await API.allEvents();
+  retrieveAllEvents = async (query) => {
+    const master = await API.allEventsByUser(query);
+    console.log("RETRIEVE ALL EVENTS");
+    console.log(master.data)
     return master.data;
   };
   // routeToDetails = () => {
@@ -61,7 +63,7 @@ class MyEvents extends Component {
             {this.state.allEvents !== [] ? (
               this.state.allEvents.map(event => {
                 let queryString = `/event/?q=${event._id}`;
-                if (event.host_id === this.props.userState.userID) {
+                if (event.host_id === this.props.userState.id) {
                   return (
                     <Table.Row
                       onClick={() => {

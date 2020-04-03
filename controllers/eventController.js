@@ -7,6 +7,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findAllEventsByUser: function(req, res) {
+    console.log("find events by user",req.params.id);
+    db.Event.find({host_id: req.params.id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findEventById: function(req, res) {
     db.Event.findById(req.params.id)
       .then(dbModel => res.json(dbModel))

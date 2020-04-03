@@ -24,9 +24,16 @@ export default {
   allEvents: function() {
     return axios.get("/api/events/all");
   },
+  allEventsByUser: function(id) {
+    return axios.get("/api/events/byuser/" + id, id);
+  },
   findVendorByHost: function() {
     return axios.get("/api/vendors/byhost");
   },
+  findUserById: function(id) {
+    console.log("test");
+    return axios.get("/api/users/findbyid/" + id, id)
+  },  
   createEvent: function(obj) {
     return axios.post("/api/events/create", obj);
   },
