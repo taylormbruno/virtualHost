@@ -81,6 +81,7 @@ class Settings extends Component {
   };
 
   render() {
+    let queryString = `/user/mydashboard/?q=${this.state.event.userID}`
     return (
       <div className="scrollingContainer">
         <StyledSegment>
@@ -245,6 +246,12 @@ class Settings extends Component {
         ) : (
           ""
         )}
+          <StyledButton
+            href={queryString}
+          >
+            <Icon name="check" />
+            Complete
+          </StyledButton>
       </div>
     );
   }

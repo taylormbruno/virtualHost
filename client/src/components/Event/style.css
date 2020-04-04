@@ -51,10 +51,25 @@ form {
     padding: 0 !important;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen 
+and (max-width: 900px) {
     #vendorHeader {
         font-size: 32px !important;
         letter-spacing: 1px;
     }
-  }
+    #segment {
+        margin-top: 140px !important;
+    }
+}
+
+@media only screen 
+and (max-device-width: 700px) 
+and (-webkit-min-device-pixel-ratio: 1)  
+and (orientation: landscape)  {
+    #segment {
+        margin-top: 220px !important;
+    }
+}
+
+
 

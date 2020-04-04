@@ -3,6 +3,7 @@ import { Card, Icon, Grid, Image } from 'semantic-ui-react'
 import { StyledIcon } from './styledComponents'
 import API from "../../../utils/API";
 import { StyledButton } from "./styledComponents"
+import "./style.css"
 
 
 // const boothseeds = [
@@ -109,7 +110,7 @@ export default class Booths extends Component {
     console.log(boothImage);
 
   return(
-  <Grid id='container' columns='three'>
+  <Grid id='cardcontainer' columns='three'>
     <Grid.Column width={3} verticalAlign="middle">
       <StyledIcon 
         onClick={()=>{
@@ -119,22 +120,13 @@ export default class Booths extends Component {
         name='arrow alternate circle left'/>
     </Grid.Column>
     <Grid.Column width={10}>
-      <Card>
+      <Card id="boothCard">
         <Image src={boothImage}/>
         <Card.Content>
           <Card.Header>{boothName}</Card.Header>
-          {/* This section had the event name however that's an extra API call for every booth. Worth it?
-          <Card.Meta>
-            <span className='date'>{boothseeds[this.state.currentCardIndex].eventName}</span>
-          </Card.Meta> */}
           <Card.Description>
             {description}
           </Card.Description>
-        </Card.Content>
-        {/* This looks like it's on the wrong component???***** */}
-        <Card.Content extra>
-            <Icon name='star' />
-              Favorites Go Here
         </Card.Content>
       </Card>
     </Grid.Column>

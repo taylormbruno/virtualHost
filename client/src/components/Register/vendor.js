@@ -20,7 +20,8 @@ export class VendorForm extends Component {
       },
       hostID: "",
       event: {},
-      returnedVendors: []
+      returnedVendors: [],
+      verifyImg: false,
     };
   }
   componentDidMount = () => {
@@ -32,6 +33,11 @@ export class VendorForm extends Component {
       hostID: query.user,
       event: this.props.event,
     });
+  };
+
+  verifyImg = (event, data) => {
+    event.preventDefault();
+    this.setState({ ...this.state, verifyImg: true });
   };
 
   handleInputChange = (event, data) => {
@@ -132,7 +138,7 @@ export class VendorForm extends Component {
                 <Image
                   src={
                     this.state.verifyImg
-                      ? this.state.eventFormObj.image
+                      ? this.state.formObj.image
                       : "https://www.sylvansport.com/wp/wp-content/uploads/2018/11/image-placeholder-1200x800.jpg"
                   }
                   size="small"

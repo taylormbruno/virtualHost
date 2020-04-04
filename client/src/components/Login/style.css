@@ -10,7 +10,7 @@
 }
 
 #container {
-    width: 65%;
+    width: 65% !important;
     top: -60px;
 }
 
@@ -48,7 +48,7 @@ and (orientation: landscape)  {
 @media only screen 
 and (max-device-width : 767px) {
   #container{
-    top: -15vh;
+    top: -5vh;
   }
 }
 
@@ -57,6 +57,7 @@ and (max-device-width: 812px)
 and (-webkit-min-device-pixel-ratio: 1)  
 and (orientation: landscape)  {
     #container{
-        top: -0px;
+        top: 0px;
       }
 }
+
