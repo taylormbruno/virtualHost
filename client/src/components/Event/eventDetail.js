@@ -65,23 +65,23 @@ class EventDetail extends Component {
   render() {
     return (
       <div>
-        <Grid floated="left" columns={3} divided stackable>
+        <Grid floated="left" columns={2} stackable>
           <Grid.Row stretched>
-            <Grid.Column floated="left" width={7}>
+            <Grid.Column floated="left" width={5}>
               <Segment id="column1">
-                <Header id="eventHeader">Event</Header>
+                <Header id="eventHeader">EVENT</Header>
                 <Divider />
                 <div id="eventCard" >
                   <Card.Group centered container columns={3} stackable>
-                    <EventCard event={this.state.event} key={this.state.event._id} />
+                    <EventCard event={this.state.event} key={this.state.event._id}/>
                   </Card.Group>
                 </div>
               </Segment>
             </Grid.Column>
 
-            <Grid.Column floated="right" width={9}>
+            <Grid.Column width={11} id="segment">
               <Segment id="column2">
-                <Header id="vendorHeader"> Participating Vendors</Header>
+                <Header id="vendorHeader"> PARTICIPATING VENDORS</Header>
                 <SearchFilter theSearch={this.theSearch} />
                 <div>
                   <Card.Group centered container columns={3} stackable>

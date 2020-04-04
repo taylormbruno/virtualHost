@@ -1,11 +1,51 @@
 
 
 #vendorName {
-
+    font-family: "source Sans Pro", sans-serif;
+    font-size: 29px;
+    padding-top: 5px;
+    color:#908db3;
+    font-weight: 350;
+    padding-bottom: 20px;
+    border-width: thin;
+    border-bottom: 1px solid lightgrey;
+    width: 90%;
+    margin: auto;
+    line-height: 1;
+    text-align: center;
 }
 
 #describeIt {
-    font-family: "source Sans Pro", sans-serif;
-    font-size: 20px;
-    padding:10px;
+    padding-top: 10px;
+    font-size: 16px;
+    font-style: italic;
+    width: 80%;
+    margin: 0 auto !important;
+    padding-bottom: 0 !important;
+}
+
+#image {
+    height: 190px;
+    overflow: hidden;
+    object-fit: fill;
+    margin: 0;
+    padding: 0;
+}
+
+.link {
+    bottom: 0 !important;
+}
+
+#alert {
+    color: white;
+    font-style: normal;
+    font-weight: bold;
+}
+
+#card:hover {
+    background:rgba(115,115,115,0.9);
+    opacity: 1;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
 }

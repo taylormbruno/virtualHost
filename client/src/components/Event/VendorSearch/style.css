@@ -1,0 +1,14 @@
+#searchBar {
+    padding: 7px;
+}
+
+.searchBar {
+    width: 60%;
+}
+
+@media only screen 
+and (max-device-width : 767px) {
+  .searchBar{
+    width: 90%;
+  }
+}

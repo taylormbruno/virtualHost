@@ -1,0 +1,55 @@
+.square{
+    max-height: 190px;
+    width: 100%;
+}
+
+#image {
+    height: 190px;
+    overflow: hidden;
+    object-fit: fill;
+    margin: 0;
+    padding: 0;
+}
+
+div.ui.image {
+    /* height: 290px; */
+    margin: 0;
+    padding: 0;
+}
+
+/* #cardHeight {
+    height: 500px;
+} */
+
+.left {
+    text-align: left;
+}
+
+.inline {
+    display: inline-block;
+    color: #a9a6c9;
+    font-weight: 400;
+}
+
+.description {
+    color: #908db3;
+    text-align: center;
+}
+
+.block {
+    display: block;
+    float: left;
+    padding-left: 15px;
+    padding-bottom: 8px;
+}
+
+.card:hover #eventName{
+    /* font-size: 24px; */
+    letter-spacing: 5px;
+}
+
+@media only screen and (max-width: 900px) {
+    .hidden {
+      display: none !important;
+    }
+  }
