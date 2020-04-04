@@ -14,8 +14,11 @@ export default {
     console.log("test");
     return axios.get("/api/users/findbyid/" + id, id)
   },
-  updateUser: function(obj) {
-    return axios.put("/api/users/update", obj)
+  updateNotes: function(obj) {
+    return axios.put("/api/users/update/notes", obj)
+  },
+  updateFavs: function(obj) {
+    return axios.put("/api/users/update/favs", obj)
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);

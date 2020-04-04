@@ -18,6 +18,7 @@ class MyDashboard extends Component {
       userID: "",
       fname: "",
       loggedIn: false,
+      update: false
     };
   }
 
@@ -30,21 +31,23 @@ class MyDashboard extends Component {
     }
   }
   updateUser = async (change) => {
+    this.setState({...this.state, update: true});
     console.log("updating user");
     console.log(change);
     if (change.notes) {
       console.log("updating user notes");
-      const update = await API.updateUser({
-        filter: { _id: this.state.currentUser._id },
-        update: { notes: change.notes },
+      const update = await API.updateNotes({
+        host: this.state.currentUser._id,
+        vendorID: change.vendor_id,
+        update: change.notes
       });
       console.log("updated user");
       console.log(update);
     } else if (change.favorites) {
       console.log("updating user favs");
-      const update = await API.updateUser({
+      const update = await API.updateFavs({
         filter: { _id: this.state.currentUser._id },
-        update: { favorites: change.notes },
+        update: change.vendor_id,
       });
       console.log("updated user");
       console.log(update);
@@ -84,10 +87,10 @@ class MyDashboard extends Component {
               <StyledHeader as="h1">My Events</StyledHeader>
               <Events userState={this.state.currentUser} />
             </Segment>
-            <Segment>
-              <StyledHeader as="h1">My Booths</StyledHeader>
-              <Booths userState={this.state.currentUser} />
-            </Segment>
+              <Segment>
+                <StyledHeader as="h1">My Booths</StyledHeader>
+                <Booths userState={this.state.currentUser} />
+              </Segment>
           </Grid.Column>
           <Grid.Column width={9}>
             <Segment>

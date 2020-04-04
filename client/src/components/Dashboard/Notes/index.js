@@ -34,7 +34,7 @@ export default class Notes extends Component {
   };
 
   changeNote = (event, data) => {
-    console.log(data.value);
+    // console.log(data.value);
     this.setState({
       ...this.state,
       updateNote: { ...this.state.updateNote, note: data.value },
@@ -42,32 +42,33 @@ export default class Notes extends Component {
   };
 
   saveNote = () => {
-    let newSet = this.props.notes.map((note) => {
-      if (note.vendor_id === this.state.updateNote.vendor_id) {
-        console.log("found your note");
-        return this.state.updateNote;
-      } else {
-        console.log("this is not your note");
-        return note;
-      }
-    });
-    console.log(newSet);
-    this.props.update({notes: newSet});
+    console.log('saving note');
+    // let newSet = this.props.notes.map((note) => {
+    //   if (note.vendor_id === this.state.updateNote.note) {
+    //     console.log("found your note");
+    //     return this.state.updateNote;
+    //   } else {
+    //     console.log("this is not your note");
+    //     return note;
+    //   }
+    // });
+    // console.log(newSet);
+    // this.props.update({vendor_id: this.state.updateNote});
   };
 
   deleteNote = (id) => {
     console.log(id)
-    let newSet = this.props.notes.map((note) => {
-      if (note.vendor_id === id) {
-        console.log("found your note");
-        return this.state.updateNote;
-      } else {
-        console.log("this is not your note");
-        return note;
-      }
-    });
-    console.log(newSet);
-    this.props.update({notes: newSet});
+    // let newSet = this.props.notes.map((note) => {
+    //   if (note.vendor_id === id) {
+    //     console.log("found your note");
+    //     return this.state.updateNote;
+    //   } else {
+    //     console.log("this is not your note");
+    //     return note;
+    //   }
+    // });
+    // console.log(newSet);
+    // this.props.update({notes: newSet});
   };
 
   render() {
