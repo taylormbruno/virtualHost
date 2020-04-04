@@ -63,7 +63,7 @@ and (orientation: landscape)  {
 @media only screen 
 and (max-device-width : 767px) {
   #about{
-    top: -130px;
+    top: -60px;
   }
   #teamHeader{
       letter-spacing: 0;
@@ -76,6 +76,6 @@ and (max-device-width: 812px)
 and (-webkit-min-device-pixel-ratio: 1)  
 and (orientation: landscape)  {
     #about{
-        top: 180px;        
+        top: 220px;        
       }
 }
