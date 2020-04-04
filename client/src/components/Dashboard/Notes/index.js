@@ -55,7 +55,20 @@ export default class Notes extends Component {
     this.props.update({notes: newSet});
   };
 
-  deleteNote = () => {};
+  deleteNote = (id) => {
+    console.log(id)
+    let newSet = this.props.notes.map((note) => {
+      if (note.vendor_id === id) {
+        console.log("found your note");
+        return this.state.updateNote;
+      } else {
+        console.log("this is not your note");
+        return note;
+      }
+    });
+    console.log(newSet);
+    this.props.update({notes: newSet});
+  };
 
   render() {
     console.log("rendering events", this.props.notes);
@@ -78,10 +91,6 @@ export default class Notes extends Component {
         <StyledButton onClick={() => this.saveNote()}>
           <Icon id="save" name="save" />
           Save Note
-        </StyledButton>
-        <StyledButton>
-          <Icon id="delete" name="delete" onClick={() => this.deleteNote()} />
-          Delete Note
         </StyledButton>
         <div id="notesContainer">
           <Table>
@@ -111,7 +120,7 @@ export default class Notes extends Component {
                       <Table.Cell className={note.vendor_id}>
                         {note.note}
                       </Table.Cell>
-                      <Table.Cell>
+                      <Table.Cell onClick={this.deleteNote(note.vendor_id)}>
                         <Icon name="delete" />
                       </Table.Cell>
                     </Table.Row>
