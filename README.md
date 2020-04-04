@@ -46,6 +46,7 @@ This application was deployed using Heroku and mLab.
 ## Key Features
 
 ### Demo
+![ezgif com-video-to-gif (5)](https://user-images.githubusercontent.com/55072295/78451409-72e20680-7653-11ea-867f-8a3a1309446e.gif)
 
 ### User can...
 * Log in with existing Google Account
@@ -58,7 +59,8 @@ This application was deployed using Heroku and mLab.
 ![ezgif com-video-to-gif (3)](https://user-images.githubusercontent.com/55072295/78418789-adc14b80-760d-11ea-98c0-e5a264b57053.gif)
 
 ### Mobile Responsive
-// Add in gif here
+![screenshot_20200404-090143](https://user-images.githubusercontent.com/55072295/78451604-75912b80-7654-11ea-844e-f847c70308f7.png)
+
 
 ### Consistent Styling
 <img width="553" alt="Screen Shot 2020-04-04 at 12 42 22 AM" src="https://user-images.githubusercontent.com/55072295/78418746-44d9d380-760d-11ea-84ea-f0571f243dd6.png">
