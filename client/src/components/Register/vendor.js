@@ -21,7 +21,7 @@ export class VendorForm extends Component {
       hostID: "",
       event: {},
       returnedVendors: [],
-      verifyImg: false
+      verifyImg: false,
     };
   }
   componentDidMount = () => {
