@@ -4,6 +4,10 @@
     margin-bottom: 7%;
 }
 
+#aboutimg {
+  width: 100%;
+}
+
 p {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
@@ -72,6 +76,6 @@ and (max-device-width: 812px)
 and (-webkit-min-device-pixel-ratio: 1)  
 and (orientation: landscape)  {
     #about{
-        top: 180px;
+        top: 180px;        
       }
 }
