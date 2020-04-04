@@ -1,18 +1,21 @@
 #eventHeader {
-    color:#a9a6c9;
-    font-weight: 400;
+    color:#908db3 !important;
+    font-weight: 300 !important;
     font-family: "source Sans Pro", sans-serif;
-    font-size: 60px;
-    padding: 40px;
+    font-size: 45px !important;
+    letter-spacing: 10px;
+    padding: 0px;
+    text-align: center;
 }
 
 #vendorHeader {
-    color:#a9a6c9;
-    font-weight: 300;
+    color:#908db3 !important;
+    font-weight: 300 !important;
     font-family: "source Sans Pro", sans-serif;
-    font-size: 25px;    
-    margin-top: 60px;
-    padding-top: 80px;;    
+    font-size: 45px !important;
+    letter-spacing: 10px;
+    padding: 0px;
+    text-align: center;
 }
 
 #column1 {
@@ -20,10 +23,14 @@
     margin-left: 45px;
     width: 80%;
     padding-bottom: 40px;
+    height: 50vh !important;
 }
 
 #column2 {
-    margin: 40px;    
+    /* margin: 40px 40px !important;   */
+    width: 95%;
+    background-color: rgb(255,255,255, 0.6); 
+    margin-top: 40px !important;
 }
 
 form {
@@ -37,7 +44,17 @@ form {
 }
 
 #eventCard {
-    margin-top: 60px;          
+    margin-top: 20px;          
 }
 
+#segment {
+    padding: 0 !important;
+}
+
+@media only screen and (max-width: 900px) {
+    #vendorHeader {
+        font-size: 32px !important;
+        letter-spacing: 1px;
+    }
+  }
 

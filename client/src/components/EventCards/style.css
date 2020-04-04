@@ -32,7 +32,8 @@ div.ui.image {
 }
 
 .description {
-    color: #908db3
+    color: #908db3;
+    text-align: center;
 }
 
 .block {

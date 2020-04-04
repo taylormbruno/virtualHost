@@ -26,7 +26,7 @@ form {
 
 #eventName {    
     font-family: "source Sans Pro", sans-serif;
-    font-size: 32px;
+    font-size: 29px;
     padding-top: 30px;
     color:#908db3;
     font-weight: 350;
@@ -36,6 +36,7 @@ form {
     width: 90%;
     margin: auto;
     line-height: 1;
+    text-align: center;
 }
 
 .eventCardContent {
