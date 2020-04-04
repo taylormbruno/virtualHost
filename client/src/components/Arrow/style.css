@@ -1,36 +1,3 @@
-/* .arrow-down{
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.arrow-down::after {
-    content: "";
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    border-right: 4px solid #fff;
-    border-bottom: 4px solid #fff;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    -webkit-animation: 3s arrow infinite ease;
-    animation: 3s arrow infinite ease;
-}
-
-@-webkit-keyframes arrow {
-    0%, 100% {
-        top: 50px
-    }
-    50% {
-        top: 80px;
-    }
-} */
-
 .downArrow{
 	position: absolute;
 	bottom: 1%;

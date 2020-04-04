@@ -131,11 +131,10 @@ export default class Booths extends Component {
             {description}
           </Card.Description>
         </Card.Content>
-        {/* This looks like it's on the wrong component???***** */}
-        <Card.Content extra>
+        {/* <Card.Content extra>
             <Icon name='star' />
               Favorites Go Here
-        </Card.Content>
+        </Card.Content> */}
       </Card>
     </Grid.Column>
     <Grid.Column width={3} verticalAlign="middle" >
