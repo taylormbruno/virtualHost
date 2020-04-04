@@ -40,7 +40,8 @@ app.use(cookieParser());
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost/virtualhost", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
