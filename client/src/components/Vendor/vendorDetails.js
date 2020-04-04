@@ -53,6 +53,7 @@ class VendorDetail extends Component {
     console.log("MASTER DATA\n", master.data);
     return master.data;
   };
+  
   render() {
     return (
       <StyledContainer id="bodyContainer">
