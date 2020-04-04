@@ -68,7 +68,7 @@ class EventDetail extends Component {
         <Grid floated="left" columns={2} stackable>
           <Grid.Row stretched>
             <Grid.Column floated="left" width={5}>
-              <Segment id="column1">
+              <div id="column1">
                 <Header id="eventHeader">EVENT</Header>
                 <Divider />
                 <div id="eventCard" >
@@ -76,7 +76,7 @@ class EventDetail extends Component {
                     <EventCard event={this.state.event} key={this.state.event._id}/>
                   </Card.Group>
                 </div>
-              </Segment>
+              </div>
             </Grid.Column>
 
             <Grid.Column width={11} id="segment">
