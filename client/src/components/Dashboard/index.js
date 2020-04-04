@@ -17,7 +17,7 @@ class MyDashboard extends Component {
       currentUser: {},
       userID: "",
       fname: "",
-      loggedIn: false
+      loggedIn: false,
     };
   }
 
@@ -25,11 +25,33 @@ class MyDashboard extends Component {
     const query = queryString.parse(window.location.search);
     console.log("Finding local user");
     if (query.q) {
+      this.setState({ ...this.state, currentUser: query.q });
       this.findUser(query.q);
     }
   }
+  updateUser = async (change) => {
+    console.log("updating user");
+    console.log(change);
+    if (change.notes) {
+      console.log("updating user notes");
+      const update = await API.updateUser({
+        filter: { _id: this.state.currentUser._id },
+        update: { notes: change.notes },
+      });
+      console.log("updated user");
+      console.log(update);
+    } else if (change.favorites) {
+      console.log("updating user favs");
+      const update = await API.updateUser({
+        filter: { _id: this.state.currentUser._id },
+        update: { favorites: change.notes },
+      });
+      console.log("updated user");
+      console.log(update);
+    }
+  };
 
-  findUser = async query => {
+  findUser = async (query) => {
     console.log("Sending api call to find user");
     const master = await API.findUserById(query);
     console.log(master.data.notes);
@@ -38,7 +60,7 @@ class MyDashboard extends Component {
       first_name: master.data.first_name,
       last_name: master.data.last_name,
       notes: master.data.notes ? master.data.notes : [],
-      favorites: master.data.favorites ? master.data.favorites : []
+      favorites: master.data.favorites ? master.data.favorites : [],
     };
     window.localStorage.setItem("loggedIn", true);
     window.localStorage.setItem("userID", master.data._id);
@@ -47,25 +69,10 @@ class MyDashboard extends Component {
       ...this.state,
       currentUser: user,
       fname: master.data.first_name,
-      loggedIn: true
+      loggedIn: true,
     });
   };
 
-  // if (query.extid) {
-  //   console.log("Finding external user"); //fires
-  //   this.getExt(query.extid).then(response => {
-  //     console.log("Mount.getExt()\n", response); // undefined
-  //     if (response.data.length === 0) {
-  //       console.log("No user found\n", response);
-  //       this.createExternal().then(res => {
-  //         console.log(res); // undefined
-  //       });
-  //     } else {
-  //       console.log("Found you!\n", response.data);
-  //       this.setState({ ...this.state, currentUser: response.data });
-  //     }
-  //   });
-  // } else {
   render() {
     console.log("Rendering dashboard", this.state);
     return (

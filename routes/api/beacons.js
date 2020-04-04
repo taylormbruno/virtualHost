@@ -7,7 +7,7 @@ router.post("/register", function (req, res) {
   console.log(req);
   axios({
     method: "post",
-    url:"https://proximitybeacon.googleapis.com/v1beta1/beacons:register?key="+proccess.env.API_KEY,
+    url:"https://proximitybeacon.googleapis.com/v1beta1/beacons:register?key="+process.env.API_KEY,
     data: {
       advertisedId: { type: "EDDYSTONE", id: req.body.beacon_id },
       status: "ACTIVE",

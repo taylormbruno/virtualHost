@@ -11,4 +11,6 @@ router.post("/validate", userController.validSignup);
 
 router.get('/findbyid/:id', userController.findUserById);
 
+router.put('/update', userController.update)
+
 module.exports = router;
