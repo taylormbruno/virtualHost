@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Grid, Image, Icon } from 'semantic-ui-react';
 import moment from "moment";
 import '../Events/style.css'
+import { StyledImage } from "./styledComponents"
 import "./style.css"
 
 function EventCard(props) {

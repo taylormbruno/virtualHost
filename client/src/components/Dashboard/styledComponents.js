@@ -11,4 +11,3 @@ export const StyledHeader = styled(Header)`
         letter-spacing: 5px;
     }   
     `;
-    
