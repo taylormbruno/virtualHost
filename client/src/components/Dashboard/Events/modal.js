@@ -46,7 +46,7 @@ export default class EventModal extends Component {
         }
         basic
       >
-        <Modal.Header>My Events</Modal.Header>
+        <Modal.Header textAlign="center">My Events</Modal.Header>
         <Modal.Content>
           <Table columns={4}>
             <Table.Header>
