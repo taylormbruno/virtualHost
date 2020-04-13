@@ -6,32 +6,6 @@ import { StyledButton } from "./styledComponents"
 import "./style.css"
 
 
-// const boothseeds = [
-//   {
-//     "id": 1,
-//     "image": require("./museum.jpg"),
-//     "boothTitle" : "Great Works of Michelangelo",
-//     "eventName": "MET Night of the Renaissance",
-//     "description": "Experience the great works of a painter, sculptor, and poet whose works have stoof the test of time.",
-//     "favorites": 165
-//   },
-//   {
-//       "id": 2,
-//       "image": require("./fruit.jpg"),
-//       "boothTitle" : "Plentiful Acres",
-//       "eventName": "Stanly County Farmers Market",
-//       "description": "At Plentiful Acres, we strive to grow organic products and use the profits to invest in our wonderful community.",
-//       "favorites": 24
-//     },
-//     {
-//       "id": 3,
-//       "image": require("./artshow.jpg"),
-//       "boothTitle" : "A Different Beat",
-//       "eventName": "NoDa Arts Expo",
-//       "description": "Using records, CDs, and cassette tapes, we create art to resemble the greatest artists in history from Michael Jackson to John Mayer to Billie Holiday.",
-//       "favorites": 88
-//     }
-// ]
 
 
 export default class Booths extends Component {

@@ -47,7 +47,7 @@ class MenuExampleStackable extends Component {
         <Dropdown.Header>My Stuff</Dropdown.Header>
         <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}`}>My Dashboard</Dropdown.Item>
         <Dropdown.Item href="/user/mydashboard/#eventModal">My Events</Dropdown.Item>
-        <Dropdown.Item>My Beacons</Dropdown.Item>
+        <Dropdown.Item href="/user/mydashboard/#boothModal">My Booths</Dropdown.Item>
         <Dropdown.Item>Notes & Favorites</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item href='/settings'>Settings</Dropdown.Item>
