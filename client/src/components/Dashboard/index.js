@@ -106,7 +106,9 @@ class MyDashboard extends Component {
                 update={this.updateUser}
               />
             </Segment>            
-              <EBmodal/>            
+              <EBmodal
+              currentUser={this.state.currentUser}
+              />            
           </Grid.Column>
         </Grid>
       </div>
