@@ -24,34 +24,53 @@ class VendorDetail extends Component {
     this.state = {
       vendorList: [],
       vendorData: [],
-      vendor_id: ""
+      vendor_id: "",
     };
   }
 
   componentDidMount() {
     var query = queryString.parse(window.location.search);
-
-    console.log("QUERY\n", query.q);
     this.setState({
       ...this.state,
       vendor_id: query.q
     });
 
     this.retrieveAll().then(response => {
-      console.log(response);
       this.setState({
         ...this.state,
 
         vendorData: response
       });
-      console.log(this.state);
     });
   }
 
   retrieveAll = async () => {
     const master = await API.findVendor(this.state.vendor_id);
-    console.log("MASTER DATA\n", master.data);
     return master.data;
+  };
+
+  addFavs = async () => {
+    document.getElementById("favoritesAlert").style.display="inline-block";
+    document.getElementById("star").style.display="none";
+    
+    const addFavs = await API.addFavs({
+      filter: { _id: this.props.userState.userID },
+      vendorID: this.state.vendor_id,
+      vendorName: this.state.vendorData.vendor_name
+    })
+  };
+
+  addNote = async () => {
+    document.getElementById("noteAlert").style.display="inline-block";
+    document.getElementById("noteForm").style.display="none";
+    const newNote = await API.createNote({
+      _id: this.props.userState.userID,
+      vendor_id: this.state.vendor_id,
+      event_id: this.state.vendorData.event_id,
+      // event_name: this.state.vendorData,
+      vendor_name: this.state.vendorData.vendor_name,
+      note: document.getElementById("formWidth").value
+    });
   };
   
   render() {
@@ -77,19 +96,22 @@ class VendorDetail extends Component {
               Website
             </a>
             <br />
+            <div id="noteForm">
             <Form>
               <Form.TextArea
                 id="formWidth"
-                value={this.state.noteBody}
                 placeholder="Take a note..."
               />
             </Form>
-            <StyledButton>
+            <StyledButton onClick={this.addNote}>
               <Icon name="save" />
               Save Note
             </StyledButton>
+            </div>
+            <p id="noteAlert">Note Saved!</p>
             <br />
-            <Rating size="huge"/>
+            <p id="favoritesAlert">Added To Your Favorites</p>
+            <Rating size="huge" onClick={this.addFavs} id="star" />
           </div>
         </Segment>
       </StyledContainer>

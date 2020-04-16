@@ -11,14 +11,19 @@ export default {
     return axios.post("/api/users/login", user);
   },
   findUserById: function(id) {
-    console.log("test");
     return axios.get("/api/users/findbyid/" + id, id)
+  },
+  createNote: function(obj) {
+    return axios.put("/api/users/update/usernotes", obj)
   },
   updateNotes: function(obj) {
     return axios.put("/api/users/update/notes", obj)
   },
   updateFavs: function(obj) {
     return axios.put("/api/users/update/favs", obj)
+  },
+  addFavs: function(obj) {
+    return axios.put("/api/users/update/favorites", obj)
   },
   getDashboard: function(id) {
     return axios.get("/api/dash/loaddashboard", id);
@@ -27,14 +32,12 @@ export default {
     return axios.get("/api/vendors/search", term);
   },
   allVendors: function() {
-    console.log("test");
     return axios.get("/api/vendors/all")    
   },
   findVendorByHost: function() {
     return axios.get("/api/vendors/byhost");
   },
   findVendor: function(id) {
-    console.log("test");
     return axios.get("/api/vendors/vendor", id)
   },
   createVendor: function(obj) {
@@ -50,7 +53,6 @@ export default {
     return axios.post("/api/events/create", obj);
   },
   findEventByID: function(term) {
-    console.log("testeventbyid")
     return axios.get("/api/events/find/" + term , term)
   },  
   registerBeacon: function(term) {

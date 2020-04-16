@@ -23,7 +23,6 @@ class Favorites extends Component {
     // this.props.update({ notes: newSet });
   };
   render() {
-    console.log("rendering favs", this.props.favs);
     return (
       <Table>
         <Table.Header>
