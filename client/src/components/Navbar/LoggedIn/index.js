@@ -43,10 +43,10 @@ class MenuExampleStackable extends Component {
         <Dropdown text={greeting} pointing className='link item'>
       <Dropdown.Menu>
         {/* <Dropdown.Header>My Stuff</Dropdown.Header> */}
-        <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}`}>My Dashboard</Dropdown.Item>
-        {/* <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}`}>My Events</Dropdown.Item>
-        <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}`}>My Booths</Dropdown.Item>
-        <Dropdown.Item>Notes & Favorites</Dropdown.Item> */}
+        <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}`}>User Dashboard</Dropdown.Item>
+        <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}&modal=true`}>Host Dashboard</Dropdown.Item>
+        {/* <Dropdown.Item href={`/user/mydashboard/?q=${this.props.userState.userID}`}>My Booths</Dropdown.Item> */}
+        {/* <Dropdown.Item>Notes & Favorites</Dropdown.Item> */}
         <Dropdown.Divider />
         <Dropdown.Item href='/settings'>Settings</Dropdown.Item>
         <Dropdown.Item 

@@ -50,3 +50,9 @@
     background: #eae9f5;
     cursor: pointer;
   }
+
+  #hostDash {
+    color: rgb(169, 166, 201);
+    text-align: center;
+    font-size: 4em;
+  }
