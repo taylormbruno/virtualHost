@@ -6,6 +6,8 @@ import { Divider, Form, Table, Icon, TextArea } from "semantic-ui-react";
 import { StyledHeader, StyledButton } from "./styledComponents";
 // import notes from "./noteseeds.json";
 import "./style.css";
+import queryString from "query-string";
+import API from "../../../utils/API";
 
 export default class Notes extends Component {
   constructor(props) {
@@ -32,25 +34,32 @@ export default class Notes extends Component {
   };
 
   changeNote = (event, data) => {
-    // console.log(data.value);
     this.setState({
       ...this.state,
       updateNote: { ...this.state.updateNote, note: data.value },
     });
   };
 
-  saveNote = () => {
-    // let newSet = this.props.notes.map((note) => {
-    //   if (note.vendor_id === this.state.updateNote.note) {
-    //     console.log("found your note");
-    //     return this.state.updateNote;
-    //   } else {
-    //     console.log("this is not your note");
-    //     return note;
-    //   }
-    // });
-    // console.log(newSet);
-    // this.props.update({vendor_id: this.state.updateNote});
+  saveNote = async () => {
+    let newSet = this.props.notes.map((note) => {
+      if (note.vendor_id === this.state.updateNote.note) {
+        console.log("found your note");
+        return this.state.updateNote;
+      } else {
+        console.log("this is not your note");
+        return note;
+      }
+    });
+    console.log(newSet);
+    this.props.update({vendor_id: this.state.updateNote});
+    console.log(this.state.updateNote);
+    const query = queryString.parse(window.location.search);
+    const updateNote = await API.updateNotes({
+      host: query.q,
+      vendorName: this.state.updateNote.vendor_name,
+      update: this.state.updateNote.note
+    });
+    console.log(updateNote);
   };
 
   deleteNote = (id) => {
@@ -93,7 +102,6 @@ export default class Notes extends Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Booth</Table.HeaderCell>
-                <Table.HeaderCell>Event</Table.HeaderCell>
                 <Table.HeaderCell>Note</Table.HeaderCell>
                 <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
@@ -109,9 +117,6 @@ export default class Notes extends Component {
                     >
                       <Table.Cell className={note.vendor_id}>
                         {note.vendor_name}
-                      </Table.Cell>
-                      <Table.Cell className={note.vendor_id}>
-                        {note.event_name}
                       </Table.Cell>
                       <Table.Cell className={note.vendor_id}>
                         {note.note}

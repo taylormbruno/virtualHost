@@ -70,11 +70,12 @@ class MyDashboard extends Component {
       <div id="container">
         <Image id="logo" src={Dashboard} />
         <Grid stackable columns={2} textAlign="center" verticalAlign="top">
-          <Grid.Column width={9}>
+          <Grid.Column width={15}>
             <Segment>
               <StyledHeader as="h1">My Notes</StyledHeader>
               <Notes
                 notes={this.state.currentUser.notes}
+                // userID={this.state.currentUser._id}
                 update={this.updateUser}
               />
             </Segment>

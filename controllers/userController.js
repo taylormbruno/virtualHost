@@ -57,10 +57,8 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   updateNotes: function (req, res) {
-    console.log(req.body.filter);
-    console.log(req.body.update);
-    db.User.findOneAndUpdate({_id: req.body.host, notes: {vendor_id: req.body.vendorID }}, {
-      $set: { notes: req.body.update },
+    db.User.findOneAndUpdate({_id: req.body.host, notes: {vendor_name: req.body.vendorName }}, {
+      $set: { note: req.body.update },
     })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
