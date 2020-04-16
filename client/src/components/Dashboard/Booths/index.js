@@ -112,10 +112,10 @@ export default class Booths extends Component {
           console.log(this.state.currentCardIndex)
         }}/>
     </Grid.Column>
-   {/* <StyledButton>
+   <StyledButton>
           <Icon name="wifi" />
           Activate Beacon
-        </StyledButton> */}
+        </StyledButton>
     <StyledButton>
       <Icon name="delete" />
       Deactivate Beacon
