@@ -40,6 +40,22 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  createNote: function (req, res) {
+    console.log("id below");
+    console.log(req.body._id)
+    db.User.updateOne({_id: req.body._id}, {
+      $push: { notes: 
+        {
+          vendor_id: req.body.vendor_id,
+          event_id: req.body.event_id,
+          vendor_name: req.body.vendor_name,
+          note: req.body.note
+        } 
+      },
+    },{ safe: true, multi: false, _id: false })
+      .then((dbModel) => {console.log(dbModel);res.json(dbModel)})
+      .catch((err) => res.status(422).json(err));
+  },
   updateNotes: function (req, res) {
     console.log(req.body.filter);
     console.log(req.body.update);
@@ -47,6 +63,13 @@ module.exports = {
       $set: { notes: req.body.update },
     })
       .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  addFavs: function (req, res) {
+    db.User.updateOne({_id: req.body.filter._id}, {
+      $push: { favorites: {vendor_id: req.body.vendorID, vendor_name:req.body.vendorName} },
+    },{ safe: true, multi: false, _id: false })
+      .then((dbModel) => {console.log(dbModel);res.json(dbModel)})
       .catch((err) => res.status(422).json(err));
   },
   updateFavs: function (req, res) {

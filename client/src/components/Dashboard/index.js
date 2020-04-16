@@ -23,7 +23,6 @@ class MyDashboard extends Component {
 
   componentDidMount() {
     const query = queryString.parse(window.location.search);
-    console.log("Finding local user");
     if (query.q) {
       this.setState({ ...this.state, currentUser: query.q });
       this.findUser(query.q);
@@ -31,32 +30,23 @@ class MyDashboard extends Component {
   }
   updateUser = async (change) => {
     this.setState({...this.state, update: true});
-    console.log("updating user");
-    console.log(change);
     if (change.notes) {
-      console.log("updating user notes");
       const update = await API.updateNotes({
         host: this.state.currentUser._id,
         vendorID: change.vendor_id,
         update: change.notes
       });
-      console.log("updated user");
-      console.log(update);
     } else if (change.favorites) {
-      console.log("updating user favs");
       const update = await API.updateFavs({
         filter: { _id: this.state.currentUser._id },
         update: change.vendor_id,
       });
-      console.log("updated user");
-      console.log(update);
     }
   };
 
   findUser = async (query) => {
-    console.log("Sending api call to find user");
     const master = await API.findUserById(query);
-    console.log(master.data.notes);
+
     let user = {
       id: master.data._id,
       first_name: master.data.first_name,
@@ -76,21 +66,10 @@ class MyDashboard extends Component {
   };
 
   render() {
-    console.log("Rendering dashboard", this.state);
     return (
       <div id="container">
         <Image id="logo" src={Dashboard} />
         <Grid stackable columns={2} textAlign="center" verticalAlign="top">
-          {/* <Grid.Column width={7}>
-            <Segment>
-              <StyledHeader as="h1">My Events</StyledHeader>
-              <Events userState={this.state.currentUser} />
-            </Segment>
-              <Segment>
-                <StyledHeader as="h1">My Booths</StyledHeader>
-                <Booths userState={this.state.currentUser} />
-              </Segment>
-          </Grid.Column> */}
           <Grid.Column width={9}>
             <Segment>
               <StyledHeader as="h1">My Notes</StyledHeader>

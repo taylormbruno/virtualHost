@@ -17,7 +17,6 @@ export default class Notes extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.notes);
     this.checkState();
   }
 
@@ -29,7 +28,6 @@ export default class Notes extends Component {
   };
 
   selectNote = (note) => {
-    console.log(note);
     this.setState({ ...this.state, updateNote: note });
   };
 
@@ -42,7 +40,6 @@ export default class Notes extends Component {
   };
 
   saveNote = () => {
-    console.log('saving note');
     // let newSet = this.props.notes.map((note) => {
     //   if (note.vendor_id === this.state.updateNote.note) {
     //     console.log("found your note");
@@ -57,7 +54,6 @@ export default class Notes extends Component {
   };
 
   deleteNote = (id) => {
-    console.log(id)
     // let newSet = this.props.notes.map((note) => {
     //   if (note.vendor_id === id) {
     //     console.log("found your note");
@@ -72,7 +68,6 @@ export default class Notes extends Component {
   };
 
   render() {
-    console.log("rendering events", this.props.notes);
     return (
       <div>
         <StyledHeader as="h2">{this.state.updateNote.vendor_name}</StyledHeader>
