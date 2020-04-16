@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Grid, Segment, Card, Header } from "semantic-ui-react";
+import { Segment, Card, Header } from "semantic-ui-react";
 import "./style.css";
 import EventCard from "../EventCards/eventCards";
 import SearchFilter from "../Event/VendorSearch/vendorSearch";
 import API from "../../utils/API";
-import { StyledGrid } from "./styledComponents";
+
 
 class EventPage extends Component {
   constructor(props) {
