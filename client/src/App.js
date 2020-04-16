@@ -26,14 +26,12 @@ function App() {
 
   window.onload = function() {
     let currentBackground = document.getElementById("backgroundColor");
-    console.log("runnin")
     let lightMode = JSON.parse(window.localStorage.getItem('lightMode'));
     if (lightMode !== null) {
       userState.light = lightMode;
       setUserState({
         ...userState
       });
-      console.log("updated userstate")
     }
     if (userState.light === true) {
       currentBackground.setAttribute("style", "background-color: #fbfcf1")
@@ -124,7 +122,9 @@ function App() {
             <Vendor />
           </Route> */}
           <Route path={["/vendor"]}>
-            <Vendor />
+            <Vendor 
+            userState={userState}
+            />
           </Route>
           </Switch>
           <Copyright />

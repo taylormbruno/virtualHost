@@ -14,8 +14,6 @@ class MenuExampleStackable extends Component {
 
     const { activeItem } = this.state
     const greeting = `Hello, ${this.props.fname}!`
-    console.log("Look down");
-    console.log(this.props.userState);
 
     return (
       <div id="navbar">

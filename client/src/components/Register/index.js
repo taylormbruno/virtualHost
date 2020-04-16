@@ -188,7 +188,14 @@ class Settings extends Component {
               onChange={this.handleInputChange}
               name="description"
             />
-            yes
+            <Form.Field
+              id="form-input-control-error-email"
+              control={Input}
+              label="Photo URL"
+              placeholder="Add the Image Address to your photo. This will display on your event's card."
+              onChange={this.handleInputChange}
+              name="image"
+            />
             <Grid>
               <Grid.Row>
                 <Grid.Column width={8}>

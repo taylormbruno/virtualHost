@@ -11,8 +11,10 @@ router.post("/validate", userController.validSignup);
 
 router.get('/findbyid/:id', userController.findUserById);
 
-router.put('/update/favs', userController.updateFavs)
-router.put('/update/notes', userController.updateNotes)
+router.put('/update/favs', userController.updateFavs);
+router.put('/update/usernotes', userController.createNote);
+router.put('/update/notes', userController.updateNotes);
+router.put('/update/favorites', userController.addFavs);
 
 
 module.exports = router;

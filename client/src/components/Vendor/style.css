@@ -43,3 +43,11 @@
 #formWidth {
     width: 90%
 }
+
+#favoritesAlert {
+    display: none;
+}
+
+#noteAlert {
+    display: none;
+}
