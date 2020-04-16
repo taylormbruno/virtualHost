@@ -11,7 +11,7 @@ class Emodal extends Component {
             id='EModal'
             trigger={
                 <StyledButton2 align="center">
-                    Create an Event
+                    View host dashboard
                 </StyledButton2>
             }
             basic >
