@@ -4,7 +4,7 @@ import Events from "./index";
 import Booths from "./index";
 import { StyledHeader, StyledButton2 } from "./styledComponents";
 
-const Emodal = (props) => (
+const EBmodal = (props) => (
     <Modal 
         id='EModal'
         trigger={
@@ -30,7 +30,7 @@ const Emodal = (props) => (
     </Modal>
 
 )
-export default Emodal;
+export default EBmodal;
 
 
 

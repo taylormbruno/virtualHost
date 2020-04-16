@@ -80,17 +80,7 @@ class MyDashboard extends Component {
     return (
       <div id="container">
         <Image id="logo" src={Dashboard} />
-        <Grid stackable columns={2} textAlign="center" verticalAlign="top">
-          {/* <Grid.Column width={7}>
-            <Segment>
-              <StyledHeader as="h1">My Events</StyledHeader>
-              <Events userState={this.state.currentUser} />
-            </Segment>
-              <Segment>
-                <StyledHeader as="h1">My Booths</StyledHeader>
-                <Booths userState={this.state.currentUser} />
-              </Segment>
-          </Grid.Column> */}
+        <Grid stackable columns={2} textAlign="center" verticalAlign="top">          
           <Grid.Column width={9}>
             <Segment>
               <StyledHeader as="h1">My Notes</StyledHeader>
