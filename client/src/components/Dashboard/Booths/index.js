@@ -84,7 +84,7 @@ export default class Booths extends Component {
     console.log(boothImage);
 
   return(
-  <Grid id='cardcontainer' columns='three'>
+  <Grid id='cardcontainer' columns='three' textAlign='center'>
     <Grid.Column width={3} verticalAlign="middle">
       <StyledIcon 
         onClick={()=>{
