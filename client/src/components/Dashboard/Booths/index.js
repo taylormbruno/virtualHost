@@ -95,7 +95,7 @@ export default class Booths extends Component {
     </Grid.Column>
     <Grid.Column width={10}>
       <Card id="boothCard">
-        <Image src={boothImage}/>
+        <Image src={boothImage} textAlign='center'/>
         <Card.Content>
           <Card.Header>{boothName}</Card.Header>
           <Card.Description>

@@ -20,7 +20,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.2",
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.2"
   },
   "author": "",
